@@ -14,7 +14,6 @@
         : ComparableConditionBase<char, ICharNotCondition>,
           ICharCondition
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="CharCondition"/> class.
         /// </summary>
@@ -23,9 +22,6 @@
             : base(source)
         {
         }
-
-        /// <inheritdoc />
-        protected override ICharNotCondition NotCondition => this;
 
         /// <inheritdoc />
         public bool Control => Result(char.IsControl(Source));
@@ -68,6 +64,9 @@
 
         /// <inheritdoc />
         public bool WhiteSpace => Result(char.IsWhiteSpace(Source));
+
+        /// <inheritdoc />
+        protected override ICharNotCondition NotCondition => this;
 
         /// <inheritdoc />
         public bool In(string str)

@@ -13,13 +13,13 @@
           IConditionBase<bool?, INullableBoolNotCondition>
     {
         /// <summary>
-        /// Gets a value indicating whether the nullable source <see cref="bool"/> is <see langword="true"/>. 
+        /// Gets a value indicating whether the nullable source <see cref="bool"/> is <see langword="true"/>.
         /// The value will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>.
         /// </summary>
         bool True { get; }
 
         /// <summary>
-        /// Gets a value indicating whether the nullable source <see cref="bool"/> is <see langword="true"/>. 
+        /// Gets a value indicating whether the nullable source <see cref="bool"/> is <see langword="true"/>.
         /// The value will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>.
         /// </summary>
         bool False { get; }

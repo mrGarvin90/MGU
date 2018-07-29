@@ -7,7 +7,8 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines chainable conditions for <see cref="string"/>.
+    /// Defines chainable conditions for <see cref="string"/>
+    /// where the result of the conditions will be inverted.
     /// </summary>
     public interface IChainableStringDoNotCondition : IChainableEnumerableDoNotConditionBase<string, char, IChainableStringCondition>
     {

@@ -564,6 +564,7 @@
         /// <summary>
         /// Blocks the use of Cast on <inheritdoc cref="IConditionResultOption{TSource}"/>.
         /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
         public static void Cast<TSource>(this IConditionResultOption<TSource> source)
         {
@@ -580,6 +581,7 @@
         /// <summary>
         /// Blocks the use of Cast on <inheritdoc cref="IThrowOption{TSource}"/>.
         /// </summary>
+        /// /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
         public static void Cast<TSource>(this IThrowOption<TSource> source)
         {

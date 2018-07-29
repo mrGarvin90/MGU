@@ -23,7 +23,6 @@
         /// Initializes a new instance of the <see cref="ChainableComparableClassCondition{TSource}"/> class.
         /// </summary>
         /// <param name="source">The comparable source class.</param>
-        /// <inheritdoc />
         internal ChainableComparableClassCondition(TSource source)
             : base(source)
         {

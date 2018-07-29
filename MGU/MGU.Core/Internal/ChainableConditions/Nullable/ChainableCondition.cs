@@ -17,7 +17,6 @@
           IChainableCondition<TSource>,
           IChainableDoNotCondition<TSource>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableCondition{TSource}"/> class.
         /// </summary>

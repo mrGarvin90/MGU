@@ -19,7 +19,6 @@
           IChainableNullableComparableStructDoNotCondition<TSource>
         where TSource : struct, IComparable<TSource>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableNullableComparableStructCondition{TSource}"/> class.
         /// </summary>
@@ -31,7 +30,7 @@
 
         /// <inheritdoc />
         protected override IChainableNullableComparableStructCondition<TSource> Condition => this;
-        
+
         /// <inheritdoc />
         protected override IChainableNullableComparableStructNotCondition<TSource> NotCondition => this;
 

@@ -13,7 +13,7 @@
             object source = 5;
             Assert.Equal(5, source.Cast().To<int>());
             Assert.Equal(5, source.Cast().To<int>(true));
-            Assert.Equal((uint) 5, source.Cast().To<uint>(true));
+            Assert.Equal((uint)5, source.Cast().To<uint>(true));
 
             source = -1;
             Assert.Equal(-1, source.Cast().To<int>());
@@ -53,7 +53,7 @@
             Assert.Equal(0, source.Cast().ToOrDefault<int>(true));
 
             source = 5;
-            Assert.Equal((uint) 0, source.Cast().ToOrDefault<uint>());
+            Assert.Equal((uint)0, source.Cast().ToOrDefault<uint>());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace MGU.Core.Tests.ChainableConditions
+﻿#pragma warning disable SA1500 // Braces for multi-line statements must not share line
+namespace MGU.Core.Tests.ChainableConditions
 {
     using System.Collections.Generic;
     using Core.Extensions.If;
@@ -542,7 +543,7 @@
 
             var source = 'S';
             Assert.False(source.If().In(str).Result);
-            
+
             source = 's';
             Assert.False(source.If().In(str, true).Result);
         }

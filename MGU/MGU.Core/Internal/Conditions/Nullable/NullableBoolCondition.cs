@@ -13,7 +13,6 @@
         : ConditionBase<bool?, INullableBoolNotCondition>,
           INullableBoolCondition
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="NullableBoolCondition"/> class.
         /// </summary>
@@ -24,12 +23,12 @@
         }
 
         /// <inheritdoc />
-        protected override INullableBoolNotCondition NotCondition => this;
-
-        /// <inheritdoc />
         public bool True => Source.HasValue && Source.Value;
 
         /// <inheritdoc />
         public bool False => Source.HasValue && !Source.Value;
+
+        /// <inheritdoc />
+        protected override INullableBoolNotCondition NotCondition => this;
     }
 }

@@ -403,7 +403,7 @@
         #endregion
 
         #region IChainableStringCondition
-        
+
         /// <summary>
         /// Blocks the use of If on <inheritdoc cref="IChainableStringCondition"/>.
         /// </summary>
@@ -564,6 +564,7 @@
         /// <summary>
         /// Blocks the use of If on <inheritdoc cref="IConditionResultOption{TSource}"/>.
         /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
         public static void If<TSource>(this IConditionResultOption<TSource> source)
         {
@@ -580,6 +581,7 @@
         /// <summary>
         /// Blocks the use of If on <inheritdoc cref="IThrowOption{TSource}"/>.
         /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
         public static void If<TSource>(this IThrowOption<TSource> source)
         {

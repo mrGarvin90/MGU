@@ -133,7 +133,7 @@
         public void Result_Should_Be_False_When_Source_Is_Greater_Than_Value()
         {
             Assert.False(ComparableStructCondition().LessThanEqualTo(IntLessThanSource).Result);
-            
+
             Assert.False(ComparableNullableStructCondition().LessThanEqualTo(NullableIntLessThanSource).Result);
 
             Assert.False(ComparableClassCondition().LessThanEqualTo(ComparableTestObjectLessThanSource).Result);
@@ -183,7 +183,7 @@
         public void Result_Should_Be_False_When_Source_Is_Less_Than_Value()
         {
             Assert.False(ComparableStructCondition().GreaterThanEqualTo(IntGreaterThanSource).Result);
-            
+
             Assert.False(ComparableNullableStructCondition().GreaterThanEqualTo(NullableIntGreaterThanSource).Result);
 
             Assert.False(ComparableClassCondition().GreaterThanEqualTo(ComparableTestObjectGreaterThanSource).Result);

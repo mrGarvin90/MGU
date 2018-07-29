@@ -19,7 +19,6 @@
           IChainableComparableStructDoNotCondition<TSource>
         where TSource : struct, IComparable<TSource>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableComparableStructCondition{TSource}"/> class.
         /// </summary>

@@ -108,7 +108,7 @@
             Assert.False(NullListCondition().Not.NullOrEmpty);
             Assert.False(ListCondition(new List<int>()).Not.NullOrEmpty);
         }
-        
+
         private static IEnumerableCondition<int[], int> ArrayCondition(int[] source = null)
         {
             if (source is null)

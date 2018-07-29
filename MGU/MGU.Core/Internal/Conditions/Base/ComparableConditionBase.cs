@@ -5,22 +5,19 @@
     using Core.Interfaces.Conditions.Base.Not;
     using Extensions;
 
-    /// <inheritdoc cref="ConditionBase{TSource,TNotCondition}"/>
-    /// <inheritdoc cref="IComparableConditionBase{TSource,TComparableNotCondition}"/>
+    /// <inheritdoc cref="ConditionBase{TSource, TComparableNotCondition}" />
+    /// <inheritdoc cref="IComparableConditionBase{TSource, TComparableNotCondition}" />
     /// <summary>
     /// The <see cref="ComparableConditionBase{TSource,TComparableNotCondition}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable source.</typeparam>
     /// <typeparam name="TComparableNotCondition">The type of the comparable not condition.</typeparam>
-    /// <inheritdoc cref="ConditionBase{TSource, TComparableNotCondition}" />
-    /// <inheritdoc cref="IComparableConditionBase{TSource, TComparableNotCondition}" />
     internal abstract class ComparableConditionBase<TSource, TComparableNotCondition>
         : ConditionBase<TSource, TComparableNotCondition>,
           IComparableConditionBase<TSource, TComparableNotCondition>
         where TSource : IComparable<TSource>
         where TComparableNotCondition : IComparableNotConditionBase<TSource>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ComparableConditionBase{TSource, TComparableNotCondition}"/> class.
         /// </summary>

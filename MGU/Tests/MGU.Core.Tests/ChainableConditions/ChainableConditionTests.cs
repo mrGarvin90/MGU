@@ -1,6 +1,5 @@
 ﻿namespace MGU.Core.Tests.ChainableConditions
 {
-    using System;
     using System.Collections.Generic;
     using Core.Exceptions;
     using Core.Extensions.If;

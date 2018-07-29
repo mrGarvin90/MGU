@@ -1,6 +1,5 @@
 ﻿namespace MGU.Core.Interfaces.Conditions.Base
 {
-    using JetBrains.Annotations;
     using Not;
 
     /// <inheritdoc />

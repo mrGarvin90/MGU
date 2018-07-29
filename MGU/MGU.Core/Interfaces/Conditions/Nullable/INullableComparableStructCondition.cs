@@ -13,7 +13,7 @@
     public interface INullableComparableStructCondition<TSource>
         : INullableComparableStructNotCondition<TSource>,
           IComparableConditionBase<TSource?, INullableComparableStructNotCondition<TSource>>
-        where TSource : struct , IComparable<TSource>
+        where TSource : struct, IComparable<TSource>
     {
     }
 }

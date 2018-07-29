@@ -5,7 +5,8 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines chainable conditions for all nullable structs that implement <see cref="IComparable{T}"/>.
+    /// Defines chainable conditions for all nullable structs that implement <see cref="IComparable{T}"/>
+    /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable struct.</typeparam>
     public interface IChainableNullableComparableStructDoNotCondition<TSource> : IChainableComparableDoNotConditionBase<TSource?, IChainableNullableComparableStructCondition<TSource>>

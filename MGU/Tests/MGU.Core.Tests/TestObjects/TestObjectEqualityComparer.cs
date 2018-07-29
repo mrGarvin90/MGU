@@ -6,8 +6,10 @@
     {
         public bool Equals(TestObject x, TestObject y)
         {
-            if (x is null && y is null) return true;
-            if (x != null && y != null) return x.StringValue == y.StringValue && x.IntValue == y.IntValue;
+            if (x is null && y is null)
+                return true;
+            if (x != null && y != null)
+                return x.StringValue == y.StringValue && x.IntValue == y.IntValue;
             return false;
         }
 

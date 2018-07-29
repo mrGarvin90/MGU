@@ -3,7 +3,6 @@
     using Base;
     using Couplers;
     using DoNot;
-    using JetBrains.Annotations;
     using Not;
 
     /// <inheritdoc cref="IChainableNullableBoolNotCondition" />
@@ -16,15 +15,19 @@
           IChainableConditionBase<bool?, IChainableNullableBoolCondition, IChainableNullableBoolNotCondition, IChainableNullableBoolDoNotCondition>
     {
         /// <summary>
-        /// Determines whether the source nullable <see cref="bool"/> is <see langword="true"/>. 
-        /// The result of the condition will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>
+        /// Determines whether the source nullable <see cref="bool"/> is <see langword="true"/>.
         /// </summary>
+        /// <remarks>
+        /// The result of the condition will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>
+        /// </remarks>
         IConditionCoupler<bool?, IChainableNullableBoolCondition> True { get; }
 
         /// <summary>
-        /// Determines whether the source nullable <see cref="bool"/> is <see langword="false"/>. 
-        /// The result of the condition will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>
+        /// Determines whether the source nullable <see cref="bool"/> is <see langword="false"/>.
         /// </summary>
+        /// <remarks>
+        /// The result of the condition will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>
+        /// </remarks>
         IConditionCoupler<bool?, IChainableNullableBoolCondition> False { get; }
     }
 }

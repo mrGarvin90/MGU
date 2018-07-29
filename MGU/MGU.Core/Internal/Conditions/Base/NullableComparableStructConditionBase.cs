@@ -18,7 +18,6 @@
         where TSource : struct, IComparable<TSource>
         where TComparableNotCondition : IComparableNotConditionBase<TSource?>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="NullableComparableStructConditionBase{TSource, TComparableNotCondition}"/> class.
         /// </summary>

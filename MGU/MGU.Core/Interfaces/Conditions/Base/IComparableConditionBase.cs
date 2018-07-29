@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="other">The other comparable.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than the comparable other; 
+        /// <see langword="true"/> if the source comparable is less than the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool LessThan([CanBeNull]TSource other);
@@ -30,7 +30,7 @@
         /// </summary>
         /// <param name="other">The other comparable.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool LessThanEqualTo([CanBeNull]TSource other);
@@ -40,7 +40,7 @@
         /// </summary>
         /// <param name="other">The other comparable.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than the comparable other; 
+        /// <see langword="true"/> if the source comparable is greater than the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool GreaterThan([CanBeNull]TSource other);
@@ -50,7 +50,7 @@
         /// </summary>
         /// <param name="other">The other comparable.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool GreaterThanEqualTo([CanBeNull]TSource other);

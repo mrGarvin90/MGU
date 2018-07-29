@@ -5,34 +5,21 @@
     /// </summary>
     public class DefaultMessage
     {
+        private readonly string _value;
+
         private DefaultMessage(string value)
         {
-            Value = value;
-        }
-
-        /// <summary>
-        /// Gets a empty default message.
-        /// </summary>
-        public static DefaultMessage Empty => new DefaultMessage(null);
-
-        /// <summary>
-        /// Gets the value.
-        /// </summary>
-        public string Value { get; }
-
-        /// <inheritdoc />
-        public override string ToString()
-        {
-            return Value;
+            _value = value;
         }
 
         /// <summary>
         /// Creates a new instance of the <see cref="DefaultMessage"/> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public static DefaultMessage New(string value)
-        {
-            return new DefaultMessage(value);
-        }
+        /// <returns>A new instance of the <see cref="DefaultMessage"/> class.</returns>
+        public static DefaultMessage New(string value = "") => new DefaultMessage(value);
+
+        /// <inheritdoc />
+        public override string ToString() => _value;
     }
 }

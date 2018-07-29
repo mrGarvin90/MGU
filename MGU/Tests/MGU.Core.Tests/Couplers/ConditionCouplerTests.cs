@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using Core.Exceptions;
     using Core.Extensions.If;
-    using Core.Extensions.Is;
     using TestObjects;
     using Xunit;
 

@@ -1,9 +1,9 @@
 ﻿namespace MGU.Core.Extensions.If
 {
     using System;
+    using Base;
     using Interfaces.ChainableConditions.Nullable;
     using Internal.ChainableConditions.Nullable;
-    using Base;
 
     /// <summary>
     /// Contains If extension methods for nullable comparable structs.

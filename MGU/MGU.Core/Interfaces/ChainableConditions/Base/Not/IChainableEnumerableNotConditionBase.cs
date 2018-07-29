@@ -8,7 +8,7 @@
     /// <inheritdoc cref="IChainableNotConditionBase{TSource,TChainableCondition}" />
     /// <inheritdoc cref="IChainableNullableNotConditionBase{TSource,TChainableCondition}"/>
     /// <summary>
-    /// The base interface that defines chainable conditions for enumerable objects 
+    /// The base interface that defines chainable conditions for enumerable objects
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the source enumerable.</typeparam>
@@ -30,7 +30,7 @@
         IConditionCoupler<TSource, TChainableEnumerableCondition> Empty { get; }
 
         /// <summary>
-        /// Determines whether the source enumerable and the other enumerable are equal by comparing their elements using the specified <paramref name="comparer"/> 
+        /// Determines whether the source enumerable and the other enumerable are equal by comparing their elements using the specified <paramref name="comparer"/>
         /// or the default <see cref="IEqualityComparer{TObject}"/> if the specified <paramref name="comparer"/> is <see langword="null"/>.
         /// </summary>
         /// <param name="other">The other <see cref="IEnumerable{TObject}"/>.</param>

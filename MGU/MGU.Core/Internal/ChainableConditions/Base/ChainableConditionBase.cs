@@ -30,7 +30,6 @@
         where TChainableNotCondition : IChainableNotConditionBase<TSource, TChainableCondition>
         where TChainableDoNotCondition : IChainableDoNotConditionBase<TSource, TChainableCondition>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}"/> class.
         /// </summary>
@@ -39,6 +38,15 @@
             : base(source)
         {
         }
+
+        /// <inheritdoc />
+        public TChainableNotCondition Not => SetInvertResultToTrue(NotCondition);
+
+        /// <inheritdoc />
+        public TChainableDoNotCondition DoNot => SetInvertResultToTrue(DoNotCondition);
+
+        /// <inheritdoc />
+        public virtual IConditionCoupler<TSource, TChainableCondition> Null => Evaluate(s => s == null);
 
         /// <summary>
         /// Gets or sets a value indicating whether the result of the next condition should be inverted.
@@ -56,18 +64,9 @@
         protected abstract TChainableDoNotCondition DoNotCondition { get; }
 
         /// <inheritdoc />
-        public TChainableNotCondition Not => SetInvertResultToTrue(NotCondition);
-
-        /// <inheritdoc />
-        public TChainableDoNotCondition DoNot => SetInvertResultToTrue(DoNotCondition);
-
-        /// <inheritdoc />
-        public virtual IConditionCoupler<TSource, TChainableCondition> Null => SetResult(s => s == null);
-
-        /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableCondition> Fulfills(Func<TSource, bool> condition)
         {
-            return SetResult(condition);
+            return Evaluate(condition);
         }
 
         /// <inheritdoc />
@@ -79,32 +78,32 @@
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableCondition> EqualTo(TSource other)
         {
-            return SetResult(s => s.Is(other));
+            return Evaluate(s => s.Is(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableCondition> Type<T>()
         {
-            return SetResult(s => s == null ? typeof(T) == typeof(TSource) : s is T);
+            return Evaluate(s => s == null ? typeof(T) == typeof(TSource) : s is T);
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableCondition> In(IEnumerable<TSource> collection, IEqualityComparer<TSource> comparer = null)
         {
-            return SetResult(s => collection?.Contains(s, comparer) ?? false);
+            return Evaluate(s => collection?.Contains(s, comparer) ?? false);
         }
 
         /// <summary>
-        /// Sets the Result property on <see cref="IConditionCoupler{TSource,TChainableCondition}"/>.
+        /// Evaluates the specified <paramref name="condition"/>.
         /// </summary>
         /// <param name="condition">The condition.</param>
         /// <param name="callerMemberName">Name of the caller member.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
-        protected IConditionCoupler<TSource, TChainableCondition> SetResult(Func<TSource, bool> condition, [CallerMemberName]string callerMemberName = "")
+        protected IConditionCoupler<TSource, TChainableCondition> Evaluate(Func<TSource, bool> condition, [CallerMemberName]string callerMemberName = "")
         {
             var invertResult = InvertResult;
             InvertResult = false;
-            return base.Evaluate(condition, invertResult, callerMemberName);
+            return Evaluate(condition, invertResult, callerMemberName);
         }
 
         private TCoupling SetInvertResultToTrue<TCoupling>(TCoupling coupling, [CallerMemberName] string callerMemberName = "")

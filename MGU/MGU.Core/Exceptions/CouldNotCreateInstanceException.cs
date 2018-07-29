@@ -16,7 +16,6 @@
     [Serializable]
     public sealed class CouldNotCreateInstanceException : Exception
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="CouldNotCreateInstanceException" /> class.
         /// </summary>

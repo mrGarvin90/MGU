@@ -56,7 +56,7 @@
             Assert.Equal(0, source.If().Fulfills(s => false).Cast.To<int>(true));
 
             source = 5;
-            Assert.Equal((uint) 0, source.If().Fulfills(s => false).Cast.To<uint>());
+            Assert.Equal((uint)0, source.If().Fulfills(s => false).Cast.To<uint>());
         }
 
         [Fact]
@@ -82,8 +82,8 @@
             Assert.Equal(0, source.If().Fulfills(s => false).Cast.ToOrDefault<int>(true));
 
             source = 5;
-            Assert.Equal((uint) 0, source.If().Fulfills(s => true).Cast.ToOrDefault<uint>());
-            Assert.Equal((uint) 0, source.If().Fulfills(s => false).Cast.ToOrDefault<uint>());
+            Assert.Equal((uint)0, source.If().Fulfills(s => true).Cast.ToOrDefault<uint>());
+            Assert.Equal((uint)0, source.If().Fulfills(s => false).Cast.ToOrDefault<uint>());
         }
 
         [Fact]
@@ -258,7 +258,7 @@
         [Fact]
         public void Should_Throw_ExceptionIsNullException_When_Exception_Is_Null_When_Condition_Is_True()
         {
-            Assert.Throws<ExceptionIsNullException>(() => 5.If().Fulfills(s => true).Throw((Exception) null));
+            Assert.Throws<ExceptionIsNullException>(() => 5.If().Fulfills(s => true).Throw((Exception)null));
         }
 
         [Fact]
@@ -272,7 +272,7 @@
         [Fact]
         public void Should_Not_Throw_ExceptionIsNullException_When_Exception_Is_Null_When_Condition_Is_False()
         {
-            Assert.Equal(5, 5.If().Fulfills(s => false).Throw((Exception) null));
+            Assert.Equal(5, 5.If().Fulfills(s => false).Throw((Exception)null));
         }
     }
 }

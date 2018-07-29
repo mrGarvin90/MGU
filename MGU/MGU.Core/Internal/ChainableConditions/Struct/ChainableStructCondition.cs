@@ -18,7 +18,6 @@
           IChainableStructDoNotCondition<TSource>
         where TSource : struct
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableStructCondition{TSource}"/> class.
         /// </summary>

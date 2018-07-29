@@ -14,7 +14,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool EqualTo<TSource>(this TSource source, TSource other)
@@ -30,7 +30,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool EqualTo<TSource>(this TSource? source, TSource? other)
@@ -48,7 +48,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than the comparable other; 
+        /// <see langword="true"/> if the source comparable is less than the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool LessThan<TSource>(this TSource source, TSource other)
@@ -64,7 +64,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than the comparable other; 
+        /// <see langword="true"/> if the source comparable is less than the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool LessThan<TSource>(this TSource? source, TSource? other)
@@ -80,7 +80,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool LessThanOrEqualTo<TSource>(this TSource source, TSource other)
@@ -96,7 +96,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool LessThanOrEqualTo<TSource>(this TSource? source, TSource? other)
@@ -114,7 +114,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than the comparable other; 
+        /// <see langword="true"/> if the source comparable is greater than the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool GreaterThan<TSource>(this TSource source, TSource other)
@@ -130,7 +130,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than the comparable other; 
+        /// <see langword="true"/> if the source comparable is greater than the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool GreaterThan<TSource>(this TSource? source, TSource? other)
@@ -146,7 +146,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool GreaterThanOrEqualTo<TSource>(this TSource source, TSource other)
@@ -162,7 +162,7 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         internal static bool GreaterThanOrEqualTo<TSource>(this TSource? source, TSource? other)
@@ -181,7 +181,7 @@
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is within the specified range; 
+        /// <see langword="true"/> if the source comparable is within the specified range;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         /// <exception cref="InvalidOperationException">
@@ -205,7 +205,7 @@
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is within the specified range; 
+        /// <see langword="true"/> if the source comparable is within the specified range;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         /// <exception cref="InvalidOperationException">

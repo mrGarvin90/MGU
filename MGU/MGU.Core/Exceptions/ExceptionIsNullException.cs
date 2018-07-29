@@ -12,7 +12,6 @@
     [Serializable]
     public sealed class ExceptionIsNullException : Exception
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ExceptionIsNullException" /> class.
         /// </summary>

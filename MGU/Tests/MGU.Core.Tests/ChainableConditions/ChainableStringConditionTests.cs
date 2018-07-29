@@ -26,7 +26,7 @@
         [Fact]
         public void Result_Should_Be_False_When_Source_Is_Not_Whitespace()
         {
-            var source = "";
+            var source = string.Empty;
             Assert.False(source.If().WhiteSpace.Result);
 
             source = "6";
@@ -36,7 +36,7 @@
         [Fact]
         public void Result_Should_Be_True_When_Source_Is_Not_Whitespace()
         {
-            var source = "";
+            var source = string.Empty;
             Assert.True(source.If().Not.WhiteSpace.Result);
 
             source = "6";
@@ -401,15 +401,15 @@
         [Fact]
         public void Should_Throw_ConditionEvaluationFailedException()
         {
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(""));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith("", true));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.StartWith(""));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.StartWith("", true));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty, true));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.StartWith(string.Empty));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.StartWith(string.Empty, true));
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(""));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith("", true));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.EndWith(""));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.EndWith("", true));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty, true));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.EndWith(string.Empty));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.EndWith(string.Empty, true));
 
             Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().WhiteSpace);
 
@@ -430,7 +430,7 @@
 
         private static IChainableStringCondition NullStringCondition()
         {
-            return ((string) null).If();
+            return ((string)null).If();
         }
     }
 }

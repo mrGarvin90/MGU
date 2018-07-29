@@ -13,7 +13,6 @@
         : ConditionBase<bool, IBoolNotCondition>,
           IBoolCondition
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="BoolCondition"/> class.
         /// </summary>
@@ -24,12 +23,12 @@
         }
 
         /// <inheritdoc />
-        protected override IBoolNotCondition NotCondition => this;
-
-        /// <inheritdoc />
         public bool True => Source;
 
         /// <inheritdoc />
         public bool False => !Source;
+
+        /// <inheritdoc />
+        protected override IBoolNotCondition NotCondition => this;
     }
 }

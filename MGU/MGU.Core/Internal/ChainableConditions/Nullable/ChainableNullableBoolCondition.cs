@@ -16,7 +16,6 @@
             IChainableNullableBoolCondition,
             IChainableNullableBoolDoNotCondition
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableNullableBoolCondition"/> class.
         /// </summary>
@@ -27,6 +26,12 @@
         }
 
         /// <inheritdoc />
+        public IConditionCoupler<bool?, IChainableNullableBoolCondition> True => Evaluate(s => s.HasValue && s.Value);
+
+        /// <inheritdoc />
+        public IConditionCoupler<bool?, IChainableNullableBoolCondition> False => Evaluate(s => s.HasValue && !s.Value);
+
+        /// <inheritdoc />
         protected override IChainableNullableBoolCondition Condition => this;
 
         /// <inheritdoc />
@@ -34,11 +39,5 @@
 
         /// <inheritdoc />
         protected override IChainableNullableBoolDoNotCondition DoNotCondition => this;
-
-        /// <inheritdoc />
-        public IConditionCoupler<bool?, IChainableNullableBoolCondition> True => SetResult(s => s.HasValue && s.Value);
-
-        /// <inheritdoc />
-        public IConditionCoupler<bool?, IChainableNullableBoolCondition> False => SetResult(s => s.HasValue && !s.Value);
     }
 }

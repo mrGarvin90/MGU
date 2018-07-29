@@ -19,7 +19,6 @@
         where TSource : IEnumerable<TObject>
         where TEnumerableNotConditionBase : IEnumerableNotConditionBase<TSource, TObject>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumerableConditionBase{TSource,TObject,TEnumerableNotConditionBase}"/> class.
         /// </summary>
@@ -31,7 +30,7 @@
 
         /// <inheritdoc />
         public bool Empty => Result(!Source.Any());
-        
+
         /// <inheritdoc />
         public bool NullOrEmpty => Result(Source == null || !Source.Any());
     }

@@ -17,7 +17,6 @@
           IEnumerableCondition<TSource, TObject>
         where TSource : IEnumerable<TObject>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumerableCondition{TSource,TObject}"/> class.
         /// </summary>

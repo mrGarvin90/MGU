@@ -1,9 +1,9 @@
-﻿namespace MGU.Core.Tests.ChainableConditions
+﻿#pragma warning disable SA1500 // Braces for multi-line statements must not share line
+namespace MGU.Core.Tests.ChainableConditions
 {
     using System.Collections.Generic;
     using Core.Exceptions;
     using Core.Extensions.If;
-    using Microsoft.Extensions.DependencyModel.Resolution;
     using Xunit;
 
     public class ChainableNullableCharConditionTests
@@ -488,8 +488,6 @@
             source = '\t';
             Assert.False(source.If().Not.WhiteSpace.Result);
         }
-
-
 
         [Fact]
         public void Result_Should_Be_True_When_Source_Is_In_Other()

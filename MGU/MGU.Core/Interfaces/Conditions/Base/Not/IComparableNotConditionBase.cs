@@ -4,7 +4,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// The base interface that defines conditions for comparable objects 
+    /// The base interface that defines conditions for comparable objects
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable source.</typeparam>
@@ -16,7 +16,7 @@
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is within the specified range; 
+        /// <see langword="true"/> if the source comparable is within the specified range;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         /// <exception cref="System.InvalidOperationException">
@@ -29,7 +29,7 @@
         /// </summary>
         /// <param name="other">The other comparable.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is equal to the comparable other; 
+        /// <see langword="true"/> if the source comparable is equal to the comparable other;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool EqualTo([CanBeNull]TSource other);

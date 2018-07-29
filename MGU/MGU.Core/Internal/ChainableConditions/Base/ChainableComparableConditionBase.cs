@@ -26,7 +26,6 @@
         where TChainableComparableNotCondition : IChainableComparableNotConditionBase<TSource, TChainableComparableCondition>
         where TChainableComparableDoNotCondition : IChainableComparableDoNotConditionBase<TSource, TChainableComparableCondition>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}"/> class.
         /// </summary>
@@ -39,37 +38,37 @@
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> WithinRange(TSource min, TSource max)
         {
-            return SetResult(s => s.WithinRange(min, max));
+            return Evaluate(s => s.WithinRange(min, max));
         }
 
         /// <inheritdoc cref="IChainableComparableConditionBase{TSource}" />
         public new IConditionCoupler<TSource, TChainableComparableCondition> EqualTo(TSource other)
         {
-            return SetResult(s => s.EqualTo(other));
+            return Evaluate(s => s.EqualTo(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> LessThan(TSource other)
         {
-            return SetResult(s => s.LessThan(other));
+            return Evaluate(s => s.LessThan(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> LessThanEqualTo(TSource other)
         {
-            return SetResult(s => s.LessThanOrEqualTo(other));
+            return Evaluate(s => s.LessThanOrEqualTo(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> GreaterThan(TSource other)
         {
-            return SetResult(s => s.GreaterThan(other));
+            return Evaluate(s => s.GreaterThan(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> GreaterThanEqualTo(TSource other)
         {
-            return SetResult(s => s.GreaterThanOrEqualTo(other));
+            return Evaluate(s => s.GreaterThanOrEqualTo(other));
         }
     }
 }

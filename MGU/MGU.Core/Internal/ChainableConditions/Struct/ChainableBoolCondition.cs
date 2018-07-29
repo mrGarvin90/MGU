@@ -16,7 +16,6 @@
           IChainableBoolCondition,
           IChainableBoolDoNotCondition
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableBoolCondition"/> class.
         /// </summary>
@@ -27,6 +26,12 @@
         }
 
         /// <inheritdoc />
+        public IConditionCoupler<bool, IChainableBoolCondition> True => Evaluate(s => s);
+
+        /// <inheritdoc />
+        public IConditionCoupler<bool, IChainableBoolCondition> False => Evaluate(s => !s);
+
+        /// <inheritdoc />
         protected override IChainableBoolCondition Condition => this;
 
         /// <inheritdoc />
@@ -34,11 +39,5 @@
 
         /// <inheritdoc />
         protected override IChainableBoolDoNotCondition DoNotCondition => this;
-
-        /// <inheritdoc />
-        public IConditionCoupler<bool, IChainableBoolCondition> True => SetResult(s => s);
-
-        /// <inheritdoc />
-        public IConditionCoupler<bool, IChainableBoolCondition> False => SetResult(s => !s);
     }
 }

@@ -34,7 +34,6 @@
         where TChainableEnumerableNotCondition : IChainableEnumerableNotConditionBase<TSource, TObject, TChainableEnumerableCondition>
         where TChainableEnumerableDoNotCondition : IChainableEnumerableDoNotConditionBase<TSource, TObject, TChainableEnumerableCondition>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}"/> class.
         /// </summary>
@@ -48,36 +47,36 @@
         public IChainableEnumerableCountCondition<TSource, TObject, TChainableEnumerableCondition> Count => Couple(this);
 
         /// <inheritdoc />
-        public IConditionCoupler<TSource, TChainableEnumerableCondition> Empty => SetResult(s => !s.Any());
-        
+        public IConditionCoupler<TSource, TChainableEnumerableCondition> Empty => Evaluate(s => !s.Any());
+
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableEnumerableCondition> All(Func<TObject, bool> predicate)
         {
-            return SetResult(s => s.All(predicate));
+            return Evaluate(s => s.All(predicate));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableEnumerableCondition> Any(Func<TObject, bool> predicate)
         {
-            return SetResult(s => s.Any(predicate));
+            return Evaluate(s => s.Any(predicate));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableEnumerableCondition> None(Func<TObject, bool> predicate)
         {
-            return SetResult(s => !s.Any(predicate));
+            return Evaluate(s => !s.Any(predicate));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableEnumerableCondition> SequentiallyEqualTo(IEnumerable<TObject> other, IEqualityComparer<TObject> comparer = null)
         {
-            return SetResult(s => other != null && s.SequenceEqual(other, comparer));
+            return Evaluate(s => other != null && s.SequenceEqual(other, comparer));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableEnumerableCondition> Contains(TObject value, IEqualityComparer<TObject> comparer = null)
         {
-            return SetResult(s => s.Contains(value, comparer));
+            return Evaluate(s => s.Contains(value, comparer));
         }
 
         /// <inheritdoc />
@@ -88,6 +87,7 @@
 
         #region IChainableEnumerableCountCondition
 
+#pragma warning disable SA1201 // Elements must appear in the correct order
         /// <inheritdoc />
         IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition> IChainableEnumerableCountCondition<TSource, TObject, TChainableEnumerableCondition>.Is => Couple(this);
 
@@ -104,31 +104,31 @@
         /// <inheritdoc />
         IConditionCoupler<TSource, TChainableEnumerableCondition> IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition>.LessThan(int value)
         {
-            return SetResult(s => s.Count() < value);
+            return Evaluate(s => s.Count() < value);
         }
 
         /// <inheritdoc />
         IConditionCoupler<TSource, TChainableEnumerableCondition> IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition>.LessThanEqualTo(int value)
         {
-            return SetResult(s => s.Count() <= value);
+            return Evaluate(s => s.Count() <= value);
         }
 
         /// <inheritdoc />
         IConditionCoupler<TSource, TChainableEnumerableCondition> IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition>.GreaterThan(int value)
         {
-            return SetResult(s => s.Count() > value);
+            return Evaluate(s => s.Count() > value);
         }
 
         /// <inheritdoc />
         IConditionCoupler<TSource, TChainableEnumerableCondition> IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition>.GreaterThanEqualTo(int value)
         {
-            return SetResult(s => s.Count() >= value);
+            return Evaluate(s => s.Count() >= value);
         }
 
         /// <inheritdoc />
         IConditionCoupler<TSource, TChainableEnumerableCondition> IChainableEnumerableCountIsNotCondition<TSource, TObject, TChainableEnumerableCondition>.WithinRange(int min, int max)
         {
-            return SetResult(s => s.Count().WithinRange(min, max));
+            return Evaluate(s => s.Count().WithinRange(min, max));
         }
 
         #endregion

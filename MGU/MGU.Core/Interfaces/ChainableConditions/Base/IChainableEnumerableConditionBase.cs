@@ -74,7 +74,7 @@
         IConditionCoupler<TSource, TChainableEnumerableCondition> None([NotNull]Func<TObject, bool> predicate);
 
         /// <summary>
-        /// Determines whether the source enumerable contains the specified value by comparing it with the other elements using the specified <paramref name="comparer"/> 
+        /// Determines whether the source enumerable contains the specified value by comparing it with the other elements using the specified <paramref name="comparer"/>
         /// or the default <see cref="IEqualityComparer{TObject}"/> if the specified <paramref name="comparer"/> is <see langword="null"/>.
         /// </summary>
         /// <param name="value">The value.</param>

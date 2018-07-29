@@ -6,10 +6,6 @@
 
         public const int FortyTwo = 42;
 
-        public string StringValue { get; set; }
-
-        public int IntValue { get; set; }
-
         private TestObject()
         {
         }
@@ -19,6 +15,10 @@
             StringValue = stringValue;
             IntValue = intValue;
         }
+
+        public string StringValue { get; set; }
+
+        public int IntValue { get; set; }
 
         public static TestObject New()
         {

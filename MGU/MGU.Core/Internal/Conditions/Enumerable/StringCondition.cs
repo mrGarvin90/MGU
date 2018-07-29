@@ -14,7 +14,6 @@
         : EnumerableConditionBase<string, char, IStringNotCondition>,
           IStringCondition
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="StringCondition"/> class.
         /// </summary>
@@ -25,10 +24,10 @@
         }
 
         /// <inheritdoc />
-        protected override IStringNotCondition NotCondition => this;
+        public bool NullOrWhitespace => Result(string.IsNullOrWhiteSpace(Source));
 
         /// <inheritdoc />
-        public bool NullOrWhitespace => Result(string.IsNullOrWhiteSpace(Source));
+        protected override IStringNotCondition NotCondition => this;
 
         /// <inheritdoc />
         public bool In(string other)

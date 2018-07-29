@@ -5,13 +5,13 @@
     using System.Runtime.CompilerServices;
     using System.Text;
     using Core.Extensions.Cast;
-    using Helpers;
     using Core.Interfaces.ChainableConditions.Base;
     using Core.Interfaces.Couplers;
     using Core.Interfaces.Options;
     using Enums;
     using Exceptions;
     using Extensions;
+    using Helpers;
     using Options;
 
     /// <inheritdoc />
@@ -24,12 +24,9 @@
         where TChainableCondition : IChainableConditionBase
     {
         private readonly StringBuilder _traceBuilder;
-
+        private readonly TSource _source;
         private LogicalOperator? _logicalOperator;
 
-        private readonly TSource _source;
-
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ConditionCoupler{TSource,TChainableCondition}"/> class.
         /// </summary>
@@ -42,11 +39,6 @@
             Result = false;
         }
 
-        /// <summary>
-        /// Gets the condition.
-        /// </summary>
-        protected abstract TChainableCondition Condition { get; }
-        
         /// <inheritdoc />
         public bool Result { get; protected set; }
 
@@ -55,6 +47,11 @@
 
         /// <inheritdoc />
         public virtual TChainableCondition Or => SetOrder(LogicalOperator.Or);
+
+        /// <summary>
+        /// Gets the condition.
+        /// </summary>
+        protected abstract TChainableCondition Condition { get; }
 
         /// <summary>
         /// Evaluates the specified <paramref name="condition"/> and sets the <see cref="Result"/>.
@@ -130,7 +127,8 @@
         }
 
         #region IConditionResultOption
-        
+
+#pragma warning disable SA1201 // Elements must appear in the correct order
         /// <inheritdoc />
         ICastOption IConditionResultOption<TSource>.Cast => new CastOption(Result, _source);
 
@@ -190,15 +188,15 @@
             catch (CouldNotCreateInstanceException)
             {
                 var exception = new TException();
-                if (defaultMessage.IsNullOrEmpty())
+                if (string.IsNullOrEmpty(defaultMessage.ToString()))
                     throw exception;
 
                 var exceptionMessageField = typeof(TException).GetField("_message", BindingFlags.Instance | BindingFlags.NonPublic)
                                             ?? throw exception;
                 var exceptionMessage = exceptionMessageField.GetValue(exception).Cast().ToOrDefault<string>();
-                exceptionMessageField.SetValue(exception, string.IsNullOrEmpty(exceptionMessage)
-                    ? defaultMessage.ToString()
-                    : $"{exceptionMessage}{Environment.NewLine}{defaultMessage}");
+                exceptionMessageField.SetValue(
+                    exception,
+                    string.IsNullOrEmpty(exceptionMessage) ? defaultMessage.ToString() : $"{exceptionMessage}{Environment.NewLine}{defaultMessage}");
                 throw exception;
             }
         }

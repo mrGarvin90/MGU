@@ -2,12 +2,12 @@
 {
     using System.Collections.Generic;
     using Couplers;
-    using JetBrains.Annotations;
 
     /// <inheritdoc cref="IChainableEnumerableConditionBase{TSource,TObject}"/>
     /// <inheritdoc cref="IChainableDoNotConditionBase{TSource,TChainableCondition}"/>
     /// <summary>
-    /// The base interface that defines chainable conditions for enumerable objects.
+    /// The base interface that defines chainable conditions for enumerable objects
+    /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TObject">The type of the object that source enumerable contains.</typeparam>
@@ -19,7 +19,7 @@
         where TChainableEnumerableCondition : IChainableConditionBase
     {
         /// <summary>
-        /// Determines whether the source enumerable do not contain the specified value by comparing it with the other elements using the specified <paramref name="comparer"/> 
+        /// Determines whether the source enumerable do not contain the specified value by comparing it with the other elements using the specified <paramref name="comparer"/>
         /// or the default <see cref="IEqualityComparer{TObject}"/> if the specified <paramref name="comparer"/> is null.
         /// </summary>
         /// <param name="value">The value.</param>

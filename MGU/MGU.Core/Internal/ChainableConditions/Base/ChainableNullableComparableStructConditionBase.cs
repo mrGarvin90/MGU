@@ -30,7 +30,6 @@
         /// Initializes a new instance of the <see cref="ChainableNullableComparableStructConditionBase{TSource,TChainableNullableComparableStructCondition,TChainableNullableComparableStructNotCondition,TChainableNullableComparableStructDoNotCondition}"/> class.
         /// </summary>
         /// <param name="source">The comparable source object.</param>
-        /// <inheritdoc />
         protected ChainableNullableComparableStructConditionBase(TSource? source)
             : base(source)
         {
@@ -39,37 +38,37 @@
         /// <inheritdoc />
         public IConditionCoupler<TSource?, TChainableNullableComparableStructCondition> WithinRange(TSource? min, TSource? max)
         {
-            return SetResult(s => s.WithinRange(min, max));
+            return Evaluate(s => s.WithinRange(min, max));
         }
 
         /// <inheritdoc cref="IChainableComparableNotConditionBase{TSource,TChainableComparableCondition}" />
         public new IConditionCoupler<TSource?, TChainableNullableComparableStructCondition> EqualTo(TSource? other)
         {
-            return SetResult(s => s.EqualTo(other));
+            return Evaluate(s => s.EqualTo(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource?, TChainableNullableComparableStructCondition> LessThan(TSource? other)
         {
-            return SetResult(s => s.LessThan(other));
+            return Evaluate(s => s.LessThan(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource?, TChainableNullableComparableStructCondition> LessThanEqualTo(TSource? other)
         {
-            return SetResult(s => s.LessThanOrEqualTo(other));
+            return Evaluate(s => s.LessThanOrEqualTo(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource?, TChainableNullableComparableStructCondition> GreaterThan(TSource? other)
         {
-            return SetResult(s => s.GreaterThan(other));
+            return Evaluate(s => s.GreaterThan(other));
         }
 
         /// <inheritdoc />
         public IConditionCoupler<TSource?, TChainableNullableComparableStructCondition> GreaterThanEqualTo(TSource? other)
         {
-            return SetResult(s => s.GreaterThanOrEqualTo(other));
+            return Evaluate(s => s.GreaterThanOrEqualTo(other));
         }
     }
 }

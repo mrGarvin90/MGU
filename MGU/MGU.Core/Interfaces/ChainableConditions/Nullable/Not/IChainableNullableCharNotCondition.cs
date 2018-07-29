@@ -8,7 +8,7 @@
     /// <inheritdoc cref="IChainableComparableNotConditionBase{TSource,TChainableComparableCondition}" />
     /// <inheritdoc cref="IChainableNullableNotConditionBase{TSource,TChainableCondition}" />
     /// <summary>
-    /// Defines chainable conditions for nullable <see cref="char"/> 
+    /// Defines chainable conditions for nullable <see cref="char"/>
     /// where the result of the conditions will be inverted.
     /// </summary>
     public interface IChainableNullableCharNotCondition
@@ -120,19 +120,23 @@
         IConditionCoupler<char?, IChainableNullableCharCondition> WhiteSpace { get; }
 
         /// <summary>
-        /// Determines whether the specified string contains the nullable source <see cref="char"/>. 
-        /// The condition will evaluate to <see langword="false"/> if the nullable source <see cref="char"/> 
-        /// or the specified string is <see langword="null"/>.
+        /// Determines whether the specified string contains the nullable source <see cref="char"/>.
         /// </summary>
+        /// <remarks>
+        /// The condition will evaluate to <see langword="false"/> if the nullable source <see cref="char"/>
+        /// or the specified string is <see langword="null"/>.
+        /// </remarks>
         /// <param name="str">The string.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         IConditionCoupler<char?, IChainableNullableCharCondition> In([CanBeNull]string str);
 
         /// <summary>
-        /// Determines whether the specified string contains the nullable source <see cref="char"/>. 
-        /// The condition will evaluate to <see langword="false"/> if the nullable source <see cref="char"/> 
-        /// or the specified string is <see langword="null"/>.
+        /// Determines whether the specified string contains the nullable source <see cref="char"/>.
         /// </summary>
+        /// <remarks>
+        /// The condition will evaluate to <see langword="false"/> if the nullable source <see cref="char"/>
+        /// or the specified string is <see langword="null"/>.
+        /// </remarks>
         /// <param name="str">The string.</param>
         /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
         /// <param name="culture">The culture info.</param>

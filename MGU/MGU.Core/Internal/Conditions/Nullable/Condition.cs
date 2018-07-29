@@ -14,7 +14,6 @@
         : ConditionBase<TSource, INotCondition<TSource>>,
           ICondition<TSource>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="Condition{TSource}"/> class.
         /// </summary>

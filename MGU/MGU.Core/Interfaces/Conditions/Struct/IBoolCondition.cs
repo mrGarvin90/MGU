@@ -16,7 +16,7 @@
         /// Gets a value indicating whether the source <see cref="bool"/> is <see langword="true"/>.
         /// </summary>
         bool True { get; }
-        
+
         /// <summary>
         /// Gets a value indicating whether the source <see cref="bool"/> is <see langword="true"/>.
         /// </summary>

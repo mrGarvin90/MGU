@@ -4,15 +4,15 @@
     using JetBrains.Annotations;
 
     /// <summary>
-    /// The base interface that defines conditions for all objects 
+    /// The base interface that defines conditions for all objects
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     public interface INotConditionBase<TSource>
     {
         /// <summary>
-        /// Determines whether the source object is in the specified <paramref name="collection"/> using the specified <paramref name="comparer"/> 
-        /// or the default equality comparer for the source object if the specified <paramref name="comparer"/> is <see langword="null"/>. 
+        /// Determines whether the source object is in the specified <paramref name="collection"/> using the specified <paramref name="comparer"/>
+        /// or the default equality comparer for the source object if the specified <paramref name="comparer"/> is <see langword="null"/>.
         /// The result will be <see langword="false"/> if the source object or the specified <paramref name="collection"/> is <see langword="null"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>

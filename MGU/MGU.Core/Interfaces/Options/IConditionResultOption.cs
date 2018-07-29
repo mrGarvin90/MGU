@@ -29,7 +29,7 @@
         TSource Invoke([NotNull]Action action);
 
         /// <summary>
-        /// Invokes the function and returns the result if the specified conditions are met. 
+        /// Invokes the function and returns the result if the specified conditions are met.
         /// If not the source object wil be returned.
         /// </summary>
         /// <param name="func">The function.</param>
@@ -51,8 +51,8 @@
         TSource Then(TSource value);
 
         /// <summary>
-        /// Throws an <typeparamref name="TException"/> if the specified conditions are met. 
-        /// Creates an instance of <typeparamref name="TException"/> using the public 
+        /// Throws an <typeparamref name="TException"/> if the specified conditions are met.
+        /// Creates an instance of <typeparamref name="TException"/> using the public
         /// constructor that best matches the specified parameters.
         /// </summary>
         /// <typeparam name="TException">The type of the exception.</typeparam>
@@ -65,7 +65,7 @@
             where TException : Exception;
 
         /// <summary>
-        /// Throws an <typeparamref name="TException"/> if the specified conditions are met. 
+        /// Throws an <typeparamref name="TException"/> if the specified conditions are met.
         /// Creates an instance of <typeparamref name="TException"/> using the public
         /// constructor that best matches the specified parameters or the default constructor
         /// if no other constructor was found.

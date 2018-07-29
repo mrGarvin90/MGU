@@ -6,7 +6,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// The base interface that defines chainable conditions for all objects 
+    /// The base interface that defines chainable conditions for all objects
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
@@ -22,16 +22,18 @@
         IConditionCoupler<TSource, TChainableCondition> EqualTo(TSource other);
 
         /// <summary>
-        /// Determines whether the source object is the specified type. 
-        /// If the source object is <see langword="null"/> the specific types of the source object and <typeparamref name="T"/> 
-        /// will be compared, otherwise the <see langword="is"/> operator will be used.
+        /// Determines whether the source object is the specified type.
         /// </summary>
+        /// <remarks>
+        /// If the source object is <see langword="null"/> the specific types of the source object and <typeparamref name="T"/>
+        /// will be compared, otherwise the <see langword="is"/> operator will be used.
+        /// </remarks>
         /// <typeparam name="T">The type.</typeparam>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         IConditionCoupler<TSource, TChainableCondition> Type<T>();
 
         /// <summary>
-        /// Determines whether the source object is in the specified collection using the specified <paramref name="comparer"/> 
+        /// Determines whether the source object is in the specified collection using the specified <paramref name="comparer"/>
         /// or the default equality comparer for the source object if the specified <paramref name="comparer"/> is <see langword="null"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>

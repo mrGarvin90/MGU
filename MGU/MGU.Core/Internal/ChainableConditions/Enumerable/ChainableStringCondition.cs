@@ -27,8 +27,7 @@
         private bool _orWasCalled;
 
         private bool _nullResultWasInverted;
-        
-        /// <inheritdoc />
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableStringCondition"/> class.
         /// </summary>
@@ -37,12 +36,6 @@
             : base(source)
         {
         }
-
-        /// <inheritdoc />
-        protected override IChainableStringCondition Condition => this;
-
-        /// <inheritdoc />
-        protected override IChainableStringNotCondition NotCondition => this;
 
         /// <inheritdoc />
         public override IChainableStringCondition Or
@@ -55,21 +48,15 @@
         }
 
         /// <inheritdoc />
-        protected override IChainableStringDoNotCondition DoNotCondition => this;
-
-        /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> Null
         {
             get
             {
                 _nullWasCalled = true;
                 _nullResultWasInverted = InvertResult;
-                return SetResult(s => s is null);
+                return Evaluate(s => s is null);
             }
         }
-
-        /// <inheritdoc />
-        public IChainableEnumerableCountCondition<string, char, IChainableStringCondition> Length => Couple(this);
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> WhiteSpace
@@ -80,11 +67,23 @@
                 var invertResult = _nullResultWasInverted;
                 _nullWasCalled = _orWasCalled = _nullResultWasInverted = false;
                 if (!checkNullOrWhiteSpace)
-                    return SetResult(s => WhiteSpaceRegex.IsMatch(s));
+                    return Evaluate(s => WhiteSpaceRegex.IsMatch(s));
                 Result = false;
-                return SetResult(s => invertResult ? !string.IsNullOrWhiteSpace(s) : string.IsNullOrWhiteSpace(s));
+                return Evaluate(s => invertResult ? !string.IsNullOrWhiteSpace(s) : string.IsNullOrWhiteSpace(s));
             }
         }
+
+        /// <inheritdoc />
+        public IChainableEnumerableCountCondition<string, char, IChainableStringCondition> Length => Couple(this);
+
+        /// <inheritdoc />
+        protected override IChainableStringCondition Condition => this;
+
+        /// <inheritdoc />
+        protected override IChainableStringNotCondition NotCondition => this;
+
+        /// <inheritdoc />
+        protected override IChainableStringDoNotCondition DoNotCondition => this;
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartsWith(string value)
@@ -107,7 +106,7 @@
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartsWith(string value, bool ignoreCase, CultureInfo culture = null)
         {
-            return SetResult(s =>
+            return Evaluate(s =>
             {
                 if (value is null)
                     return false;
@@ -137,7 +136,7 @@
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> EndsWith(string value, bool ignoreCase, CultureInfo culture = null)
         {
-            return SetResult(s =>
+            return Evaluate(s =>
             {
                 if (value is null)
                     return false;
@@ -149,7 +148,7 @@
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> Contains(string value)
         {
-            return SetResult(s => value != null && s.Contains(value));
+            return Evaluate(s => value != null && s.Contains(value));
         }
 
         /// <inheritdoc />
@@ -167,7 +166,7 @@
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> In(string other, bool ignoreCase, CultureInfo culture = null)
         {
-            return SetResult(s =>
+            return Evaluate(s =>
             {
                 if (other is null)
                     return false;
@@ -178,7 +177,8 @@
 
         private static (string Source, string OtherString) Transform(string source, string otherString, bool ignoreCase, CultureInfo culture)
         {
-            if (!ignoreCase) return (source, otherString);
+            if (!ignoreCase)
+                return (source, otherString);
 
             return culture is null
                 ? (source?.ToLower(), otherString?.ToLower())

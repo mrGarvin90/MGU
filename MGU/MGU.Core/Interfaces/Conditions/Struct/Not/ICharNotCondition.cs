@@ -6,7 +6,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines conditions for <see cref="char"/> 
+    /// Defines conditions for <see cref="char"/>
     /// where the result of the conditions will be inverted.
     /// </summary>
     public interface ICharNotCondition : IComparableNotConditionBase<char>
@@ -82,25 +82,25 @@
         bool WhiteSpace { get; }
 
         /// <summary>
-        /// Determines whether the specified string contains the source <see cref="char"/>. 
+        /// Determines whether the specified string contains the source <see cref="char"/>.
         /// The result will be <see langword="false"/> if the specified string is <see langword="null"/>.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns>
-        /// <see langword="true"/> if the source <see cref="char"/> is in the specified string; 
+        /// <see langword="true"/> if the source <see cref="char"/> is in the specified string;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool In([CanBeNull]string str);
 
         /// <summary>
-        /// Determines whether the specified string contains the source <see cref="char"/>. 
+        /// Determines whether the specified string contains the source <see cref="char"/>.
         /// The result will be <see langword="false"/> if the specified string is <see langword="null"/>.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
         /// <param name="culture">The culture info.</param>
         /// <returns>
-        /// <see langword="true"/> if the source <see cref="char"/> is in the specified string; 
+        /// <see langword="true"/> if the source <see cref="char"/> is in the specified string;
         /// otherwise, <see langword="false"/>.
         /// </returns>
         bool In([CanBeNull]string str, bool ignoreCase, CultureInfo culture = null);

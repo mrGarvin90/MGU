@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="builder">The builder.</param>
         /// <param name="obj">The object.</param>
-        /// <returns></returns>
+        /// <returns>The source builder.</returns>
         internal static StringBuilder AppendValue(this StringBuilder builder, object obj)
         {
             return obj is null ? builder.Append("<null>") : builder.Append("'").Append(obj).Append("'");

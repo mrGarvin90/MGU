@@ -6,7 +6,7 @@
     /// <inheritdoc cref="IChainableComparableConditionBase{TSource}" />
     /// <inheritdoc cref="IChainableNotConditionBase{TSource,TChainableCondition}"/>
     /// <summary>
-    /// The base interface that defines chainable conditions for comparable objects 
+    /// The base interface that defines chainable conditions for comparable objects
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable.</typeparam>

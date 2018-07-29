@@ -1,8 +1,8 @@
 ﻿namespace MGU.Core.Extensions.If
 {
     using System.Collections.Generic;
-    using Interfaces.ChainableConditions.Enumerable;
     using Base;
+    using Interfaces.ChainableConditions.Enumerable;
 
     /// <summary>
     /// Contains If extension methods for generic enumerable interfaces.

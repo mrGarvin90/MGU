@@ -3,7 +3,6 @@
     using Base;
     using Couplers;
     using DoNot;
-    using JetBrains.Annotations;
     using Not;
 
     /// <inheritdoc cref="IChainableBoolNotCondition" />

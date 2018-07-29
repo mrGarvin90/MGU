@@ -16,7 +16,6 @@
           IComparableClassCondition<TSource>
         where TSource : class, IComparable<TSource>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ComparableClassCondition{TSource}"/> class.
         /// </summary>

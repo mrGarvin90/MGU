@@ -16,6 +16,9 @@
         /// <summary>
         /// Determines whether the number of elements in the source enumerable is not equal to the specified value.
         /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <typeparam name="TObject">The type of the object.</typeparam>
+        /// <typeparam name="TChainableEnumerableCondition">The type of the chainable enumerable condition.</typeparam>
         /// <param name="source">The source condition.</param>
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
@@ -28,7 +31,7 @@
             where TSource : IEnumerable<TObject>
             where TChainableEnumerableCondition : IChainableEnumerableConditionBase<TSource, TObject>
         {
-            return ((ConditionCoupler<TSource, TChainableEnumerableCondition>) source).Evaluate(s => s.Count() == value, true);
+            return ((ConditionCoupler<TSource, TChainableEnumerableCondition>)source).Evaluate(s => s.Count() == value, true);
         }
     }
 }

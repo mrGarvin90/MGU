@@ -13,7 +13,7 @@
         public void Should_Be_Able_To_Serialize_And_Deserialize_Exception()
         {
             var obj = new object();
-            var originalException = Assert.Throws<ExceptionIsNullException>(() => obj.If().Fulfills(s => true).Throw((TestException) null));
+            var originalException = Assert.Throws<ExceptionIsNullException>(() => obj.If().Fulfills(s => true).Throw((TestException)null));
             var buffer = new byte[4096];
             var memoryStream = new MemoryStream(buffer);
             var memoryStream2 = new MemoryStream(buffer);

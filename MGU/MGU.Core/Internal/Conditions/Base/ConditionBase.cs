@@ -29,16 +29,6 @@
             Source = source;
         }
 
-        /// <summary>
-        /// Gets the not condition.
-        /// </summary>
-        protected abstract TNotCondition NotCondition { get; }
-
-        /// <summary>
-        /// Gets the source object.
-        /// </summary>
-        protected TSource Source { get; }
-
         /// <inheritdoc />
         public TNotCondition Not
         {
@@ -51,6 +41,16 @@
 
         /// <inheritdoc />
         public bool Null => Result(Source == null);
+
+        /// <summary>
+        /// Gets the not condition.
+        /// </summary>
+        protected abstract TNotCondition NotCondition { get; }
+
+        /// <summary>
+        /// Gets the source object.
+        /// </summary>
+        protected TSource Source { get; }
 
         /// <inheritdoc />
         public bool In(IEnumerable<TSource> collection, IEqualityComparer<TSource> comparer = null)

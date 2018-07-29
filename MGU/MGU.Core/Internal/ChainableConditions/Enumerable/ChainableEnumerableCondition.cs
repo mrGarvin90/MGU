@@ -20,7 +20,6 @@
           IChainableEnumerableDoNotCondition<TSource, TObject>
         where TSource : IEnumerable<TObject>
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableEnumerableCondition{TSource, TObject}"/> class.
         /// </summary>

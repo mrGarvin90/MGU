@@ -14,7 +14,6 @@
     [Serializable]
     public sealed class ConditionEvaluationFailedException : Exception
     {
-        /// <inheritdoc />
         /// <summary>
         /// Initializes a new instance of the <see cref="ConditionEvaluationFailedException"/> class.
         /// </summary>

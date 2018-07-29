@@ -71,7 +71,7 @@
 
             Assert.True(TestObjectNotInCollectionCondition().Not.In(TestObjectCollection, TestObjectEqualityComparer));
         }
-        
+
         [Fact]
         public void Should_Return_False_When_Source_Is_In_Collection()
         {
@@ -106,7 +106,7 @@
 
         private static ICondition<EqualityTestObject> NullEqualityTestObjectInCollectionCondition()
         {
-            return ((EqualityTestObject) null).Is();
+            return ((EqualityTestObject)null).Is();
         }
 
         private static ICondition<TestObject> TestObjectInCollectionCondition()
@@ -121,7 +121,7 @@
 
         private static ICondition<TestObject> NullTestObjectInCollectionCondition()
         {
-            return ((TestObject) null).Is();
+            return ((TestObject)null).Is();
         }
     }
 }

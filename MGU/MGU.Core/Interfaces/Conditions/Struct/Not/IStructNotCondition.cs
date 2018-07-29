@@ -4,7 +4,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines conditions for all structs 
+    /// Defines conditions for all structs
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the source struct.</typeparam>

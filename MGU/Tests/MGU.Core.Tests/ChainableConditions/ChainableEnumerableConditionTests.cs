@@ -488,12 +488,12 @@
 
         private static IChainableEnumerableCondition<TestObject[], TestObject> NullTestObjectsCondition()
         {
-            return ((TestObject[]) null).IfEnumerable<TestObject[], TestObject>();
+            return ((TestObject[])null).IfEnumerable<TestObject[], TestObject>();
         }
 
         private static IChainableEnumerableCondition<TestObject[], TestObject> TestObjectsWithNullCondition()
         {
-            return new[] { null, TestObject.New(), TestObject.New("str", 3), TestObject.Default()}.IfEnumerable<TestObject[], TestObject>();
+            return new[] { null, TestObject.New(), TestObject.New("str", 3), TestObject.Default() }.IfEnumerable<TestObject[], TestObject>();
         }
     }
 }
