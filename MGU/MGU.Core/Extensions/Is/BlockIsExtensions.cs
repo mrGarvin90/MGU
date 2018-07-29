@@ -4,13 +4,13 @@
     using System.Collections.Generic;
     using Interfaces.ChainableConditions.Base;
     using Interfaces.ChainableConditions.Enumerable;
-    using Interfaces.ChainableConditions.Enumerable.DoNot;
+    using Interfaces.ChainableConditions.Enumerable.DoesNot;
     using Interfaces.ChainableConditions.Enumerable.Not;
     using Interfaces.ChainableConditions.Nullable;
-    using Interfaces.ChainableConditions.Nullable.DoNot;
+    using Interfaces.ChainableConditions.Nullable.DoesNot;
     using Interfaces.ChainableConditions.Nullable.Not;
     using Interfaces.ChainableConditions.Struct;
-    using Interfaces.ChainableConditions.Struct.DoNot;
+    using Interfaces.ChainableConditions.Struct.DoesNot;
     using Interfaces.ChainableConditions.Struct.Not;
     using Interfaces.Conditions.Enumerable;
     using Interfaces.Conditions.Enumerable.Not;
@@ -253,11 +253,11 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableDoNotCondition{TSource}"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
-        public static void Is<TSource>(this IChainableDoNotCondition<TSource> source)
+        public static void Is<TSource>(this IChainableDoesNotCondition<TSource> source)
         {
         }
 
@@ -286,11 +286,11 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableComparableStructDoNotCondition{TSource}"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableComparableStructDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
-        public static void Is<TSource>(this IChainableComparableStructDoNotCondition<TSource> source)
+        public static void Is<TSource>(this IChainableComparableStructDoesNotCondition<TSource> source)
             where TSource : struct, IComparable<TSource>
         {
         }
@@ -320,11 +320,11 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableNullableComparableStructDoNotCondition{TSource}"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableNullableComparableStructDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
-        public static void Is<TSource>(this IChainableNullableComparableStructDoNotCondition<TSource> source)
+        public static void Is<TSource>(this IChainableNullableComparableStructDoesNotCondition<TSource> source)
             where TSource : struct, IComparable<TSource>
         {
         }
@@ -354,11 +354,11 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableComparableClassDoNotCondition{TSource}"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableComparableClassDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
-        public static void Is<TSource>(this IChainableComparableClassDoNotCondition<TSource> source)
+        public static void Is<TSource>(this IChainableComparableClassDoesNotCondition<TSource> source)
             where TSource : class, IComparable<TSource>
         {
         }
@@ -390,12 +390,12 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableEnumerableDoNotCondition{TSource,TObject}"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableEnumerableDoesNotCondition{TSource,TObject}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
         /// <param name="source">The source.</param>
-        public static void Is<TSource, TObject>(this IChainableEnumerableDoNotCondition<TSource, TObject> source)
+        public static void Is<TSource, TObject>(this IChainableEnumerableDoesNotCondition<TSource, TObject> source)
             where TSource : IEnumerable<TObject>
         {
         }
@@ -421,10 +421,10 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableStringDoNotCondition"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableStringDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
-        public static void Is(this IChainableStringDoNotCondition source)
+        public static void Is(this IChainableStringDoesNotCondition source)
         {
         }
 
@@ -449,10 +449,10 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableCharDoNotCondition"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableCharDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
-        public static void Is(this IChainableCharDoNotCondition source)
+        public static void Is(this IChainableCharDoesNotCondition source)
         {
         }
 
@@ -477,10 +477,10 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableNullableCharDoNotCondition"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableNullableCharDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
-        public static void Is(this IChainableNullableCharDoNotCondition source)
+        public static void Is(this IChainableNullableCharDoesNotCondition source)
         {
         }
 
@@ -505,10 +505,10 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableBoolDoNotCondition"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableBoolDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
-        public static void Is(this IChainableBoolDoNotCondition source)
+        public static void Is(this IChainableBoolDoesNotCondition source)
         {
         }
 
@@ -533,10 +533,10 @@
         }
 
         /// <summary>
-        /// Blocks the use of Is on <inheritdoc cref="IChainableNullableBoolDoNotCondition"/>.
+        /// Blocks the use of Is on <inheritdoc cref="IChainableNullableBoolDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
-        public static void Is(this IChainableNullableBoolDoNotCondition source)
+        public static void Is(this IChainableNullableBoolDoesNotCondition source)
         {
         }
 

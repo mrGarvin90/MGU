@@ -2,7 +2,7 @@
 {
     using System;
     using Couplers;
-    using DoNot;
+    using DoesNot;
     using JetBrains.Annotations;
     using Not;
 
@@ -20,11 +20,11 @@
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
     /// <typeparam name="TChainableNotCondition">The type of the chainable not condition.</typeparam>
-    /// <typeparam name="TChainableDoNotCondition">The type of the chainable do not condition.</typeparam>
-    public interface IChainableConditionBase<TSource, out TChainableCondition, out TChainableNotCondition, out TChainableDoNotCondition> : IChainableNotConditionBase<TSource, TChainableCondition>
-        where TChainableCondition : IChainableConditionBase<TSource, TChainableCondition, TChainableNotCondition, TChainableDoNotCondition>
+    /// <typeparam name="TChainableDoesNotCondition">The type of the chainable does not condition.</typeparam>
+    public interface IChainableConditionBase<TSource, out TChainableCondition, out TChainableNotCondition, out TChainableDoesNotCondition> : IChainableNotConditionBase<TSource, TChainableCondition>
+        where TChainableCondition : IChainableConditionBase<TSource, TChainableCondition, TChainableNotCondition, TChainableDoesNotCondition>
         where TChainableNotCondition : IChainableNotConditionBase<TSource, TChainableCondition>
-        where TChainableDoNotCondition : IChainableDoNotConditionBase<TSource, TChainableCondition>
+        where TChainableDoesNotCondition : IChainableDoesNotConditionBase<TSource, TChainableCondition>
     {
         /// <summary>
         /// Gets the not conditions where the result of the conditions will be inverted.
@@ -32,9 +32,9 @@
         TChainableNotCondition Not { get; }
 
         /// <summary>
-        /// Gets the do not condition.
+        /// Gets the does not condition.
         /// </summary>
-        TChainableDoNotCondition DoNot { get; }
+        TChainableDoesNotCondition DoesNot { get; }
 
         /// <summary>
         /// Determines whether the source object fulfills the specified condition.

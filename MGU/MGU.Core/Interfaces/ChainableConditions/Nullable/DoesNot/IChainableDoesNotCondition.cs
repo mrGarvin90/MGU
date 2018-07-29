@@ -1,6 +1,6 @@
-﻿namespace MGU.Core.Interfaces.ChainableConditions.Nullable.DoNot
+﻿namespace MGU.Core.Interfaces.ChainableConditions.Nullable.DoesNot
 {
-    using Base.DoNot;
+    using Base.DoesNot;
 
     /// <inheritdoc />
     /// <summary>
@@ -8,7 +8,7 @@
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
-    public interface IChainableDoNotCondition<TSource> : IChainableDoNotConditionBase<TSource, IChainableCondition<TSource>>
+    public interface IChainableDoesNotCondition<TSource> : IChainableDoesNotConditionBase<TSource, IChainableCondition<TSource>>
     {
     }
 }

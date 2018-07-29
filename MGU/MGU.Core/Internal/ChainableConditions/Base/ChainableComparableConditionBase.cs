@@ -2,32 +2,32 @@
 {
     using System;
     using Core.Interfaces.ChainableConditions.Base;
-    using Core.Interfaces.ChainableConditions.Base.DoNot;
     using Core.Interfaces.ChainableConditions.Base.Not;
     using Core.Interfaces.Couplers;
     using Extensions;
+    using Interfaces.ChainableConditions.Base.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
-    /// <inheritdoc cref="IChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}" />
-    /// <inheritdoc cref="IChainableComparableDoNotConditionBase{TSource,TChainableComparableCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
+    /// <inheritdoc cref="IChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}" />
+    /// <inheritdoc cref="IChainableComparableDoesNotConditionBase{TSource,TChainableComparableCondition}" />
     /// <summary>
-    /// The <see cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}"/> class.
+    /// The <see cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable source object.</typeparam>
     /// <typeparam name="TChainableComparableCondition">The type of the chainable comparable condition.</typeparam>
     /// <typeparam name="TChainableComparableNotCondition">The type of the chainable comparable not condition.</typeparam>
-    /// <typeparam name="TChainableComparableDoNotCondition">The type of the chainable comparable do not condition.</typeparam>
-    internal abstract class ChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoNotCondition>
-        : ChainableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoNotCondition>,
-          IChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoNotCondition>,
-          IChainableComparableDoNotConditionBase<TSource, TChainableComparableCondition>
+    /// <typeparam name="TChainableComparableDoesNotCondition">The type of the chainable comparable does not condition.</typeparam>
+    internal abstract class ChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoesNotCondition>
+        : ChainableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoesNotCondition>,
+          IChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoesNotCondition>,
+          IChainableComparableDoesNotConditionBase<TSource, TChainableComparableCondition>
         where TSource : IComparable<TSource>
-        where TChainableComparableCondition : IChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoNotCondition>
+        where TChainableComparableCondition : IChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoesNotCondition>
         where TChainableComparableNotCondition : IChainableComparableNotConditionBase<TSource, TChainableComparableCondition>
-        where TChainableComparableDoNotCondition : IChainableComparableDoNotConditionBase<TSource, TChainableComparableCondition>
+        where TChainableComparableDoesNotCondition : IChainableComparableDoesNotConditionBase<TSource, TChainableComparableCondition>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}"/> class.
+        /// Initializes a new instance of the <see cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}"/> class.
         /// </summary>
         /// <param name="source">The comparable source object.</param>
         protected ChainableComparableConditionBase(TSource source)

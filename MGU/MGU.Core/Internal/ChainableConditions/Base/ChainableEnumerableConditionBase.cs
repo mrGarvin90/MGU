@@ -4,38 +4,38 @@
     using System.Collections.Generic;
     using System.Linq;
     using Core.Interfaces.ChainableConditions.Base;
-    using Core.Interfaces.ChainableConditions.Base.DoNot;
     using Core.Interfaces.ChainableConditions.Base.Not;
     using Core.Interfaces.ChainableConditions.Enumerable.Count;
     using Core.Interfaces.Couplers;
     using Extensions;
+    using Interfaces.ChainableConditions.Base.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
-    /// <inheritdoc cref="IChainableEnumerableConditionBase{TSource,TObject,TChainableEnumerableCondition,TChainableEnumerableNotCondition,TChainableEnumerableDoNotCondition}" />
-    /// <inheritdoc cref="IChainableEnumerableDoNotConditionBase{TSource,TObject,TChainableEnumerableCondition}"/>
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
+    /// <inheritdoc cref="IChainableEnumerableConditionBase{TSource,TObject,TChainableEnumerableCondition,TChainableEnumerableNotCondition,TChainableEnumerableDoesNotCondition}" />
+    /// <inheritdoc cref="IChainableEnumerableDoesNotConditionBase{TSource,TObject,TChainableEnumerableCondition}"/>
     /// <inheritdoc cref="IChainableEnumerableCountCondition{TSource,TObject,TChainableEnumerableCondition}"/>
     /// <inheritdoc cref="IChainableEnumerableCountIsCondition{TSource,TObject,TChainableEnumerableCondition}"/>
     /// <summary>
-    /// The <see cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}"/> class.
+    /// The <see cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the enumerable source object.</typeparam>
     /// <typeparam name="TObject">The type of the object that enumerable source object contains.</typeparam>
     /// <typeparam name="TChainableEnumerableCondition">The type of the chainable condition.</typeparam>
     /// <typeparam name="TChainableEnumerableNotCondition">The type of the chainable not condition.</typeparam>
-    /// <typeparam name="TChainableEnumerableDoNotCondition">The type of the chainable do not condition.</typeparam>
-    internal abstract class ChainableEnumerableConditionBase<TSource, TObject, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoNotCondition>
-        : ChainableConditionBase<TSource, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoNotCondition>,
-          IChainableEnumerableConditionBase<TSource, TObject, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoNotCondition>,
-          IChainableEnumerableDoNotConditionBase<TSource, TObject, TChainableEnumerableCondition>,
+    /// <typeparam name="TChainableEnumerableDoesNotCondition">The type of the chainable does not condition.</typeparam>
+    internal abstract class ChainableEnumerableConditionBase<TSource, TObject, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoesNotCondition>
+        : ChainableConditionBase<TSource, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoesNotCondition>,
+          IChainableEnumerableConditionBase<TSource, TObject, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoesNotCondition>,
+          IChainableEnumerableDoesNotConditionBase<TSource, TObject, TChainableEnumerableCondition>,
           IChainableEnumerableCountCondition<TSource, TObject, TChainableEnumerableCondition>,
           IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition>
         where TSource : IEnumerable<TObject>
-        where TChainableEnumerableCondition : IChainableEnumerableConditionBase<TSource, TObject, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoNotCondition>
+        where TChainableEnumerableCondition : IChainableEnumerableConditionBase<TSource, TObject, TChainableEnumerableCondition, TChainableEnumerableNotCondition, TChainableEnumerableDoesNotCondition>
         where TChainableEnumerableNotCondition : IChainableEnumerableNotConditionBase<TSource, TObject, TChainableEnumerableCondition>
-        where TChainableEnumerableDoNotCondition : IChainableEnumerableDoNotConditionBase<TSource, TObject, TChainableEnumerableCondition>
+        where TChainableEnumerableDoesNotCondition : IChainableEnumerableDoesNotConditionBase<TSource, TObject, TChainableEnumerableCondition>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}"/> class.
+        /// Initializes a new instance of the <see cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}"/> class.
         /// </summary>
         /// <param name="source">The enumerable source object.</param>
         protected ChainableEnumerableConditionBase(TSource source)

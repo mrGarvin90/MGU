@@ -1,4 +1,4 @@
-﻿namespace MGU.Core.Interfaces.ChainableConditions.Base.DoNot
+﻿namespace MGU.Core.Interfaces.ChainableConditions.Base.DoesNot
 {
     using System;
     using Couplers;
@@ -11,11 +11,11 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
-    public interface IChainableDoNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase
+    public interface IChainableDoesNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase
         where TChainableCondition : IChainableConditionBase
     {
         /// <summary>
-        /// Determines whether the source object do not fulfill the specified condition.
+        /// Determines whether the source object does not fulfill the specified condition.
         /// </summary>
         /// <param name="condition">The condition.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>

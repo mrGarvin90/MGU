@@ -3,20 +3,20 @@
     using System;
     using Base;
     using Core.Interfaces.ChainableConditions.Nullable;
-    using Core.Interfaces.ChainableConditions.Nullable.DoNot;
     using Core.Interfaces.ChainableConditions.Nullable.Not;
+    using Interfaces.ChainableConditions.Nullable.DoesNot;
 
-    /// <inheritdoc cref="ChainableNullableComparableStructConditionBase{TSource,TChainableNullableComparableStructCondition,TChainableNullableComparableStructNotCondition,TChainableNullableComparableStructDoNotCondition}" />
+    /// <inheritdoc cref="ChainableNullableComparableStructConditionBase{TSource,TChainableNullableComparableStructCondition,TChainableNullableComparableStructNotCondition,TChainableNullableComparableStructDoesNotCondition}" />
     /// <inheritdoc cref="IChainableNullableComparableStructCondition{TSource}" />
-    /// <inheritdoc cref="IChainableNullableComparableStructDoNotCondition{TSource}" />
+    /// <inheritdoc cref="IChainableNullableComparableStructDoesNotCondition{TSource}" />
     /// <summary>
     /// The <see cref="ChainableNullableComparableStructCondition{TCTComparable}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the nullable comparable struct.</typeparam>
     internal sealed class ChainableNullableComparableStructCondition<TSource>
-        : ChainableNullableComparableStructConditionBase<TSource, IChainableNullableComparableStructCondition<TSource>, IChainableNullableComparableStructNotCondition<TSource>, IChainableNullableComparableStructDoNotCondition<TSource>>,
+        : ChainableNullableComparableStructConditionBase<TSource, IChainableNullableComparableStructCondition<TSource>, IChainableNullableComparableStructNotCondition<TSource>, IChainableNullableComparableStructDoesNotCondition<TSource>>,
           IChainableNullableComparableStructCondition<TSource>,
-          IChainableNullableComparableStructDoNotCondition<TSource>
+          IChainableNullableComparableStructDoesNotCondition<TSource>
         where TSource : struct, IComparable<TSource>
     {
         /// <summary>
@@ -35,6 +35,6 @@
         protected override IChainableNullableComparableStructNotCondition<TSource> NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableNullableComparableStructDoNotCondition<TSource> DoNotCondition => this;
+        protected override IChainableNullableComparableStructDoesNotCondition<TSource> DoesNotCondition => this;
     }
 }

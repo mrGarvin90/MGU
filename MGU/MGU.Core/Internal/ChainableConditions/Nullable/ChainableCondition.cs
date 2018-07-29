@@ -2,20 +2,20 @@
 {
     using Base;
     using Core.Interfaces.ChainableConditions.Nullable;
-    using Core.Interfaces.ChainableConditions.Nullable.DoNot;
     using Core.Interfaces.ChainableConditions.Nullable.Not;
+    using Interfaces.ChainableConditions.Nullable.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableCondition{TSource}" />
-    /// <inheritdoc cref="IChainableDoNotCondition{TSource}" />
+    /// <inheritdoc cref="IChainableDoesNotCondition{TSource}" />
     /// <summary>
     /// The <see cref="ChainableCondition{TSource}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     internal sealed class ChainableCondition<TSource>
-        : ChainableConditionBase<TSource, IChainableCondition<TSource>, IChainableNotCondition<TSource>, IChainableDoNotCondition<TSource>>,
+        : ChainableConditionBase<TSource, IChainableCondition<TSource>, IChainableNotCondition<TSource>, IChainableDoesNotCondition<TSource>>,
           IChainableCondition<TSource>,
-          IChainableDoNotCondition<TSource>
+          IChainableDoesNotCondition<TSource>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableCondition{TSource}"/> class.
@@ -33,6 +33,6 @@
         protected override IChainableNotCondition<TSource> NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableDoNotCondition<TSource> DoNotCondition => this;
+        protected override IChainableDoesNotCondition<TSource> DoesNotCondition => this;
     }
 }

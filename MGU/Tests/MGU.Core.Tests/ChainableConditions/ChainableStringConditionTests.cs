@@ -122,16 +122,16 @@
         public void Result_Should_Be_True_When_Source_Do_Not_Start_With_Value()
         {
             var source = "This is a Test";
-            Assert.True(source.If().DoNot.StartWith("this").Result);
-            Assert.True(source.If().DoNot.StartWith(" ").Result);
+            Assert.True(source.If().DoesNot.StartWith("this").Result);
+            Assert.True(source.If().DoesNot.StartWith(" ").Result);
         }
 
         [Fact]
         public void Result_Should_Be_False_When_Source_Starts_With_Value()
         {
             var source = "This is a Test";
-            Assert.False(source.If().DoNot.StartWith("This").Result);
-            Assert.False(source.If().DoNot.StartWith("this", true).Result);
+            Assert.False(source.If().DoesNot.StartWith("This").Result);
+            Assert.False(source.If().DoesNot.StartWith("this", true).Result);
         }
 
         [Fact]
@@ -154,16 +154,16 @@
         public void Result_Should_Be_True_When_Source_Do_Not_End_With_Value()
         {
             var source = "This is a Test";
-            Assert.True(source.If().DoNot.EndWith("test").Result);
-            Assert.True(source.If().DoNot.EndWith(" ").Result);
+            Assert.True(source.If().DoesNot.EndWith("test").Result);
+            Assert.True(source.If().DoesNot.EndWith(" ").Result);
         }
 
         [Fact]
         public void Result_Should_Be_False_When_Source_Ends_With_Value()
         {
             var source = "This is a Test";
-            Assert.False(source.If().DoNot.EndWith("Test").Result);
-            Assert.False(source.If().DoNot.EndWith("test", true).Result);
+            Assert.False(source.If().DoesNot.EndWith("Test").Result);
+            Assert.False(source.If().DoesNot.EndWith("test", true).Result);
         }
 
         [Fact]
@@ -222,8 +222,8 @@
         {
             var source = "This is a Test";
             var value = "bananas";
-            Assert.True(source.If().DoNot.Contain(value).Result);
-            Assert.True(source.If().DoNot.Contain(null).Result);
+            Assert.True(source.If().DoesNot.Contain(value).Result);
+            Assert.True(source.If().DoesNot.Contain(null).Result);
         }
 
         [Fact]
@@ -231,7 +231,7 @@
         {
             var source = "This is a Test";
             var value = "is a ";
-            Assert.False(source.If().DoNot.Contain(value).Result);
+            Assert.False(source.If().DoesNot.Contain(value).Result);
         }
 
         [Fact]
@@ -403,13 +403,13 @@
         {
             Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty));
             Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty, true));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.StartWith(string.Empty));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.StartWith(string.Empty, true));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.StartWith(string.Empty));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.StartWith(string.Empty, true));
 
             Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty));
             Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty, true));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.EndWith(string.Empty));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoNot.EndWith(string.Empty, true));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.EndWith(string.Empty));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.EndWith(string.Empty, true));
 
             Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().WhiteSpace);
 

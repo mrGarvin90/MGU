@@ -5,20 +5,20 @@
     using Base;
     using Core.Interfaces.ChainableConditions.Enumerable;
     using Core.Interfaces.ChainableConditions.Enumerable.Count;
-    using Core.Interfaces.ChainableConditions.Enumerable.DoNot;
     using Core.Interfaces.ChainableConditions.Enumerable.Not;
     using Core.Interfaces.Couplers;
+    using Interfaces.ChainableConditions.Enumerable.DoesNot;
 
-    /// <inheritdoc cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableStringCondition" />
-    /// <inheritdoc cref="IChainableStringDoNotCondition" />
+    /// <inheritdoc cref="IChainableStringDoesNotCondition" />
     /// <summary>
     /// The <see cref="ChainableStringCondition"/> class.
     /// </summary>
     internal sealed class ChainableStringCondition
-        : ChainableEnumerableConditionBase<string, char, IChainableStringCondition, IChainableStringNotCondition, IChainableStringDoNotCondition>,
+        : ChainableEnumerableConditionBase<string, char, IChainableStringCondition, IChainableStringNotCondition, IChainableStringDoesNotCondition>,
           IChainableStringCondition,
-          IChainableStringDoNotCondition
+          IChainableStringDoesNotCondition
     {
         private static readonly Regex WhiteSpaceRegex = new Regex(@"^\s+$", RegexOptions.Compiled);
 
@@ -83,7 +83,7 @@
         protected override IChainableStringNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableStringDoNotCondition DoNotCondition => this;
+        protected override IChainableStringDoesNotCondition DoesNotCondition => this;
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartsWith(string value)

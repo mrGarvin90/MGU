@@ -3,20 +3,20 @@
     using System;
     using Base;
     using Core.Interfaces.ChainableConditions.Nullable;
-    using Core.Interfaces.ChainableConditions.Nullable.DoNot;
     using Core.Interfaces.ChainableConditions.Nullable.Not;
+    using Interfaces.ChainableConditions.Nullable.DoesNot;
 
-    /// <inheritdoc cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableComparableClassCondition{TSource}" />
-    /// <inheritdoc cref="IChainableComparableClassDoNotCondition{TSource}" />
+    /// <inheritdoc cref="IChainableComparableClassDoesNotCondition{TSource}" />
     /// <summary>
     /// The <see cref="ChainableComparableClassCondition{TSource}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable class.</typeparam>
     internal sealed class ChainableComparableClassCondition<TSource>
-        : ChainableComparableConditionBase<TSource, IChainableComparableClassCondition<TSource>, IChainableComparableClassNotCondition<TSource>, IChainableComparableClassDoNotCondition<TSource>>,
+        : ChainableComparableConditionBase<TSource, IChainableComparableClassCondition<TSource>, IChainableComparableClassNotCondition<TSource>, IChainableComparableClassDoesNotCondition<TSource>>,
           IChainableComparableClassCondition<TSource>,
-          IChainableComparableClassDoNotCondition<TSource>
+          IChainableComparableClassDoesNotCondition<TSource>
         where TSource : class, IComparable<TSource>
     {
         /// <summary>
@@ -35,6 +35,6 @@
         protected override IChainableComparableClassNotCondition<TSource> NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableComparableClassDoNotCondition<TSource> DoNotCondition => this;
+        protected override IChainableComparableClassDoesNotCondition<TSource> DoesNotCondition => this;
     }
 }

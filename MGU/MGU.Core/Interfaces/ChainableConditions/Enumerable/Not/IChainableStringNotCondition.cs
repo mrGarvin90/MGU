@@ -18,7 +18,7 @@
         /// <remarks>
         /// The combination [Null.Or.WhiteSpace] will also determine if the source <see cref="string"/> is empty. The combination
         /// [Not.Null.Or.WhiteSpace] will also determine if the source <see cref="string"/> is not empty. [Not.WhiteSpace] will
-        /// ALWAYS only determine whether the source <see cref="string"/> do not consist only of white-space characters even in
+        /// ALWAYS only determine whether the source <see cref="string"/> does not consist only of white-space characters even in
         /// combination with [Null.Or] or [Not.Null.Or].
         /// </remarks>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">

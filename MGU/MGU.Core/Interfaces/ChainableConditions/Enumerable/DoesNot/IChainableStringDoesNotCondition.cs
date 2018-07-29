@@ -1,7 +1,7 @@
-﻿namespace MGU.Core.Interfaces.ChainableConditions.Enumerable.DoNot
+﻿namespace MGU.Core.Interfaces.ChainableConditions.Enumerable.DoesNot
 {
     using System.Globalization;
-    using Base.DoNot;
+    using Base.DoesNot;
     using Couplers;
     using JetBrains.Annotations;
 
@@ -10,10 +10,10 @@
     /// Defines chainable conditions for <see cref="string"/>
     /// where the result of the conditions will be inverted.
     /// </summary>
-    public interface IChainableStringDoNotCondition : IChainableEnumerableDoNotConditionBase<string, char, IChainableStringCondition>
+    public interface IChainableStringDoesNotCondition : IChainableEnumerableDoesNotConditionBase<string, char, IChainableStringCondition>
     {
         /// <summary>
-        /// Determines whether the source string do not start with the specified value.
+        /// Determines whether the source string does not start with the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
@@ -23,7 +23,7 @@
         IConditionCoupler<string, IChainableStringCondition> StartWith([CanBeNull]string value);
 
         /// <summary>
-        /// Determines whether the source string do not start with the specified value.
+        /// Determines whether the source string does not start with the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
@@ -35,7 +35,7 @@
         IConditionCoupler<string, IChainableStringCondition> StartWith([CanBeNull]string value, bool ignoreCase, CultureInfo culture = null);
 
         /// <summary>
-        /// Determines whether the source string do not end with the specified value.
+        /// Determines whether the source string does not end with the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
@@ -45,7 +45,7 @@
         IConditionCoupler<string, IChainableStringCondition> EndWith([CanBeNull]string value);
 
         /// <summary>
-        /// Determines whether the source string do not end with the specified value.
+        /// Determines whether the source string does not end with the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
@@ -57,7 +57,7 @@
         IConditionCoupler<string, IChainableStringCondition> EndWith([CanBeNull]string value, bool ignoreCase, CultureInfo culture = null);
 
         /// <summary>
-        /// Determines whether the source string do not contain the specified value.
+        /// Determines whether the source string does not contain the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>

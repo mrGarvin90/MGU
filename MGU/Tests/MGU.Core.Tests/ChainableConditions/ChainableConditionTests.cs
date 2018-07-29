@@ -192,22 +192,22 @@
         [Fact]
         public void Result_Should_True_When_Source_Do_Not_Fulfill_Condition()
         {
-            Assert.True(NullSourceObjectCondition().DoNot.Fulfill(s => s != null).Result);
+            Assert.True(NullSourceObjectCondition().DoesNot.Fulfill(s => s != null).Result);
         }
 
         [Fact]
         public void Result_Should_False_When_Source_Fulfills_Condition()
         {
-            Assert.False(NullSourceObjectCondition().DoNot.Fulfill(s => s == null).Result);
+            Assert.False(NullSourceObjectCondition().DoesNot.Fulfill(s => s == null).Result);
         }
 
         [Fact]
         public void Should_Throw_ConditionEvaluationFailedException_When_Condition_Is_Not_Valid()
         {
             Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().Fulfills(null));
-            Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().DoNot.Fulfill(null));
+            Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().DoesNot.Fulfill(null));
             Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().Fulfills(s => s.IntValue == 1));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().DoNot.Fulfill(s => s.IntValue == 1));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().DoesNot.Fulfill(s => s.IntValue == 1));
         }
 
         private static IChainableCondition<object> SourceObjectCondition()

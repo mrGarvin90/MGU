@@ -1,7 +1,7 @@
-﻿namespace MGU.Core.Interfaces.ChainableConditions.Struct.DoNot
+﻿namespace MGU.Core.Interfaces.ChainableConditions.Struct.DoesNot
 {
     using System;
-    using Base.DoNot;
+    using Base.DoesNot;
 
     /// <inheritdoc />
     /// <summary>
@@ -9,7 +9,7 @@
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable struct.</typeparam>
-    public interface IChainableComparableStructDoNotCondition<TSource> : IChainableComparableDoNotConditionBase<TSource, IChainableComparableStructCondition<TSource>>
+    public interface IChainableComparableStructDoesNotCondition<TSource> : IChainableComparableDoesNotConditionBase<TSource, IChainableComparableStructCondition<TSource>>
         where TSource : struct, IComparable<TSource>
     {
     }

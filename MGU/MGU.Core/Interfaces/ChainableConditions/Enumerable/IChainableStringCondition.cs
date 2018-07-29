@@ -4,18 +4,18 @@
     using Base;
     using Count;
     using Couplers;
-    using DoNot;
+    using DoesNot;
     using JetBrains.Annotations;
     using Not;
 
     /// <inheritdoc cref="IChainableStringNotCondition" />
-    /// <inheritdoc cref="IChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="IChainableEnumerableConditionBase{TSource,TObject,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <summary>
     /// Defines chainable conditions for <see cref="string"/>.
     /// </summary>
     public interface IChainableStringCondition
         : IChainableStringNotCondition,
-          IChainableEnumerableConditionBase<string, char, IChainableStringCondition, IChainableStringNotCondition, IChainableStringDoNotCondition>
+          IChainableEnumerableConditionBase<string, char, IChainableStringCondition, IChainableStringNotCondition, IChainableStringDoesNotCondition>
     {
         /// <summary>
         /// Gets the length condition.

@@ -2,20 +2,20 @@
 {
     using Base;
     using Core.Interfaces.ChainableConditions.Struct;
-    using Core.Interfaces.ChainableConditions.Struct.DoNot;
     using Core.Interfaces.ChainableConditions.Struct.Not;
+    using Interfaces.ChainableConditions.Struct.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableStructCondition{TSource}" />
-    /// <inheritdoc cref="IChainableStructDoNotCondition{TSource}" />
+    /// <inheritdoc cref="IChainableStructDoesNotCondition{TSource}" />
     /// <summary>
     /// The <see cref="ChainableStructCondition{TSource}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the source struct.</typeparam>
     internal sealed class ChainableStructCondition<TSource>
-        : ChainableConditionBase<TSource, IChainableStructCondition<TSource>, IChainableStructNotCondition<TSource>, IChainableStructDoNotCondition<TSource>>,
+        : ChainableConditionBase<TSource, IChainableStructCondition<TSource>, IChainableStructNotCondition<TSource>, IChainableStructDoesNotCondition<TSource>>,
           IChainableStructCondition<TSource>,
-          IChainableStructDoNotCondition<TSource>
+          IChainableStructDoesNotCondition<TSource>
         where TSource : struct
     {
         /// <summary>
@@ -34,6 +34,6 @@
         protected override IChainableStructNotCondition<TSource> NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableStructDoNotCondition<TSource> DoNotCondition => this;
+        protected override IChainableStructDoesNotCondition<TSource> DoesNotCondition => this;
     }
 }

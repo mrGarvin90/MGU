@@ -2,17 +2,17 @@
 {
     using Base;
     using Couplers;
-    using DoNot;
+    using DoesNot;
     using Not;
 
     /// <inheritdoc cref="IChainableBoolNotCondition" />
-    /// <inheritdoc cref="IChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="IChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <summary>
     /// Defines chainable conditions for <see cref="bool" />.
     /// </summary>
     public interface IChainableBoolCondition
         : IChainableBoolNotCondition,
-          IChainableConditionBase<bool, IChainableBoolCondition, IChainableBoolNotCondition, IChainableBoolDoNotCondition>
+          IChainableConditionBase<bool, IChainableBoolCondition, IChainableBoolNotCondition, IChainableBoolDoesNotCondition>
     {
         /// <summary>
         /// Determines whether the source <see cref="bool"/> is <see langword="true"/>.

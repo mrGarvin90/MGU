@@ -2,19 +2,19 @@
 {
     using Base;
     using Core.Interfaces.ChainableConditions.Struct;
-    using Core.Interfaces.ChainableConditions.Struct.DoNot;
     using Core.Interfaces.ChainableConditions.Struct.Not;
     using Core.Interfaces.Couplers;
+    using Interfaces.ChainableConditions.Struct.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableBoolCondition" />
     /// <summary>
     /// The <see cref="ChainableBoolCondition" /> class.
     /// </summary>
     internal sealed class ChainableBoolCondition
-        : ChainableConditionBase<bool, IChainableBoolCondition, IChainableBoolNotCondition, IChainableBoolDoNotCondition>,
+        : ChainableConditionBase<bool, IChainableBoolCondition, IChainableBoolNotCondition, IChainableBoolDoesNotCondition>,
           IChainableBoolCondition,
-          IChainableBoolDoNotCondition
+          IChainableBoolDoesNotCondition
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableBoolCondition"/> class.
@@ -38,6 +38,6 @@
         protected override IChainableBoolNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableBoolDoNotCondition DoNotCondition => this;
+        protected override IChainableBoolDoesNotCondition DoesNotCondition => this;
     }
 }

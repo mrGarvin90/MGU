@@ -2,32 +2,32 @@
 {
     using System;
     using Core.Interfaces.ChainableConditions.Base;
-    using Core.Interfaces.ChainableConditions.Base.DoNot;
     using Core.Interfaces.ChainableConditions.Base.Not;
     using Core.Interfaces.Couplers;
     using Extensions;
+    using Interfaces.ChainableConditions.Base.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
-    /// <inheritdoc cref="IChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}" />
-    /// <inheritdoc cref="IChainableComparableDoNotConditionBase{TSource,TChainableComparableCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
+    /// <inheritdoc cref="IChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}" />
+    /// <inheritdoc cref="IChainableComparableDoesNotConditionBase{TSource,TChainableComparableCondition}" />
     /// <summary>
-    /// The <see cref="ChainableNullableComparableStructConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}"/> class.
+    /// The <see cref="ChainableNullableComparableStructConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the nullable comparable struct.</typeparam>
     /// <typeparam name="TChainableNullableComparableStructCondition">The type of the chainable nullable comparable struct condition.</typeparam>
     /// <typeparam name="TChainableNullableComparableStructNotCondition">The type of the chainable nullable comparable struct not condition.</typeparam>
-    /// <typeparam name="TChainableNullableComparableStructDoNotCondition">The type of the chainable nullable comparable struct do not condition.</typeparam>
-    internal abstract class ChainableNullableComparableStructConditionBase<TSource, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoNotCondition>
-        : ChainableConditionBase<TSource?, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoNotCondition>,
-          IChainableComparableConditionBase<TSource?, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoNotCondition>,
-          IChainableComparableDoNotConditionBase<TSource?, TChainableNullableComparableStructCondition>
+    /// <typeparam name="TChainableNullableComparableStructDoesNotCondition">The type of the chainable nullable comparable struct does not condition.</typeparam>
+    internal abstract class ChainableNullableComparableStructConditionBase<TSource, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoesNotCondition>
+        : ChainableConditionBase<TSource?, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoesNotCondition>,
+          IChainableComparableConditionBase<TSource?, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoesNotCondition>,
+          IChainableComparableDoesNotConditionBase<TSource?, TChainableNullableComparableStructCondition>
         where TSource : struct, IComparable<TSource>
-        where TChainableNullableComparableStructCondition : IChainableComparableConditionBase<TSource?, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoNotCondition>
+        where TChainableNullableComparableStructCondition : IChainableComparableConditionBase<TSource?, TChainableNullableComparableStructCondition, TChainableNullableComparableStructNotCondition, TChainableNullableComparableStructDoesNotCondition>
         where TChainableNullableComparableStructNotCondition : IChainableComparableNotConditionBase<TSource?, TChainableNullableComparableStructCondition>
-        where TChainableNullableComparableStructDoNotCondition : IChainableComparableDoNotConditionBase<TSource?, TChainableNullableComparableStructCondition>
+        where TChainableNullableComparableStructDoesNotCondition : IChainableComparableDoesNotConditionBase<TSource?, TChainableNullableComparableStructCondition>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainableNullableComparableStructConditionBase{TSource,TChainableNullableComparableStructCondition,TChainableNullableComparableStructNotCondition,TChainableNullableComparableStructDoNotCondition}"/> class.
+        /// Initializes a new instance of the <see cref="ChainableNullableComparableStructConditionBase{TSource,TChainableNullableComparableStructCondition,TChainableNullableComparableStructNotCondition,TChainableNullableComparableStructDoesNotCondition}"/> class.
         /// </summary>
         /// <param name="source">The comparable source object.</param>
         protected ChainableNullableComparableStructConditionBase(TSource? source)

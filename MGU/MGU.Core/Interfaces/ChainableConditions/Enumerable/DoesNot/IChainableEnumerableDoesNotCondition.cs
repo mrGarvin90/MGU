@@ -1,7 +1,7 @@
-﻿namespace MGU.Core.Interfaces.ChainableConditions.Enumerable.DoNot
+﻿namespace MGU.Core.Interfaces.ChainableConditions.Enumerable.DoesNot
 {
     using System.Collections.Generic;
-    using Base.DoNot;
+    using Base.DoesNot;
 
     /// <inheritdoc />
     /// <summary>
@@ -10,7 +10,7 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source enumerable.</typeparam>
     /// <typeparam name="TObject">The type of the object in the source enumerable.</typeparam>
-    public interface IChainableEnumerableDoNotCondition<TSource, TObject> : IChainableEnumerableDoNotConditionBase<TSource, TObject, IChainableEnumerableCondition<TSource, TObject>>
+    public interface IChainableEnumerableDoesNotCondition<TSource, TObject> : IChainableEnumerableDoesNotConditionBase<TSource, TObject, IChainableEnumerableCondition<TSource, TObject>>
         where TSource : IEnumerable<TObject>
     {
     }

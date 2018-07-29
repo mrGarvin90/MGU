@@ -391,25 +391,25 @@
         [Fact]
         public void Result_Should_Be_True_When_The_Source_Do_Not_Contain_Value()
         {
-            Assert.True(ArrayCondition().DoNot.Contain(IntValueNotInSource).Result);
+            Assert.True(ArrayCondition().DoesNot.Contain(IntValueNotInSource).Result);
 
-            Assert.True(IEnumerableCondition().DoNot.Contain(IntValueNotInSource).Result);
+            Assert.True(IEnumerableCondition().DoesNot.Contain(IntValueNotInSource).Result);
 
-            Assert.True(ListCondition().DoNot.Contain(IntValueNotInSource).Result);
+            Assert.True(ListCondition().DoesNot.Contain(IntValueNotInSource).Result);
 
-            Assert.True(TestObjectsCondition().DoNot.Contain(TestObjectNotInSource, TestObjectEqualityComparer).Result);
+            Assert.True(TestObjectsCondition().DoesNot.Contain(TestObjectNotInSource, TestObjectEqualityComparer).Result);
         }
 
         [Fact]
         public void Result_Should_Be_False_When_The_Source_Contains_Value()
         {
-            Assert.False(ArrayCondition().DoNot.Contain(IntValueInSource).Result);
+            Assert.False(ArrayCondition().DoesNot.Contain(IntValueInSource).Result);
 
-            Assert.False(IEnumerableCondition().DoNot.Contain(IntValueInSource).Result);
+            Assert.False(IEnumerableCondition().DoesNot.Contain(IntValueInSource).Result);
 
-            Assert.False(ListCondition().DoNot.Contain(IntValueInSource).Result);
+            Assert.False(ListCondition().DoesNot.Contain(IntValueInSource).Result);
 
-            Assert.False(TestObjectsCondition().DoNot.Contain(TestObjectInSource, TestObjectEqualityComparer).Result);
+            Assert.False(TestObjectsCondition().DoesNot.Contain(TestObjectInSource, TestObjectEqualityComparer).Result);
         }
 
         [Fact]
@@ -421,7 +421,7 @@
         [Fact]
         public void Result_Should_Be_True_When_The_Source_Contains_Value_But_Value_Do_Not_Implement_IEquality_And_A_EqualityComparer_Was_Not_Supplied()
         {
-            Assert.True(TestObjectsCondition().DoNot.Contain(TestObjectInSource).Result);
+            Assert.True(TestObjectsCondition().DoesNot.Contain(TestObjectInSource).Result);
         }
 
         [Fact]
@@ -446,7 +446,7 @@
             Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Not.SequentiallyEqualTo(OtherTestObjects));
 
             Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Contains(TestObject.Default()));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().DoNot.Contain(TestObject.Default()));
+            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().DoesNot.Contain(TestObject.Default()));
 
             Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is(5));
             Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.LessThan(5));

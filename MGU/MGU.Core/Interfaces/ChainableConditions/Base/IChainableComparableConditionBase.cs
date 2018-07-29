@@ -1,7 +1,7 @@
 ﻿namespace MGU.Core.Interfaces.ChainableConditions.Base
 {
     using Couplers;
-    using DoNot;
+    using DoesNot;
     using JetBrains.Annotations;
     using Not;
 
@@ -15,20 +15,20 @@
     }
 
     /// <inheritdoc cref="IChainableComparableNotConditionBase{TSource,TChainableComparableCondition}" />
-    /// <inheritdoc cref="IChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="IChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <summary>
     /// The base interface that defines chainable conditions for comparable objects.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable.</typeparam>
     /// <typeparam name="TChainableComparableCondition">The type of the chainable comparable condition.</typeparam>
     /// <typeparam name="TChainableComparableNotCondition">The type of the chainable comparable not condition.</typeparam>
-    /// <typeparam name="TChainableComparableDoNotCondition">The type of the chainable comparable do not condition.</typeparam>
-    public interface IChainableComparableConditionBase<TSource, out TChainableComparableCondition, out TChainableComparableNotCondition, out TChainableComparableDoNotCondition>
+    /// <typeparam name="TChainableComparableDoesNotCondition">The type of the chainable comparable does not condition.</typeparam>
+    public interface IChainableComparableConditionBase<TSource, out TChainableComparableCondition, out TChainableComparableNotCondition, out TChainableComparableDoesNotCondition>
         : IChainableComparableNotConditionBase<TSource, TChainableComparableCondition>,
-          IChainableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoNotCondition>
-        where TChainableComparableCondition : IChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoNotCondition>
+          IChainableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoesNotCondition>
+        where TChainableComparableCondition : IChainableComparableConditionBase<TSource, TChainableComparableCondition, TChainableComparableNotCondition, TChainableComparableDoesNotCondition>
         where TChainableComparableNotCondition : IChainableComparableNotConditionBase<TSource, TChainableComparableCondition>
-        where TChainableComparableDoNotCondition : IChainableComparableDoNotConditionBase<TSource, TChainableComparableCondition>
+        where TChainableComparableDoesNotCondition : IChainableComparableDoesNotConditionBase<TSource, TChainableComparableCondition>
     {
         /// <summary>
         /// Determines whether the source comparable is less than the specified other.

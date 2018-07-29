@@ -1,6 +1,6 @@
-﻿namespace MGU.Core.Interfaces.ChainableConditions.Struct.DoNot
+﻿namespace MGU.Core.Interfaces.ChainableConditions.Struct.DoesNot
 {
-    using Base.DoNot;
+    using Base.DoesNot;
 
     /// <inheritdoc />
     /// <summary>
@@ -8,7 +8,7 @@
     /// where the result of the conditions will be inverted.
     /// </summary>
     /// <typeparam name="TSource">The type of the struct.</typeparam>
-    public interface IChainableStructDoNotCondition<TSource> : IChainableDoNotConditionBase<TSource, IChainableStructCondition<TSource>>
+    public interface IChainableStructDoesNotCondition<TSource> : IChainableDoesNotConditionBase<TSource, IChainableStructCondition<TSource>>
         where TSource : struct
     {
     }

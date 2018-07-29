@@ -5,20 +5,20 @@
     using System.Runtime.CompilerServices;
     using Base;
     using Core.Interfaces.ChainableConditions.Nullable;
-    using Core.Interfaces.ChainableConditions.Nullable.DoNot;
     using Core.Interfaces.ChainableConditions.Nullable.Not;
     using Core.Interfaces.Couplers;
+    using Interfaces.ChainableConditions.Nullable.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableNullableCharCondition" />
-    /// <inheritdoc cref="IChainableNullableCharDoNotCondition" />
+    /// <inheritdoc cref="IChainableNullableCharDoesNotCondition" />
     /// <summary>
     /// The <see cref="ChainableNullableCharCondition" /> class.
     /// </summary>
     internal sealed class ChainableNullableCharCondition
-        : ChainableNullableComparableStructConditionBase<char, IChainableNullableCharCondition, IChainableNullableCharNotCondition, IChainableNullableCharDoNotCondition>,
+        : ChainableNullableComparableStructConditionBase<char, IChainableNullableCharCondition, IChainableNullableCharNotCondition, IChainableNullableCharDoesNotCondition>,
           IChainableNullableCharCondition,
-          IChainableNullableCharDoNotCondition
+          IChainableNullableCharDoesNotCondition
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableNullableCharCondition"/> class.
@@ -75,7 +75,7 @@
         protected override IChainableNullableCharNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableNullableCharDoNotCondition DoNotCondition => this;
+        protected override IChainableNullableCharDoesNotCondition DoesNotCondition => this;
 
         /// <inheritdoc />
         public IConditionCoupler<char?, IChainableNullableCharCondition> In(string str)

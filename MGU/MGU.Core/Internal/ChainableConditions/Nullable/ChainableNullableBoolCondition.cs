@@ -2,19 +2,19 @@
 {
     using Base;
     using Core.Interfaces.ChainableConditions.Nullable;
-    using Core.Interfaces.ChainableConditions.Nullable.DoNot;
     using Core.Interfaces.ChainableConditions.Nullable.Not;
     using Core.Interfaces.Couplers;
+    using Interfaces.ChainableConditions.Nullable.DoesNot;
 
-    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableNullableBoolCondition" />
     /// <summary>
     /// The <see cref="ChainableNullableBoolCondition" /> class.
     /// </summary>
     internal sealed class ChainableNullableBoolCondition
-        : ChainableConditionBase<bool?, IChainableNullableBoolCondition, IChainableNullableBoolNotCondition, IChainableNullableBoolDoNotCondition>,
+        : ChainableConditionBase<bool?, IChainableNullableBoolCondition, IChainableNullableBoolNotCondition, IChainableNullableBoolDoesNotCondition>,
             IChainableNullableBoolCondition,
-            IChainableNullableBoolDoNotCondition
+            IChainableNullableBoolDoesNotCondition
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableNullableBoolCondition"/> class.
@@ -38,6 +38,6 @@
         protected override IChainableNullableBoolNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableNullableBoolDoNotCondition DoNotCondition => this;
+        protected override IChainableNullableBoolDoesNotCondition DoesNotCondition => this;
     }
 }

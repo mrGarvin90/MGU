@@ -3,20 +3,20 @@
     using System.Globalization;
     using Base;
     using Core.Interfaces.ChainableConditions.Struct;
-    using Core.Interfaces.ChainableConditions.Struct.DoNot;
     using Core.Interfaces.ChainableConditions.Struct.Not;
     using Core.Interfaces.Couplers;
+    using Interfaces.ChainableConditions.Struct.DoesNot;
 
-    /// <inheritdoc cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoNotCondition}" />
+    /// <inheritdoc cref="ChainableComparableConditionBase{TSource,TChainableComparableCondition,TChainableComparableNotCondition,TChainableComparableDoesNotCondition}" />
     /// <inheritdoc cref="IChainableCharCondition" />
-    /// <inheritdoc cref="IChainableCharDoNotCondition" />
+    /// <inheritdoc cref="IChainableCharDoesNotCondition" />
     /// <summary>
     /// The <see cref="ChainableCharCondition" /> class.
     /// </summary>
     internal sealed class ChainableCharCondition
-        : ChainableComparableConditionBase<char, IChainableCharCondition, IChainableCharNotCondition, IChainableCharDoNotCondition>,
+        : ChainableComparableConditionBase<char, IChainableCharCondition, IChainableCharNotCondition, IChainableCharDoesNotCondition>,
           IChainableCharCondition,
-          IChainableCharDoNotCondition
+          IChainableCharDoesNotCondition
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainableCharCondition"/> class.
@@ -73,7 +73,7 @@
         protected override IChainableCharNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        protected override IChainableCharDoNotCondition DoNotCondition => this;
+        protected override IChainableCharDoesNotCondition DoesNotCondition => this;
 
         /// <inheritdoc />
         public IConditionCoupler<char, IChainableCharCondition> In(string str)
