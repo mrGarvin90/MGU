@@ -106,7 +106,7 @@
 
         private IConditionCoupler<char?, IChainableNullableCharCondition> Evaluate(Func<char, bool> condition, [CallerMemberName]string callerMemberName = "")
         {
-            return base.Evaluate(s => condition(s.Value), callerMemberName);
+            return base.Evaluate(s => s.HasValue && condition(s.Value), callerMemberName);
         }
     }
 }

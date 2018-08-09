@@ -8,7 +8,6 @@
     /// <summary>
     /// The exception that is thrown when an exception is null.
     /// </summary>
-    /// <seealso cref="Exception" />
     [Serializable]
     public sealed class ExceptionIsNullException : Exception
     {

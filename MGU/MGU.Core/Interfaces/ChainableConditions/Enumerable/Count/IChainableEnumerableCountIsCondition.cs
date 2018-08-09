@@ -27,7 +27,12 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// The number of elements in source enumerable is larger than <see cref="F:System.Int32.MaxValue"/>.
+        /// Inner exception: <see cref="System.OverflowException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> LessThan(int value);
 
@@ -37,7 +42,12 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// The number of elements in source enumerable is larger than <see cref="F:System.Int32.MaxValue"/>.
+        /// Inner exception: <see cref="System.OverflowException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> LessThanEqualTo(int value);
 
@@ -47,7 +57,12 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// The number of elements in source enumerable is larger than <see cref="F:System.Int32.MaxValue"/>.
+        /// Inner exception: <see cref="System.OverflowException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> GreaterThan(int value);
 
@@ -57,7 +72,12 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// The number of elements in source enumerable is larger than <see cref="F:System.Int32.MaxValue"/>.
+        /// Inner exception: <see cref="System.OverflowException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> GreaterThanEqualTo(int value);
     }

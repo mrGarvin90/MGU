@@ -14,7 +14,6 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source enumerable.</typeparam>
     /// <typeparam name="TObject">The type of the object that source enumerable contains.</typeparam>
-    /// <seealso cref="IChainableConditionBase" />
     public interface IChainableEnumerableConditionBase<TSource, TObject> : IChainableConditionBase
     {
     }
@@ -49,7 +48,12 @@
         /// <param name="predicate">The predicate.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/> or the <paramref name="predicate"/> could not be evaluated.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// <paramref name="predicate"/> could not be evaluated.
+        /// Inner exception: Cannot specify.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> All([NotNull]Func<TObject, bool> predicate);
 
@@ -59,7 +63,12 @@
         /// <param name="predicate">The predicate.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/> or the <paramref name="predicate"/> could not be evaluated.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// <paramref name="predicate"/> could not be evaluated.
+        /// Inner exception: Cannot specify.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> Any([NotNull]Func<TObject, bool> predicate);
 
@@ -69,19 +78,25 @@
         /// <param name="predicate">The predicate.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/> or the <paramref name="predicate"/> could not be evaluated.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// <paramref name="predicate"/> could not be evaluated.
+        /// Inner exception: Cannot specify.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> None([NotNull]Func<TObject, bool> predicate);
 
         /// <summary>
         /// Determines whether the source enumerable contains the specified value by comparing it with the other elements using the specified <paramref name="comparer"/>
-        /// or the default <see cref="IEqualityComparer{TObject}"/> if the specified <paramref name="comparer"/> is <see langword="null"/>.
+        /// or the default <see cref="IEqualityComparer{TObject}"/> if the specified <paramref name="comparer"/> is <c>null</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <param name="comparer">The comparer.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="ArgumentNullException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> Contains(TObject value, IEqualityComparer<TObject> comparer = null);
     }

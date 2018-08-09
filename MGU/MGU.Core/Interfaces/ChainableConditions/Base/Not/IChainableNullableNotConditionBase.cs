@@ -13,7 +13,7 @@
         where TChainableCondition : IChainableConditionBase
     {
         /// <summary>
-        /// Determines whether the source object is <see langword="null"/>.
+        /// Determines whether the source object is <c>null</c>.
         /// </summary>
         IConditionCoupler<TSource, TChainableCondition> Null { get; }
     }

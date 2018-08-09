@@ -17,7 +17,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="ThrowOption{TSource}"/> class.
         /// </summary>
-        /// <param name="throwException">If set to <see langword="true" /> an exception will be thrown.</param>
+        /// <param name="throwException">If set to <c>true</c> an exception will be thrown.</param>
         /// <param name="source">The source object.</param>
         internal ThrowOption(bool throwException, TSource source)
         {

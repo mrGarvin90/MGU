@@ -142,10 +142,66 @@
         }
 
         [Fact]
+        public void Invoke_Should_Invoke_Action_And_Actions_And_Return_Same_Value_When_Condition_Is_True()
+        {
+            var invoked1 = false;
+            var invoked2 = false;
+            var invoked3 = false;
+            var actual = 5.If().Fulfills(s => true).Invoke(Action1, Action2, Action3);
+            Assert.Equal(5, actual);
+            Assert.True(invoked1);
+            Assert.True(invoked2);
+            Assert.True(invoked3);
+
+            void Action1() => invoked1 = true;
+            void Action2() => invoked2 = true;
+            void Action3() => invoked3 = true;
+        }
+
+        [Fact]
+        public void Invoke_Should_Invoke_Action_But_Not_Actions_If_Null_And_Return_Same_Value_When_Condition_Is_True()
+        {
+            var invoked = false;
+            var actual = 5.If().Fulfills(s => true).Invoke(Action, null);
+            Assert.Equal(5, actual);
+            Assert.True(invoked);
+
+            void Action() => invoked = true;
+        }
+
+        [Fact]
         public void Invoke_Should_Not_Invoke_Action_And_Return_Same_Value_When_Condition_Is_False()
         {
             var invoked = false;
             var actual = 5.If().Fulfills(s => false).Invoke(Action);
+            Assert.Equal(5, actual);
+            Assert.False(invoked);
+
+            void Action() => invoked = true;
+        }
+
+        [Fact]
+        public void Invoke_Should_Not_Invoke_Action_And_Actions_And_Return_Same_Value_When_Condition_Is_False()
+        {
+            var invoked1 = false;
+            var invoked2 = false;
+            var invoked3 = false;
+            var actual = 5.If().Fulfills(s => false).Invoke(Action1, Action2, Action3);
+            Assert.Equal(5, actual);
+            Assert.False(invoked1);
+            Assert.False(invoked2);
+            Assert.False(invoked3);
+
+            void Action1() => invoked1 = true;
+            void Action2() => invoked2 = true;
+            void Action3() => invoked3 = true;
+        }
+
+        [Fact]
+        public void Invoke_Should_Not_Invoke_Action_But_Not_Actions_If_Null_And_Return_Same_Value_When_Condition_Is_False()
+        {
+            var invoked = false;
+            var actual = 5.If().Fulfills(s => false).Invoke(Action, null);
             Assert.Equal(5, actual);
             Assert.False(invoked);
 

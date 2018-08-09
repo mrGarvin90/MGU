@@ -1,5 +1,6 @@
 ﻿namespace MGU.Core.Tests.ChainableConditions
 {
+    using System;
     using Core.Exceptions;
     using Core.Extensions.If.Base;
     using Interfaces.ChainableConditions.Nullable;
@@ -242,21 +243,41 @@
         [Fact]
         public void Should_Throw_ConditionEvaluationFailedException_When_Min_Or_Max_Is_Null()
         {
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().WithinRange(null, 6).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().WithinRange(4, null).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().WithinRange(null, null).Result);
+            var exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().WithinRange(null, 6).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().Not.WithinRange(null, 6).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().Not.WithinRange(4, null).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().Not.WithinRange(null, null).Result);
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().WithinRange(4, null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().WithinRange(null, ComparableTestObject.New(6)).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().WithinRange(ComparableTestObject.New(4), null).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().WithinRange(null, null).Result);
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().WithinRange(null, null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().Not.WithinRange(null, ComparableTestObject.New(6)).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().Not.WithinRange(ComparableTestObject.New(4), null).Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().Not.WithinRange(null, null).Result);
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().Not.WithinRange(null, 6).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().Not.WithinRange(4, null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableNullableStructCondition().Not.WithinRange(null, null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().WithinRange(null, ComparableTestObject.New(6)).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().WithinRange(ComparableTestObject.New(4), null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().WithinRange(null, null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().Not.WithinRange(null, ComparableTestObject.New(6)).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().Not.WithinRange(ComparableTestObject.New(4), null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => ComparableClassCondition().Not.WithinRange(null, null).Result);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
         }
 
         private static IChainableComparableClassCondition<ComparableTestObject> ComparableClassCondition(bool nullSource = false)

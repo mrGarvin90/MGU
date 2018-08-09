@@ -15,8 +15,8 @@
         /// <param name="source">The source object.</param>
         /// <param name="other">The other object.</param>
         /// <returns>
-        /// <see langword="true" /> if this instance is equal to the specified other;
-        /// otherwise, <see langword="false" />.
+        /// <c>true</c> if this instance is equal to the specified other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         public static bool Is<TSource>(this TSource source, TSource other)
         {

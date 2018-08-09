@@ -2,7 +2,6 @@
 namespace MGU.Core.Tests.ChainableConditions
 {
     using System.Collections.Generic;
-    using Core.Exceptions;
     using Core.Extensions.If;
     using Xunit;
 
@@ -599,40 +598,6 @@ namespace MGU.Core.Tests.ChainableConditions
             char? source = null;
             Assert.True(source.If().Not.In(str).Result);
             Assert.True(source.If().Not.In(str, true).Result);
-        }
-
-        [Fact]
-        public void Should_Throw_ConditionEvaluationFailedException_When_Source_Is_Null_And_Null_Was_Not_Checked()
-        {
-            char? source = null;
-
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Control.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Digit.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().HighSurrogate.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Letter.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Lower.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().LowSurrogate.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Number.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Punctuation.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Separator.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Surrogate.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Symbol.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Upper.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().WhiteSpace.Result);
-
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Control.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Digit.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.HighSurrogate.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Letter.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Lower.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.LowSurrogate.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Number.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Punctuation.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Separator.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Surrogate.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Symbol.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.Upper.Result);
-            Assert.Throws<ConditionEvaluationFailedException>(() => source.If().Not.WhiteSpace.Result);
         }
 
         [Fact]

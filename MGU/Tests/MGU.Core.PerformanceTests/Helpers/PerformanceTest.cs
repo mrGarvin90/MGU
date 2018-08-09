@@ -27,10 +27,10 @@
         /// a warmup iteration will still run to check if any exception is thrown.
         /// </remarks>
         /// <exception cref="ArgumentException">
-        /// <paramref name="name"/> is <see langword="null"/>, empty or consists only of white-space characters.
+        /// <paramref name="name"/> is <c>null</c>, empty or consists only of white-space characters.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="action"/> is <see langword="null"/>.
+        /// <paramref name="action"/> is <c>null</c>.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="maxMilliseconds"/> is equal to 0.

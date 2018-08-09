@@ -16,11 +16,11 @@
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is within the specified range;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is within the specified range;
+        /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="System.InvalidOperationException">
-        /// The <paramref name="min"/> or the <paramref name="max"/> is <see langword="null"/>.
+        /// <exception cref="System.ArgumentNullException">
+        /// The <paramref name="min"/> or the <paramref name="max"/> is <c>null</c>.
         /// </exception>
         bool WithinRange([NotNull]TSource min, [NotNull]TSource max);
 
@@ -29,8 +29,8 @@
         /// </summary>
         /// <param name="other">The other comparable.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         bool EqualTo([CanBeNull]TSource other);
     }

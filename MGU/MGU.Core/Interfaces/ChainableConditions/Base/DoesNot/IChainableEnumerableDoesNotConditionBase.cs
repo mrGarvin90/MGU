@@ -26,7 +26,8 @@
         /// <param name="comparer">The comparer.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableEnumerableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableEnumerableCondition> Contain(TObject value, IEqualityComparer<TObject> comparer = null);
     }

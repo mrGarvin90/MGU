@@ -10,7 +10,6 @@
     using Core.Interfaces.Options;
     using Enums;
     using Exceptions;
-    using Extensions;
     using Helpers;
     using Options;
 
@@ -133,18 +132,24 @@
         ICastOption IConditionResultOption<TSource>.Cast => new CastOption(Result, _source);
 
         /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Invoke(Action action)
+        TSource IConditionResultOption<TSource>.Invoke(Action action, params Action[] actions)
         {
-            if (Result)
-                action();
+            if (!Result)
+                return _source;
+
+            action();
+            if (actions?.Length > 0)
+            {
+                foreach (var a in actions)
+                    a();
+            }
+
             return _source;
         }
 
         /// <inheritdoc />
         TSource IConditionResultOption<TSource>.Get(Func<TSource> func)
-        {
-            return Result ? func() : _source;
-        }
+            => Result ? func() : _source;
 
         /// <inheritdoc />
         TSource IConditionResultOption<TSource>.Set(ref TSource other)
@@ -156,9 +161,7 @@
 
         /// <inheritdoc />
         TSource IConditionResultOption<TSource>.Then(TSource value)
-        {
-            return Result ? value : _source;
-        }
+            => Result ? value : _source;
 
         /// <inheritdoc />
         TSource IConditionResultOption<TSource>.Throw<TException>(params object[] exceptionParameters)
@@ -211,9 +214,7 @@
 
         /// <inheritdoc />
         IThrowOption<TSource> IConditionResultOption<TSource>.Throw()
-        {
-            return new ThrowOption<TSource>(Result, _source);
-        }
+            => new ThrowOption<TSource>(Result, _source);
 
         #endregion
     }

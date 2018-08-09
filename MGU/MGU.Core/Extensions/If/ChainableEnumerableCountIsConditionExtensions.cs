@@ -23,7 +23,12 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source enumerable is <see langword="null"/>.
+        /// Source enumerable is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// The number of elements in the source enumerable is larger than <see cref="F:System.Int32.MaxValue"/>.
+        /// Inner exception: <see cref="System.OverflowException"/>.
         /// </exception>
         public static IConditionCoupler<TSource, TChainableEnumerableCondition> Not<TSource, TObject, TChainableEnumerableCondition>(
             [NotNull]this IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition> source,

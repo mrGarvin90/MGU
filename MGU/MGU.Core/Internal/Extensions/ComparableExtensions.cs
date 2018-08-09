@@ -14,8 +14,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool EqualTo<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
@@ -30,8 +30,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool EqualTo<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
@@ -48,8 +48,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is less than the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool LessThan<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
@@ -64,8 +64,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is less than the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool LessThan<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
@@ -80,8 +80,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is less than or equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool LessThanOrEqualTo<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
@@ -96,8 +96,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is less than or equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is less than or equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool LessThanOrEqualTo<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
@@ -114,8 +114,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is greater than the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool GreaterThan<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
@@ -130,8 +130,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is greater than the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool GreaterThan<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
@@ -146,8 +146,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is greater than or equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool GreaterThanOrEqualTo<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
@@ -162,8 +162,8 @@
         /// <param name="source">The source.</param>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is greater than or equal to the comparable other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is greater than or equal to the comparable other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         internal static bool GreaterThanOrEqualTo<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
@@ -181,19 +181,19 @@
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is within the specified range;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is within the specified range;
+        /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// The <paramref name="min"/> or the <paramref name="max"/> is <see langword="null"/>.
+        /// <exception cref="ArgumentNullException">
+        /// The <paramref name="min"/> or the <paramref name="max"/> is <c>null</c>.
         /// </exception>
         internal static bool WithinRange<TSource>(this TSource source, TSource min, TSource max)
             where TSource : IComparable<TSource>
         {
             if (min == null)
-                throw new InvalidOperationException($"{nameof(min)} cannot be null.");
+                throw new ArgumentNullException(nameof(min));
             if (max == null)
-                throw new InvalidOperationException($"{nameof(max)} cannot be null.");
+                throw new ArgumentNullException(nameof(max));
             return GreaterThanOrEqualTo(source, min) && LessThanOrEqualTo(source, max);
         }
 
@@ -205,17 +205,21 @@
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>
-        /// <see langword="true"/> if the source comparable is within the specified range;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source comparable is within the specified range;
+        /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// The <paramref name="min"/> or the <paramref name="max"/> is <see langword="null"/>.
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="min"/> or the <paramref name="max"/> is <c>null</c>.
         /// </exception>
         internal static bool WithinRange<TSource>(this TSource? source, TSource? min, TSource? max)
             where TSource : struct, IComparable<TSource>
         {
             if (!source.HasValue)
                 return false;
+            if (min == null)
+                throw new ArgumentNullException(nameof(min));
+            if (max == null)
+                throw new ArgumentNullException(nameof(max));
             return GreaterThanOrEqualTo(source.Value, min.Value) && LessThanOrEqualTo(source.Value, max.Value);
         }
     }

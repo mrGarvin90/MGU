@@ -15,12 +15,12 @@
           IChainableConditionBase<bool, IChainableBoolCondition, IChainableBoolNotCondition, IChainableBoolDoesNotCondition>
     {
         /// <summary>
-        /// Determines whether the source <see cref="bool"/> is <see langword="true"/>.
+        /// Determines whether the source <see cref="bool"/> is <c>true</c>.
         /// </summary>
         IConditionCoupler<bool, IChainableBoolCondition> True { get; }
 
         /// <summary>
-        /// Determines whether the source <see cref="bool"/> is <see langword="false"/>.
+        /// Determines whether the source <see cref="bool"/> is <c>false</c>.
         /// </summary>
         IConditionCoupler<bool, IChainableBoolCondition> False { get; }
     }

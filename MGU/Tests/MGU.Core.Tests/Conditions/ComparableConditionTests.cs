@@ -242,21 +242,21 @@
         [Fact]
         public void Should_Throw_Invalid_Operation_When_Min_Or_Max_Is_Null()
         {
-            Assert.Throws<InvalidOperationException>(() => ComparableClassCondition(true).WithinRange(null, ComparableTestObjectGreaterThanSource));
-            Assert.Throws<InvalidOperationException>(() => ComparableClassCondition(true).WithinRange(ComparableTestObjectLessThanSource, null));
-            Assert.Throws<InvalidOperationException>(() => ComparableClassCondition(true).WithinRange(null, null));
+            Assert.Throws<ArgumentNullException>(() => ComparableClassCondition(true).WithinRange(null, ComparableTestObjectGreaterThanSource));
+            Assert.Throws<ArgumentNullException>(() => ComparableClassCondition(true).WithinRange(ComparableTestObjectLessThanSource, null));
+            Assert.Throws<ArgumentNullException>(() => ComparableClassCondition(true).WithinRange(null, null));
 
-            Assert.Throws<InvalidOperationException>(() => ComparableClassCondition(true).Not.WithinRange(null, ComparableTestObjectGreaterThanSource));
-            Assert.Throws<InvalidOperationException>(() => ComparableClassCondition(true).Not.WithinRange(ComparableTestObjectLessThanSource, null));
-            Assert.Throws<InvalidOperationException>(() => ComparableClassCondition(true).Not.WithinRange(null, null));
+            Assert.Throws<ArgumentNullException>(() => ComparableClassCondition(true).Not.WithinRange(null, ComparableTestObjectGreaterThanSource));
+            Assert.Throws<ArgumentNullException>(() => ComparableClassCondition(true).Not.WithinRange(ComparableTestObjectLessThanSource, null));
+            Assert.Throws<ArgumentNullException>(() => ComparableClassCondition(true).Not.WithinRange(null, null));
 
-            Assert.Throws<InvalidOperationException>(() => NullableComparableStructCondition().WithinRange(null, 7));
-            Assert.Throws<InvalidOperationException>(() => NullableComparableStructCondition().WithinRange(3, null));
-            Assert.Throws<InvalidOperationException>(() => NullableComparableStructCondition().WithinRange(null, null));
+            Assert.Throws<ArgumentNullException>(() => NullableComparableStructCondition().WithinRange(null, 7));
+            Assert.Throws<ArgumentNullException>(() => NullableComparableStructCondition().WithinRange(3, null));
+            Assert.Throws<ArgumentNullException>(() => NullableComparableStructCondition().WithinRange(null, null));
 
-            Assert.Throws<InvalidOperationException>(() => NullableComparableStructCondition().Not.WithinRange(null, 7));
-            Assert.Throws<InvalidOperationException>(() => NullableComparableStructCondition().Not.WithinRange(3, null));
-            Assert.Throws<InvalidOperationException>(() => NullableComparableStructCondition().Not.WithinRange(null, null));
+            Assert.Throws<ArgumentNullException>(() => NullableComparableStructCondition().Not.WithinRange(null, 7));
+            Assert.Throws<ArgumentNullException>(() => NullableComparableStructCondition().Not.WithinRange(3, null));
+            Assert.Throws<ArgumentNullException>(() => NullableComparableStructCondition().Not.WithinRange(null, null));
         }
 
         private static IComparableClassCondition<ComparableTestObject> ComparableClassCondition(bool nullSource = false)

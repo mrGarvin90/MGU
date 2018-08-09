@@ -15,18 +15,18 @@
           IChainableConditionBase<bool?, IChainableNullableBoolCondition, IChainableNullableBoolNotCondition, IChainableNullableBoolDoesNotCondition>
     {
         /// <summary>
-        /// Determines whether the source nullable <see cref="bool"/> is <see langword="true"/>.
+        /// Determines whether the source nullable <see cref="bool"/> is <c>true</c>.
         /// </summary>
         /// <remarks>
-        /// The result of the condition will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>
+        /// The condition will evaluate to <c>false</c> if the nullable source <see cref="bool"/> is <c>null</c>
         /// </remarks>
         IConditionCoupler<bool?, IChainableNullableBoolCondition> True { get; }
 
         /// <summary>
-        /// Determines whether the source nullable <see cref="bool"/> is <see langword="false"/>.
+        /// Determines whether the source nullable <see cref="bool"/> is <c>false</c>.
         /// </summary>
         /// <remarks>
-        /// The result of the condition will be <see langword="false"/> if the nullable source <see cref="bool"/> is <see langword="null"/>
+        /// The condition will evaluate to <c>false</c> if the nullable source <see cref="bool"/> is <c>null</c>
         /// </remarks>
         IConditionCoupler<bool?, IChainableNullableBoolCondition> False { get; }
     }

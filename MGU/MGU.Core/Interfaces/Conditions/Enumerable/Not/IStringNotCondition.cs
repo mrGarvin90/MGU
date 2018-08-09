@@ -17,27 +17,27 @@
 
         /// <summary>
         /// Determines whether the source string is in the specified other.
-        /// The result will be <see langword="false"/> if the source string
-        /// or the specified <paramref name="other"/> is <see langword="null"/>.
+        /// The result will be <c>false</c> if the source string
+        /// or the specified <paramref name="other"/> is <c>null</c>.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <returns>
-        /// <see langword="true"/> if the source string is in the specified other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source string is in the specified other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         bool In([CanBeNull]string other);
 
         /// <summary>
         /// Determines whether the source string is in the specified other.
-        /// The result will be <see langword="false"/> if the source string
-        /// or the specified <paramref name="other"/> is <see langword="null"/>.
+        /// The result will be <c>false</c> if the source string
+        /// or the specified <paramref name="other"/> is <c>null</c>.
         /// </summary>
         /// <param name="other">The other.</param>
-        /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
+        /// <param name="ignoreCase">If set to <c>true</c> the case will be ignored.</param>
         /// <param name="culture">The culture info.</param>
         /// <returns>
-        /// <see langword="true"/> if the source string is in the specified other;
-        /// otherwise, <see langword="false"/>.
+        /// <c>true</c> if the source string is in the specified other;
+        /// otherwise, <c>false</c>.
         /// </returns>
         bool In([CanBeNull]string other, bool ignoreCase, CultureInfo culture = null);
     }

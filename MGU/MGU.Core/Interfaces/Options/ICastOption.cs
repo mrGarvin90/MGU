@@ -10,7 +10,7 @@
         /// </summary>
         /// <typeparam name="TTarget">The target type.</typeparam>
         /// <param name="unboxBeforeCast">
-        /// If set to <see langword="true" /> the source object will be unboxed before cast to
+        /// If set to <c>true</c> the source object will be unboxed before cast to
         /// <typeparamref name="TTarget"/>. This means that if the source object is an <see langword="int" />
         /// it can be cast to an <see langword="uint" />. Use with caution. Cast an <see langword="int"/> with
         /// a value of -1 to an <see langword="uint"/> will not throw an <see cref="System.InvalidCastException"/>.
@@ -28,13 +28,16 @@
         /// </summary>
         /// <typeparam name="TTarget">The target type.</typeparam>
         /// <param name="unboxBeforeCast">
-        /// If set to <see langword="true" /> the source object will be unboxed before cast to
+        /// If set to <c>true</c> the source object will be unboxed before cast to
         /// <typeparamref name="TTarget"/>. This means that if the source object is an <see langword="int" />
         /// it can be cast to an <see langword="uint" />. Use with caution. Cast an <see langword="int"/> with
         /// a value of -1 to an <see langword="uint"/> will not throw an <see cref="System.InvalidCastException"/>.
         /// Instead it will return the max value of <see langword="uint"/>.
         /// </param>
-        /// <returns>The source object as <typeparamref name="TTarget"/>.</returns>
+        /// <returns>
+        /// The source object as <typeparamref name="TTarget"/> if the cast is successful;
+        /// otherwise the default value of <typeparamref name="TTarget"/>.
+        /// </returns>
         TTarget ToOrDefault<TTarget>(bool unboxBeforeCast = false);
     }
 }

@@ -28,7 +28,8 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source <see cref="string"/> <see langword="null"/>.
+        /// Source <see cref="string"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
         /// </exception>
         IConditionCoupler<string, IChainableStringCondition> StartsWith([CanBeNull]string value);
 
@@ -36,11 +37,12 @@
         /// Determines whether the source string starts with the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
+        /// <param name="ignoreCase">If set to <c>true</c> the case will be ignored.</param>
         /// <param name="culture">The culture info.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source <see cref="string"/> <see langword="null"/>.
+        /// Source <see cref="string"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
         /// </exception>
         IConditionCoupler<string, IChainableStringCondition> StartsWith([CanBeNull]string value, bool ignoreCase, CultureInfo culture = null);
 
@@ -50,7 +52,8 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source <see cref="string"/> <see langword="null"/>.
+        /// Source <see cref="string"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
         /// </exception>
         IConditionCoupler<string, IChainableStringCondition> EndsWith([CanBeNull]string value);
 
@@ -58,11 +61,12 @@
         /// Determines whether the source string ends with the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <param name="ignoreCase">If set to <see langword="true"/> the case will be ignored.</param>
+        /// <param name="ignoreCase">If set to <c>true</c> the case will be ignored.</param>
         /// <param name="culture">The culture info.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source <see cref="string"/> <see langword="null"/>.
+        /// Source <see cref="string"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
         /// </exception>
         IConditionCoupler<string, IChainableStringCondition> EndsWith([CanBeNull]string value, bool ignoreCase, CultureInfo culture = null);
 
@@ -72,7 +76,8 @@
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The source <see cref="string"/> <see langword="null"/>.
+        /// Source <see cref="string"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
         /// </exception>
         IConditionCoupler<string, IChainableStringCondition> Contains([CanBeNull]string value);
     }

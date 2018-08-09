@@ -35,7 +35,7 @@
         }
 
         /// <summary>
-        /// Gets the type of the instance.
+        /// Gets the name of the instance type.
         /// </summary>
         public string InstanceType { get; }
 

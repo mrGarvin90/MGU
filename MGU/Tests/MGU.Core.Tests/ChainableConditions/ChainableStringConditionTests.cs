@@ -1,5 +1,6 @@
 ﻿namespace MGU.Core.Tests.ChainableConditions
 {
+    using System;
     using Core.Exceptions;
     using Core.Extensions.If;
     using Interfaces.ChainableConditions.Enumerable;
@@ -401,26 +402,56 @@
         [Fact]
         public void Should_Throw_ConditionEvaluationFailedException()
         {
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty, true));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.StartWith(string.Empty));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.StartWith(string.Empty, true));
+            var exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty, true));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.EndWith(string.Empty));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.EndWith(string.Empty, true));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().StartsWith(string.Empty, true));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().WhiteSpace);
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.StartWith(string.Empty));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.LessThan(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.LessThanEqualTo(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.GreaterThan(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.GreaterThanEqualTo(5));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.StartWith(string.Empty, true));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.Not(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.Not.WithinRange(5, 6));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().EndsWith(string.Empty, true));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.EndWith(string.Empty));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().DoesNot.EndWith(string.Empty, true));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().WhiteSpace);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.LessThan(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.LessThanEqualTo(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.GreaterThan(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.GreaterThanEqualTo(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.WithinRange(5, 6));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.Not.WithinRange(5, 6));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is.Not(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullStringCondition().Length.Is(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
         }
 
         private static IChainableStringCondition StringCondition()

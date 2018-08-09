@@ -1,5 +1,6 @@
 ﻿namespace MGU.Core.Tests.ChainableConditions
 {
+    using System;
     using System.Collections.Generic;
     using Core.Exceptions;
     using Core.Extensions.If;
@@ -427,35 +428,74 @@
         [Fact]
         public void Should_Throw_ConditionEvaluationFailedException()
         {
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Empty);
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Not.Empty);
+            var exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Empty);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().All(to => to is null));
-            Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsWithNullCondition().All(to => to.IntValue == 5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsCondition().All(null));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Not.Empty);
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Any(to => to is null));
-            Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsWithNullCondition().Any(to => to.IntValue == 5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsCondition().Any(null));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().All(to => to is null));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().None(to => to is null));
-            Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsWithNullCondition().None(to => to.IntValue == 5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsCondition().None(null));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsWithNullCondition().All(to => to.IntValue == 5));
+            Assert.NotNull(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().SequentiallyEqualTo(OtherTestObjects));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Not.SequentiallyEqualTo(OtherTestObjects));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsCondition().All(null));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Contains(TestObject.Default()));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().DoesNot.Contain(TestObject.Default()));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Any(to => to is null));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.LessThan(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.LessThanEqualTo(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.GreaterThan(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.GreaterThanEqualTo(5));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsWithNullCondition().Any(to => to.IntValue == 5));
+            Assert.NotNull(exception.InnerException);
 
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.Not(5));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.Not.WithinRange(5, 6));
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsCondition().Any(null));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().None(to => to is null));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsWithNullCondition().None(to => to.IntValue == 5));
+            Assert.NotNull(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => TestObjectsCondition().None(null));
+            Assert.NotNull(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().SequentiallyEqualTo(OtherTestObjects));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Not.SequentiallyEqualTo(OtherTestObjects));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Contains(TestObject.Default()));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().DoesNot.Contain(TestObject.Default()));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.LessThan(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.LessThanEqualTo(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.GreaterThan(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.GreaterThanEqualTo(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.WithinRange(5, 6));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.Not.WithinRange(5, 6));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is.Not(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullTestObjectsCondition().Count.Is(5));
+            Assert.IsType<ArgumentNullException>(exception.InnerException);
         }
 
         private static IChainableEnumerableCondition<int[], int> ArrayCondition(int[] source = null)

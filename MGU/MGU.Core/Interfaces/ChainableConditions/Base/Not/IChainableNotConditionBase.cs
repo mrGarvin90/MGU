@@ -24,21 +24,24 @@
         /// <summary>
         /// Determines whether the source object is the specified type.
         /// </summary>
-        /// <remarks>
-        /// If the source object is <see langword="null"/> the specific types of the source object and <typeparamref name="T"/>
-        /// will be compared, otherwise the <see langword="is"/> operator will be used.
-        /// </remarks>
         /// <typeparam name="T">The type.</typeparam>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
+        /// <remarks>
+        /// If the source object is <c>null</c> the specific types of the source object and <typeparamref name="T"/>
+        /// will be compared, otherwise the <see langword="is"/> operator will be used.
+        /// </remarks>
         IConditionCoupler<TSource, TChainableCondition> Type<T>();
 
         /// <summary>
         /// Determines whether the source object is in the specified collection using the specified <paramref name="comparer"/>
-        /// or the default equality comparer for the source object if the specified <paramref name="comparer"/> is <see langword="null"/>.
+        /// or the default equality comparer for the source object if the specified <paramref name="comparer"/> is <c>null</c>.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="comparer">The comparer.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
+        /// <remarks>
+        /// The condition will evaluate to <c>false</c> if <paramref name="collection"/> is <c>null</c>.
+        /// </remarks>
         IConditionCoupler<TSource, TChainableCondition> In([CanBeNull]IEnumerable<TSource> collection, IEqualityComparer<TSource> comparer = null);
     }
 }

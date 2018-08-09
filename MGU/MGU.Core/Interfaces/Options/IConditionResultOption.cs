@@ -1,11 +1,12 @@
 ﻿namespace MGU.Core.Interfaces.Options
 {
     using System;
+    using Exceptions;
     using Helpers;
     using JetBrains.Annotations;
 
     /// <summary>
-    /// Defines actions performed after the specified conditions are met.
+    /// Defines options performed after the specified conditions are evaluated.
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     public interface IConditionResultOption<TSource>
@@ -22,18 +23,27 @@
         ICastOption Cast { get; }
 
         /// <summary>
-        /// Invokes the action if the specified conditions are met.
+        /// Invokes the actions if the specified conditions are met.
         /// </summary>
-        /// <param name="action">The action.</param>
+        /// <param name="action">The first action.</param>
+        /// <param name="actions">The other actions.</param>
         /// <returns>The source object.</returns>
-        TSource Invoke([NotNull]Action action);
+        /// <exception cref="NullReferenceException">
+        /// <paramref name="action"/> or any <see cref="Action"/> in <paramref name="actions"/> is <c>null</c>.
+        /// </exception>
+        TSource Invoke([NotNull]Action action, [CanBeNull]params Action[] actions);
 
         /// <summary>
         /// Invokes the function and returns the result if the specified conditions are met.
-        /// If not the source object wil be returned.
         /// </summary>
         /// <param name="func">The function.</param>
-        /// <returns>The value returned by the function or the source object.</returns>
+        /// <returns>
+        /// The value returned by the function if the specified conditions are met;
+        /// otherwise the source object.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="func"/> is <c>null</c>.
+        /// </exception>
         TSource Get([NotNull]Func<TSource> func);
 
         /// <summary>
@@ -47,7 +57,10 @@
         /// Returns <paramref name="value"/> if the specified conditions are met.
         /// </summary>
         /// <param name="value">The value.</param>
-        /// <returns>The <paramref name="value"/>.</returns>
+        /// <returns>
+        /// <paramref name="value"/> if the specified conditions are met;
+        /// otherwise the source object.
+        /// </returns>
         TSource Then(TSource value);
 
         /// <summary>
@@ -57,7 +70,7 @@
         /// </summary>
         /// <typeparam name="TException">The type of the exception.</typeparam>
         /// <param name="exceptionParameters">The exception parameters.</param>
-        /// <exception cref="Exceptions.CouldNotCreateInstanceException">
+        /// <exception cref="CouldNotCreateInstanceException">
         /// No public constructor was found that matches the specified parameters.
         /// </exception>
         /// <returns>The source object.</returns>
@@ -84,8 +97,8 @@
         /// </summary>
         /// <typeparam name="TException">The type of the exception.</typeparam>
         /// <param name="exception">The exception.</param>
-        /// <exception cref="Exceptions.ExceptionIsNullException">
-        /// The specified exception is <see langword="null"/>.
+        /// <exception cref="ExceptionIsNullException">
+        /// The specified exception is <c>null</c>.
         /// </exception>
         /// <returns>The source object.</returns>
         TSource Throw<TException>([NotNull]TException exception)

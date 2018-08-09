@@ -23,7 +23,8 @@
         /// <param name="max">The maximum.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The <paramref name="min"/> or <paramref name="max"/> is <see langword="null"/>.
+        /// <paramref name="min"/> or <paramref name="max"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.ArgumentNullException"/>.
         /// </exception>
         IConditionCoupler<TSource, TChainableComparableCondition> WithinRange([NotNull]TSource min, [NotNull]TSource max);
 

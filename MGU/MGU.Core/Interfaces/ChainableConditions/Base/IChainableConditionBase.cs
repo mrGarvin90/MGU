@@ -42,7 +42,12 @@
         /// <param name="condition">The condition.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The <paramref name="condition"/> could not be evaluated.
+        /// <paramref name="condition"/> is <c>null</c>.
+        /// Inner exception: <see cref="NullReferenceException"/>.
+        /// </exception>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// <paramref name="condition"/> could not be evaluated.
+        /// Inner exception: Cannot specify.
         /// </exception>
         IConditionCoupler<TSource, TChainableCondition> Fulfills([NotNull]Func<TSource, bool> condition);
     }

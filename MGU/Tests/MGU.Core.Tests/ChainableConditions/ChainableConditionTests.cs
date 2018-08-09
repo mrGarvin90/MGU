@@ -1,5 +1,6 @@
 ﻿namespace MGU.Core.Tests.ChainableConditions
 {
+    using System;
     using System.Collections.Generic;
     using Core.Exceptions;
     using Core.Extensions.If;
@@ -178,36 +179,47 @@
         }
 
         [Fact]
-        public void Result_Should_True_When_Source_Fulfills_Condition()
+        public void Result_Should_Be_True_When_Source_Fulfills_Condition()
         {
-            Assert.True(NullSourceObjectCondition().Fulfills(s => s == null).Result);
+            var source = TestObject.New(string.Empty, 42);
+            Assert.True(source.If().Fulfills(s => s.IntValue == 42).Result);
         }
 
         [Fact]
-        public void Result_Should_False_When_Source_Do_Not_Fulfill_Condition()
+        public void Result_Should_Be_False_When_Source_Do_Not_Fulfill_Condition()
         {
-            Assert.False(NullSourceObjectCondition().Fulfills(s => s != null).Result);
+            var source = TestObject.New(string.Empty, 5);
+            Assert.False(source.If().Fulfills(s => s.IntValue == 42).Result);
         }
 
         [Fact]
-        public void Result_Should_True_When_Source_Do_Not_Fulfill_Condition()
+        public void Result_Should_Be_True_When_Source_Do_Not_Fulfill_Condition()
         {
-            Assert.True(NullSourceObjectCondition().DoesNot.Fulfill(s => s != null).Result);
+            var source = TestObject.New(string.Empty, 5);
+            Assert.True(source.If().DoesNot.Fulfill(s => s.IntValue == 42).Result);
         }
 
         [Fact]
-        public void Result_Should_False_When_Source_Fulfills_Condition()
+        public void Result_Should_Be_False_When_Source_Fulfills_Condition()
         {
-            Assert.False(NullSourceObjectCondition().DoesNot.Fulfill(s => s == null).Result);
+            var source = TestObject.New(string.Empty, 42);
+            Assert.False(source.If().DoesNot.Fulfill(s => s.IntValue == 42).Result);
         }
 
         [Fact]
         public void Should_Throw_ConditionEvaluationFailedException_When_Condition_Is_Not_Valid()
         {
-            Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().Fulfills(null));
-            Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().DoesNot.Fulfill(null));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().Fulfills(s => s.IntValue == 1));
-            Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().DoesNot.Fulfill(s => s.IntValue == 1));
+            var exception = Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().Fulfills(null));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => SourceTestObjectCondition().DoesNot.Fulfill(null));
+            Assert.IsType<NullReferenceException>(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().Fulfills(s => s.IntValue == 1));
+            Assert.NotNull(exception.InnerException);
+
+            exception = Assert.Throws<ConditionEvaluationFailedException>(() => NullSourceTestObjectCondition().DoesNot.Fulfill(s => s.IntValue == 1));
+            Assert.NotNull(exception.InnerException);
         }
 
         private static IChainableCondition<object> SourceObjectCondition()

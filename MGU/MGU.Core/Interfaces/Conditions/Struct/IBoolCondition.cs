@@ -13,12 +13,12 @@
           IConditionBase<bool, IBoolNotCondition>
     {
         /// <summary>
-        /// Gets a value indicating whether the source <see cref="bool"/> is <see langword="true"/>.
+        /// Gets a value indicating whether the source <see cref="bool"/> is <c>true</c>.
         /// </summary>
         bool True { get; }
 
         /// <summary>
-        /// Gets a value indicating whether the source <see cref="bool"/> is <see langword="true"/>.
+        /// Gets a value indicating whether the source <see cref="bool"/> is <c>false</c>.
         /// </summary>
         bool False { get; }
     }
