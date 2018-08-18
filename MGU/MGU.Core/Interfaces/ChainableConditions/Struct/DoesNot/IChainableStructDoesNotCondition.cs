@@ -4,8 +4,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines chainable conditions for all structs
-    /// where the result of the conditions will be inverted.
+    /// Defines chainable conditions for all structs.
     /// </summary>
     /// <typeparam name="TSource">The type of the struct.</typeparam>
     public interface IChainableStructDoesNotCondition<TSource> : IChainableDoesNotConditionBase<TSource, IChainableStructCondition<TSource>>

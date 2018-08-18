@@ -83,18 +83,6 @@
 
         /// <summary>
         /// Determines whether the specified string contains the source <see cref="char"/>.
-        /// The result will be <c>false</c> if the specified string is <c>null</c>.
-        /// </summary>
-        /// <param name="str">The string.</param>
-        /// <returns>
-        /// <c>true</c> if the source <see cref="char"/> is in the specified string;
-        /// otherwise, <c>false</c>.
-        /// </returns>
-        bool In([CanBeNull]string str);
-
-        /// <summary>
-        /// Determines whether the specified string contains the source <see cref="char"/>.
-        /// The result will be <c>false</c> if the specified string is <c>null</c>.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <param name="ignoreCase">If set to <c>true</c> the case will be ignored.</param>
@@ -103,6 +91,10 @@
         /// <c>true</c> if the source <see cref="char"/> is in the specified string;
         /// otherwise, <c>false</c>.
         /// </returns>
-        bool In([CanBeNull]string str, bool ignoreCase, CultureInfo culture = null);
+        /// <remarks>
+        /// <paramref name="culture"/> will only be used if <paramref name="ignoreCase"/> is <c>true</c>.
+        /// The result will be <c>false</c> if the specified string is <c>null</c>.
+        /// </remarks>
+        bool In([CanBeNull]string str, bool ignoreCase = false, CultureInfo culture = null);
     }
 }

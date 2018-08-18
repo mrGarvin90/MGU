@@ -30,35 +30,18 @@
         protected override IStringNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        public bool In(string other)
+        public bool In(string other, bool ignoreCase = false, CultureInfo culture = null)
         {
-            return In(other, false);
-        }
-
-        /// <inheritdoc />
-        public bool In(string other, bool ignoreCase, CultureInfo culture = null)
-        {
-            if (!ignoreCase)
-                return Result(IsIn(other, Source));
-
-            string source;
-            if (culture is null)
+            if (Source is null || other is null)
+                return Result(false);
+            var source = Source;
+            if (ignoreCase)
             {
-                source = Source?.ToLower();
-                other = other?.ToLower();
-            }
-            else
-            {
-                source = Source?.ToLower(culture);
-                other = other?.ToLower(culture);
+                source = culture is null ? source.ToLower() : source.ToLower(culture);
+                other = culture is null ? other.ToLower() : other.ToLower(culture);
             }
 
-            return Result(IsIn(other, source));
-        }
-
-        private static bool IsIn(string other, string source)
-        {
-            return source != null && (other?.Contains(source) ?? false);
+            return Result(other.Contains(source));
         }
     }
 }

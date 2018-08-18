@@ -4,7 +4,7 @@
     using Internal.Options;
 
     /// <summary>
-    /// Contains extension methods for <see cref="object"/>.
+    /// Contains extension methods to cast an object to an other type.
     /// </summary>
     public static class CastExtensions
     {

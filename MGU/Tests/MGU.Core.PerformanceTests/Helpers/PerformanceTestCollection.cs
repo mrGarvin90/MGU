@@ -11,13 +11,16 @@
     /// </summary>
     public class PerformanceTestCollection
     {
+        private readonly bool _skipAllTests;
         private readonly List<PerformanceTest> _tests;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PerformanceTestCollection"/> class.
         /// </summary>
-        public PerformanceTestCollection()
+        /// <param name="skipAllTests">If set to <c>true</c> all tests will be skipped.</param>
+        public PerformanceTestCollection(bool skipAllTests)
         {
+            _skipAllTests = skipAllTests;
             _tests = new List<PerformanceTest>();
         }
 
@@ -25,7 +28,7 @@
         /// Adds a test to the collection.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="action">The action.</param>
+        /// <param name="action">The action to test.</param>
         /// <param name="maxMilliseconds">The maximum milliseconds.</param>
         /// <param name="ignoreException">The function that is used to evaluate if an exception should be ignored.</param>
         /// <param name="iterations">The number of test iterations.</param>
@@ -60,6 +63,52 @@
             _tests.Add(new PerformanceTest(
                 name,
                 action,
+                maxMilliseconds,
+                iterations,
+                warmupIterations,
+                ignoreException));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a test to the collection.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="function">The function to test.</param>
+        /// <param name="maxMilliseconds">The maximum milliseconds.</param>
+        /// <param name="ignoreException">The function that is used to evaluate if an exception should be ignored.</param>
+        /// <param name="iterations">The number of test iterations.</param>
+        /// <param name="warmupIterations">The number of warmup iterations.</param>
+        /// <returns>This instance.</returns>
+        /// <remarks>
+        /// If <paramref name="warmupIterations"/> is set to 0,
+        /// a warmup iteration will still run to check if any exception is thrown.
+        /// </remarks>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="name"/> is <c>null</c>, empty or consists only of white-space characters.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="function"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="maxMilliseconds"/> is equal to 0.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// The <paramref name="name"/> is not unique.
+        /// </exception>
+        public PerformanceTestCollection Add(
+            [NotNull]string name,
+            [NotNull]Func<object> function,
+            uint maxMilliseconds,
+            Func<Exception, bool> ignoreException = null,
+            uint iterations = 100_000,
+            uint warmupIterations = 5_000)
+        {
+            if (_tests.Any(t => t.Name == name))
+                throw new ArgumentException($"There is already a test in the collection with the name '{name}'.");
+            _tests.Add(new PerformanceTest(
+                name,
+                function,
                 maxMilliseconds,
                 iterations,
                 warmupIterations,
@@ -122,7 +171,7 @@
             if (!_tests.Any())
                 AssertInconclusive("The test collection is empty.");
             var skippedTests = _tests.Count(t => t.Skip);
-            if (skippedTests == _tests.Count)
+            if (_skipAllTests || skippedTests == _tests.Count)
                 AssertInconclusive("All tests is set to be skipped.");
             var outputHelper = new PerformanceTestOutputHelper();
 

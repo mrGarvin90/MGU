@@ -2,7 +2,6 @@
 {
     using Base;
     using Not;
-    using Struct.Not;
 
     /// <inheritdoc cref="INullableCharNotCondition" />
     /// <inheritdoc cref="IComparableConditionBase{TSource,TComparableNotCondition}" />

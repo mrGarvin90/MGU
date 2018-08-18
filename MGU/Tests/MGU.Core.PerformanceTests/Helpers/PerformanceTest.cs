@@ -45,9 +45,79 @@
             uint iterations,
             uint warmupIterations,
             [CanBeNull]Func<Exception, bool> ignoreException)
+            : this(name, maxMilliseconds, iterations, warmupIterations, ignoreException)
+        {
+            Action = action ?? throw new ArgumentNullException(nameof(action));
+            Function = null;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PerformanceTest"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="function">The function to test.</param>
+        /// <param name="maxMilliseconds">The maximum milliseconds.</param>
+        /// <param name="iterations">The number of test iterations.</param>
+        /// <param name="warmupIterations">The number of warmup iterations.</param>
+        /// <param name="ignoreException">The function that is used to evaluate if an exception should be ignored.</param>
+        /// <remarks>
+        /// If <paramref name="warmupIterations"/> is set to 0,
+        /// a warmup iteration will still run to check if any exception is thrown.
+        /// </remarks>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="name"/> is <c>null</c>, empty or consists only of white-space characters.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="function"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="maxMilliseconds"/> is equal to 0.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="iterations"/> is equal to 0.
+        /// </exception>
+        internal PerformanceTest(
+            [NotNull]string name,
+            [NotNull]Func<object> function,
+            uint maxMilliseconds,
+            uint iterations,
+            uint warmupIterations,
+            [CanBeNull]Func<Exception, bool> ignoreException)
+            : this(name, maxMilliseconds, iterations, warmupIterations, ignoreException)
+        {
+            Function = function ?? throw new ArgumentNullException(nameof(function));
+            Action = null;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PerformanceTest"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="maxMilliseconds">The maximum milliseconds.</param>
+        /// <param name="iterations">The number of test iterations.</param>
+        /// <param name="warmupIterations">The number of warmup iterations.</param>
+        /// <param name="ignoreException">The function that is used to evaluate if an exception should be ignored.</param>
+        /// <remarks>
+        /// If <paramref name="warmupIterations"/> is set to 0,
+        /// a warmup iteration will still run to check if any exception is thrown.
+        /// </remarks>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="name"/> is <c>null</c>, empty or consists only of white-space characters.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="maxMilliseconds"/> is equal to 0.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="iterations"/> is equal to 0.
+        /// </exception>
+        private PerformanceTest(
+            [NotNull]string name,
+            uint maxMilliseconds,
+            uint iterations,
+            uint warmupIterations,
+            [CanBeNull]Func<Exception, bool> ignoreException)
         {
             Name = !string.IsNullOrWhiteSpace(name) ? name : throw new ArgumentException("Cannot be null, empty or consists only of white-space characters.", nameof(name));
-            Action = action ?? throw new ArgumentNullException(nameof(action));
             MaxMilliseconds = maxMilliseconds > 0 ? maxMilliseconds : throw new ArgumentOutOfRangeException(nameof(maxMilliseconds), maxMilliseconds, "Must be larger than 0.");
             IgnoreException = ignoreException;
             Iterations = iterations > 0 ? iterations : throw new ArgumentOutOfRangeException(nameof(iterations), iterations, "Must be larger than 0.");
@@ -121,6 +191,8 @@
 
         private Action Action { get; }
 
+        private Func<object> Function { get; }
+
         private Func<Exception, bool> IgnoreException { get; }
 
         /// <summary>
@@ -135,7 +207,10 @@
             {
                 try
                 {
-                    Action();
+                    if (Action != null)
+                        Action();
+                    else
+                        Function();
                 }
                 catch (Exception exception) when (IgnoreException?.Invoke(exception) ?? false)
                 {
@@ -157,7 +232,10 @@
             {
                 try
                 {
-                    Action();
+                    if (Action != null)
+                        Action();
+                    else
+                        Function();
                 }
                 catch when (IgnoreException != null)
                 {

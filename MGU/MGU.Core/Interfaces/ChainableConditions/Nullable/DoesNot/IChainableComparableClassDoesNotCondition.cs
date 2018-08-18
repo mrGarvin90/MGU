@@ -6,8 +6,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines chainable conditions for all classes that implement <see cref="IComparable{T}"/>
-    /// where the result of the conditions will be inverted.
+    /// Defines chainable conditions for all classes that implement <see cref="IComparable{T}"/>.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable.</typeparam>
     public interface IChainableComparableClassDoesNotCondition<TSource> : IChainableComparableDoesNotConditionBase<TSource, IChainableComparableClassCondition<TSource>>

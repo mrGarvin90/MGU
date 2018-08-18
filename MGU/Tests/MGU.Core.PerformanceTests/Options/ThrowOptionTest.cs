@@ -11,7 +11,7 @@
         #region Throw
 
         [Test]
-        public void ThrowArgumentShouldPass()
+        public void Throw_Argument_Should_Pass()
         {
             object source = null;
             const string message = "Message",
@@ -22,28 +22,28 @@
                 .Add(
                     "source.If().Null.Throw().Argument(message)",
                     () => source.If().Null.Throw().Argument(message),
-                    6000,
+                    5400,
                     IgnoreArgument)
                 .Add(
                     "source.If().Null.Throw().Argument(message, paramName)",
                     () => source.If().Null.Throw().Argument(message, paramName),
-                    6000,
+                    5400,
                     IgnoreArgument)
                 .Add(
                     "source.If().Null.Throw().Argument(message, innerException)",
                     () => source.If().Null.Throw().Argument(message, innerException),
-                    6000,
+                    5400,
                     IgnoreArgument)
                 .Add(
                     "source.If().Null.Throw().Argument(message, paramName, innerException)",
                     () => source.If().Null.Throw().Argument(message, paramName, innerException),
-                    6000,
+                    5400,
                     IgnoreArgument)
                 .RunAll();
         }
 
         [Test]
-        public void ThrowNullShouldPass()
+        public void Throw_Null_Should_Pass()
         {
             object source = null;
             const string message = "Message",
@@ -54,23 +54,23 @@
                 .Add(
                     "source.If().Null.Throw().Null(paramName)",
                     () => source.If().Null.Throw().Null(paramName),
-                    6000,
+                    5400,
                     IgnoreNull)
                 .Add(
                     "source.If().Null.Throw().Null(paramName, message)",
                     () => source.If().Null.Throw().Null(paramName, message),
-                    6000,
+                    5400,
                     IgnoreNull)
                 .Add(
                     "source.If().Null.Throw().Null(message, innerException)",
                     () => source.If().Null.Throw().Null(message, innerException),
-                    6000,
+                    5400,
                     IgnoreNull)
                 .RunAll();
         }
 
         [Test]
-        public void ThrowOutOfRangeShouldPass()
+        public void Throw_OutOfRange_Should_Pass()
         {
             object source = null;
             const string message = "Message",
@@ -81,28 +81,28 @@
                 .Add(
                     "source.If().Null.Throw().OutOfRange(message)",
                     () => source.If().Null.Throw().OutOfRange(paramName),
-                    6000,
+                    5500,
                     IgnoreOutOfRange)
                 .Add(
                     "source.If().Null.Throw().OutOfRange(paramName, message)",
                     () => source.If().Null.Throw().OutOfRange(paramName, message),
-                    6000,
+                    5500,
                     IgnoreOutOfRange)
                 .Add(
                     "source.If().Null.Throw().OutOfRange(paramName, null, message)",
                     () => source.If().Null.Throw().OutOfRange(paramName, null, message),
-                    6000,
+                    5500,
                     IgnoreOutOfRange)
                 .Add(
                     "source.If().Null.Throw().OutOfRange(message, innerException)",
                     () => source.If().Null.Throw().OutOfRange(message, innerException),
-                    6000,
+                    5500,
                     IgnoreOutOfRange)
                 .RunAll();
         }
 
         [Test]
-        public void ThrowInvalidOperationShouldPass()
+        public void Throw_InvalidOperation_Should_Pass()
         {
             object source = null;
             const string message = "Message";
@@ -112,18 +112,18 @@
                 .Add(
                     "source.If().Null.Throw().InvalidOperation(message)",
                     () => source.If().Null.Throw().InvalidOperation(message),
-                    6000,
+                    5400,
                     IgnoreInvalidOperation)
                 .Add(
                     "source.If().Null.Throw().InvalidOperation(message, innerException)",
                     () => source.If().Null.Throw().InvalidOperation(message, innerException),
-                    6000,
+                    5400,
                     IgnoreInvalidOperation)
                 .RunAll();
         }
 
         [Test]
-        public void ThrowExceptionShouldPass()
+        public void Throw_Exception_Should_Pass()
         {
             object source = null;
             const string message = "Message";
@@ -133,12 +133,12 @@
                 .Add(
                     "source.If().Null.Throw().Exception(message)",
                     () => source.If().Null.Throw().Exception(message),
-                    6000,
+                    5400,
                     IgnoreException)
                 .Add(
                     "source.If().Null.Throw().Exception(message, innerException)",
                     () => source.If().Null.Throw().Exception(message, innerException),
-                    6000,
+                    5400,
                     IgnoreException)
                 .RunAll();
         }
@@ -148,7 +148,7 @@
         #region DoNotThrow
 
         [Test]
-        public void DoNotThrowArgumentShouldPass()
+        public void Do_Not_Throw_Argument_Should_Pass()
         {
             object source = 5;
             const string message = "Message",
@@ -159,24 +159,24 @@
                 .Add(
                     "source.If().Null.Throw().Argument(message)",
                     () => source.If().Null.Throw().Argument(message),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().Argument(message, paramName)",
                     () => source.If().Null.Throw().Argument(message, paramName),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().Argument(message, innerException)",
                     () => source.If().Null.Throw().Argument(message, innerException),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().Argument(message, paramName, innerException)",
                     () => source.If().Null.Throw().Argument(message, paramName, innerException),
-                    45)
+                    20)
                 .RunAll();
         }
 
         [Test]
-        public void DoNotThrowNullShouldPass()
+        public void Do_Not_Throw_Null_Should_Pass()
         {
             object source = 5;
             const string message = "Message",
@@ -187,20 +187,20 @@
                 .Add(
                     "source.If().Null.Throw().Null(paramName)",
                     () => source.If().Null.Throw().Null(paramName),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().Null(paramName, message)",
                     () => source.If().Null.Throw().Null(paramName, message),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().Null(message, innerException)",
                     () => source.If().Null.Throw().Null(message, innerException),
-                    45)
+                    20)
                 .RunAll();
         }
 
         [Test]
-        public void DoNotThrowOutOfRangeShouldPass()
+        public void Do_Not_Throw_OutOfRange_Should_Pass()
         {
             object source = 5;
             const string message = "Message",
@@ -211,24 +211,24 @@
                 .Add(
                     "source.If().Null.Throw().OutOfRange(message)",
                     () => source.If().Null.Throw().OutOfRange(paramName),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().OutOfRange(paramName, message)",
                     () => source.If().Null.Throw().OutOfRange(paramName, message),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().OutOfRange(paramName, 5, message)",
                     () => source.If().Null.Throw().OutOfRange(paramName, 5, message),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().OutOfRange(message, innerException)",
                     () => source.If().Null.Throw().OutOfRange(message, innerException),
-                    45)
+                    20)
                 .RunAll();
         }
 
         [Test]
-        public void DoNotThrowInvalidOperationShouldPass()
+        public void Do_Not_Throw_InvalidOperation_Should_Pass()
         {
             object source = 5;
             const string message = "Message";
@@ -238,16 +238,16 @@
                 .Add(
                     "source.If().Null.Throw().InvalidOperation(message)",
                     () => source.If().Null.Throw().InvalidOperation(message),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().InvalidOperation(message, innerException)",
                     () => source.If().Null.Throw().InvalidOperation(message, innerException),
-                    45)
+                    20)
                 .RunAll();
         }
 
         [Test]
-        public void DoNotThrowExceptionShouldPass()
+        public void Do_Not_Throw_Exception_Should_Pass()
         {
             object source = 5;
             const string message = "Message";
@@ -257,11 +257,11 @@
                 .Add(
                     "source.If().Null.Throw().Exception(message)",
                     () => source.If().Null.Throw().Exception(message),
-                    45)
+                    20)
                 .Add(
                     "source.If().Null.Throw().Exception(message, innerException)",
                     () => source.If().Null.Throw().Exception(message, innerException),
-                    45)
+                    20)
                 .RunAll();
         }
 

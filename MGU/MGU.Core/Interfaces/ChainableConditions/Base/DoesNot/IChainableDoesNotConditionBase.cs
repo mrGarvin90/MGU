@@ -6,8 +6,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// The base interface that defines chainable conditions for all objects
-    /// where the result of the conditions will be inverted.
+    /// The base interface that defines chainable conditions for all objects.
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>

@@ -37,38 +37,26 @@
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> WithinRange(TSource min, TSource max)
-        {
-            return Evaluate(s => s.WithinRange(min, max));
-        }
+            => Evaluate(s => s.WithinRange(min, max));
 
         /// <inheritdoc cref="IChainableComparableConditionBase{TSource}" />
         public new IConditionCoupler<TSource, TChainableComparableCondition> EqualTo(TSource other)
-        {
-            return Evaluate(s => s.EqualTo(other));
-        }
+            => Evaluate(s => s.EqualTo(other));
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> LessThan(TSource other)
-        {
-            return Evaluate(s => s.LessThan(other));
-        }
+            => Evaluate(s => s.LessThan(other));
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> LessThanEqualTo(TSource other)
-        {
-            return Evaluate(s => s.LessThanOrEqualTo(other));
-        }
+            => Evaluate(s => s.LessThanOrEqualTo(other));
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> GreaterThan(TSource other)
-        {
-            return Evaluate(s => s.GreaterThan(other));
-        }
+            => Evaluate(s => s.GreaterThan(other));
 
         /// <inheritdoc />
         public IConditionCoupler<TSource, TChainableComparableCondition> GreaterThanEqualTo(TSource other)
-        {
-            return Evaluate(s => s.GreaterThanOrEqualTo(other));
-        }
+            => Evaluate(s => s.GreaterThanOrEqualTo(other));
     }
 }

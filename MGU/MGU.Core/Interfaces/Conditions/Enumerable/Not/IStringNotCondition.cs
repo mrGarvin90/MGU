@@ -17,20 +17,6 @@
 
         /// <summary>
         /// Determines whether the source string is in the specified other.
-        /// The result will be <c>false</c> if the source string
-        /// or the specified <paramref name="other"/> is <c>null</c>.
-        /// </summary>
-        /// <param name="other">The other.</param>
-        /// <returns>
-        /// <c>true</c> if the source string is in the specified other;
-        /// otherwise, <c>false</c>.
-        /// </returns>
-        bool In([CanBeNull]string other);
-
-        /// <summary>
-        /// Determines whether the source string is in the specified other.
-        /// The result will be <c>false</c> if the source string
-        /// or the specified <paramref name="other"/> is <c>null</c>.
         /// </summary>
         /// <param name="other">The other.</param>
         /// <param name="ignoreCase">If set to <c>true</c> the case will be ignored.</param>
@@ -39,6 +25,11 @@
         /// <c>true</c> if the source string is in the specified other;
         /// otherwise, <c>false</c>.
         /// </returns>
-        bool In([CanBeNull]string other, bool ignoreCase, CultureInfo culture = null);
+        /// <remarks>
+        /// <paramref name="culture"/> will only be used if <paramref name="ignoreCase"/> is <c>true</c>.
+        /// The result will be <c>false</c> if the source string
+        /// or the specified <paramref name="other"/> is <c>null</c>.
+        /// </remarks>
+        bool In([CanBeNull]string other, bool ignoreCase = false, CultureInfo culture = null);
     }
 }

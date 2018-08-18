@@ -34,7 +34,7 @@
         {
             var isType = source is T;
             return ((ConditionCoupler<T, IChainableCondition<T>>)(isType ? (T)source : default).If())
-                .Evaluate(s => isType, false, "Type");
+                .Evaluate(s => isType, "If<T>");
         }
     }
 }

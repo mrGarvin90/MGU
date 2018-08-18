@@ -123,24 +123,14 @@
         /// Determines whether the specified string contains the nullable source <see cref="char"/>.
         /// </summary>
         /// <param name="str">The string.</param>
-        /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
-        /// <remarks>
-        /// The condition will evaluate to <c>false</c> if the nullable source <see cref="char"/>
-        /// or the specified string is <c>null</c>.
-        /// </remarks>
-        IConditionCoupler<char?, IChainableNullableCharCondition> In([CanBeNull]string str);
-
-        /// <summary>
-        /// Determines whether the specified string contains the nullable source <see cref="char"/>.
-        /// </summary>
-        /// <param name="str">The string.</param>
         /// <param name="ignoreCase">If set to <c>true</c> the case will be ignored.</param>
         /// <param name="culture">The culture info.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <remarks>
+        /// <paramref name="culture"/> will only be used if <paramref name="ignoreCase"/> is <c>true</c>.
         /// The condition will evaluate to <c>false</c> if the nullable source <see cref="char"/>
         /// or the specified string is <c>null</c>.
         /// </remarks>
-        IConditionCoupler<char?, IChainableNullableCharCondition> In([CanBeNull]string str, bool ignoreCase, CultureInfo culture = null);
+        IConditionCoupler<char?, IChainableNullableCharCondition> In([CanBeNull]string str, bool ignoreCase = false, CultureInfo culture = null);
     }
 }

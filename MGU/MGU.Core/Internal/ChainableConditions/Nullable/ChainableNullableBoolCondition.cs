@@ -26,10 +26,10 @@
         }
 
         /// <inheritdoc />
-        public IConditionCoupler<bool?, IChainableNullableBoolCondition> True => Evaluate(s => s.HasValue && s.Value);
+        public IConditionCoupler<bool?, IChainableNullableBoolCondition> True => Evaluate(s => s == true);
 
         /// <inheritdoc />
-        public IConditionCoupler<bool?, IChainableNullableBoolCondition> False => Evaluate(s => s.HasValue && !s.Value);
+        public IConditionCoupler<bool?, IChainableNullableBoolCondition> False => Evaluate(s => s == false);
 
         /// <inheritdoc />
         protected override IChainableNullableBoolCondition Condition => this;

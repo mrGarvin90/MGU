@@ -4,8 +4,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines chainable conditions for <see cref="bool"/>
-    /// where the result of the conditions will be inverted.
+    /// Defines chainable conditions for <see cref="bool"/>.
     /// </summary>
     public interface IChainableBoolDoesNotCondition : IChainableDoesNotConditionBase<bool, IChainableBoolCondition>
     {

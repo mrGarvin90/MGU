@@ -1,5 +1,6 @@
 ﻿namespace MGU.Core.PerformanceTests.ChainableConditions
 {
+    using System.Collections.Generic;
     using Extensions.If;
     using Helpers;
     using NUnit.Framework;
@@ -8,54 +9,103 @@
     [TestFixture]
     public class ChainableConditionTests : PerformanceTestsBase
     {
-        [Test]
-        public void ShouldPass()
-        {
-            var source = TestSource.Default();
-            var otherSource = TestSource.New(7, "7");
-            var collection = new[] { TestSource.New(1, "1"), TestSource.New(2, "2"), TestSource.New(3, "3"), TestSource.Default() };
+        private static TestSource Source { get; } = TestSource.Default();
 
+        private static IEnumerable<TestSource> Collection { get; } = new[] { TestSource.New(1, "1"), TestSource.New(2, "2"), TestSource.New(3, "3"), TestSource.Default() };
+
+        [Test]
+        public void Null_Should_Pass()
+        {
             NewTestCollection()
                 .Add(
-                    "source.If().Null",
-                    () => source.If().Null.Then(default),
-                    38)
+                    "Source.If().Null",
+                    () => Source.If().Null,
+                    12)
+                .RunAll();
+        }
+
+        [Test]
+        public void Not_Null_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "source.If().Not.Null",
-                    () => source.If().Not.Null.Then(default),
-                    40)
+                    "Source.If().Not.Null",
+                    () => Source.If().Not.Null,
+                    12)
+                .RunAll();
+        }
+
+        [Test]
+        public void EqualTo_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "source.If().EqualTo(source)",
-                    () => source.If().EqualTo(source).Then(default),
-                    40)
+                    "Source.If().EqualTo(Source)",
+                    () => Source.If().EqualTo(Source),
+                    14)
                 .Add(
-                    "source.If().EqualTo(TestSource.Default())",
-                    () => source.If().EqualTo(TestSource.Default()).Then(default),
-                    45)
+                    "Source.If().EqualTo(TestSource.Default())",
+                    () => Source.If().EqualTo(TestSource.Default()),
+                    20)
+                .RunAll();
+        }
+
+        [Test]
+        public void Not_EqualTo_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "source.If().Not.EqualTo(source)",
-                    () => source.If().Not.EqualTo(source).Then(default),
-                    45)
+                    "Source.If().Not.EqualTo(Source)",
+                    () => Source.If().Not.EqualTo(Source),
+                    12)
                 .Add(
-                    "source.If().Not.EqualTo(TestSource.Default())",
-                    () => source.If().Not.EqualTo(TestSource.Default()).Then(default),
-                    50)
+                    "Source.If().Not.EqualTo(TestSource.Default())",
+                    () => Source.If().Not.EqualTo(TestSource.Default()),
+                    20)
+                .RunAll();
+        }
+
+        [Test]
+        public void Fulfills_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "source.If().Fulfills(s => s.Number == 42)",
-                    () => source.If().Fulfills(s => s.Number == 42).Then(default),
-                    38)
+                    "Source.If().Fulfills(s => s.Number == 42)",
+                    () => Source.If().Fulfills(s => s.Number == 42),
+                    10)
+                .RunAll();
+        }
+
+        [Test]
+        public void DoesNot_Fulfill_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "source.If().DoesNot.Fulfill(s => s.Number == 42)",
-                    () => source.If().DoesNot.Fulfill(s => s.Number == 42).Then(default),
-                    40)
+                    "Source.If().DoesNot.Fulfill(s => s.Number == 42)",
+                    () => Source.If().DoesNot.Fulfill(s => s.Number == 42),
+                    10)
+                .RunAll();
+        }
+
+        [Test]
+        public void In_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "nullSource.If().In(collection)",
-                    () => source.If().In(collection).Then(default),
-                    60)
+                    "Source.If().In(collection)",
+                    () => Source.If().In(Collection),
+                    35)
+                .RunAll();
+        }
+
+        [Test]
+        public void Not_In_Should_Pass()
+        {
+            NewTestCollection()
                 .Add(
-                    "nullSource.If().Not.In(collection)",
-                    () => otherSource.If().Not.In(collection).Then(default),
-                    60)
+                    "Source.If().Not.In(collection)",
+                    () => Source.If().Not.In(Collection),
+                    35)
                 .RunAll();
         }
     }

@@ -13,6 +13,15 @@
     public interface IChainableStringNotCondition : IChainableEnumerableNotConditionBase<string, char, IChainableStringCondition>
     {
         /// <summary>
+        /// Determines whether the source <see cref="string"/> is empty.
+        /// </summary>
+        /// <exception cref="Exceptions.ConditionEvaluationFailedException">
+        /// Source <see cref="string"/> is <c>null</c>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
+        /// </exception>
+        new IConditionCoupler<string, IChainableStringCondition> Empty { get; }
+
+        /// <summary>
         /// Determines whether the source <see cref="string"/> consists only of white-space characters.
         /// </summary>
         /// <remarks>
@@ -23,20 +32,9 @@
         /// </remarks>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
         /// Source <see cref="string"/> is <c>null</c>.
-        /// Inner exception: <see cref="System.ArgumentNullException"/>.
+        /// Inner exception: <see cref="System.NullReferenceException"/>.
         /// </exception>
         IConditionCoupler<string, IChainableStringCondition> WhiteSpace { get; }
-
-        /// <summary>
-        /// Determines whether the specified <paramref name="other"/> contains the source <see cref="string"/>.
-        /// </summary>
-        /// <param name="other">The other string.</param>
-        /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
-        /// <remarks>
-        /// The condition will evaluate to <c>false</c> if the source <see cref="string"/>
-        /// or the specified <paramref name="other"/> is <c>null</c>.
-        /// </remarks>
-        IConditionCoupler<string, IChainableStringCondition> In([CanBeNull]string other);
 
         /// <summary>
         /// Determines whether the specified other string contains the source <see cref="string"/>.
@@ -46,9 +44,10 @@
         /// <param name="culture">The culture info.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <remarks>
+        /// <paramref name="culture"/> will only be used if <paramref name="ignoreCase"/> is <c>true</c>.
         /// The condition will evaluate to <c>false</c> if the source <see cref="string"/>
         /// or the specified <paramref name="other"/> is <c>null</c>.
         /// </remarks>
-        IConditionCoupler<string, IChainableStringCondition> In([CanBeNull]string other, bool ignoreCase, CultureInfo culture = null);
+        IConditionCoupler<string, IChainableStringCondition> In([CanBeNull]string other, bool ignoreCase = false, CultureInfo culture = null);
     }
 }

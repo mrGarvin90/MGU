@@ -54,9 +54,7 @@
 
         /// <inheritdoc />
         public bool In(IEnumerable<TSource> collection, IEqualityComparer<TSource> comparer = null)
-        {
-            return Result(collection.Contains(Source, comparer));
-        }
+            => Result(collection?.Contains(Source, comparer) ?? false);
 
         /// <summary>
         /// Inverts the condition if <see cref="Not"/> was called.
@@ -64,8 +62,6 @@
         /// <param name="condition">The condition.</param>
         /// <returns><see langword="bool"/></returns>
         protected bool Result(bool condition)
-        {
-            return _invertResult ? !condition : condition;
-        }
+            => _invertResult ? !condition : condition;
     }
 }

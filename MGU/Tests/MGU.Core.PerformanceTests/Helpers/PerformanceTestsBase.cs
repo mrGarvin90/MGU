@@ -7,6 +7,17 @@
     /// </summary>
     public abstract class PerformanceTestsBase
     {
+        private readonly bool _skipAllTests;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PerformanceTestsBase"/> class.
+        /// </summary>
+        /// <param name="skipAllTests">If set to <c>true</c> all tests will be skipped.</param>
+        protected PerformanceTestsBase(bool skipAllTests = false)
+        {
+            _skipAllTests = skipAllTests;
+        }
+
         /// <summary>
         /// Gets the ignore <see cref="ArgumentException"/> function.
         /// </summary>
@@ -37,6 +48,6 @@
         /// </summary>
         /// <returns>A new instance of <see cref="PerformanceTestCollection"/>.</returns>
         protected PerformanceTestCollection NewTestCollection()
-            => new PerformanceTestCollection();
+            => new PerformanceTestCollection(_skipAllTests);
     }
 }

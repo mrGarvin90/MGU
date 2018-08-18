@@ -78,30 +78,21 @@
         protected override IChainableNullableCharDoesNotCondition DoesNotCondition => this;
 
         /// <inheritdoc />
-        public IConditionCoupler<char?, IChainableNullableCharCondition> In(string str)
-        {
-            return In(str, false);
-        }
-
-        /// <inheritdoc />
-        public IConditionCoupler<char?, IChainableNullableCharCondition> In(string str, bool ignoreCase, CultureInfo culture = null)
+        public IConditionCoupler<char?, IChainableNullableCharCondition> In(string str, bool ignoreCase = false, CultureInfo culture = null)
         {
             return base.Evaluate(s =>
             {
-                var sourceAsString = s.ToString();
-                (sourceAsString, str) = Transform(sourceAsString, str, ignoreCase, culture);
-                return str != null && s != null && str.Contains(sourceAsString);
+                if (!s.HasValue || str is null)
+                    return false;
+                var source = s.ToString();
+                if (ignoreCase)
+                {
+                    source = culture is null ? source.ToLower() : source.ToLower(culture);
+                    str = culture is null ? str.ToLower() : str.ToLower(culture);
+                }
+
+                return str.Contains(source);
             });
-        }
-
-        private static (string Source, string OtherString) Transform(string source, string otherString, bool ignoreCase, CultureInfo culture)
-        {
-            if (!ignoreCase)
-                return (source, otherString);
-
-            return culture is null
-                ? (source?.ToLower(), otherString?.ToLower())
-                : (source?.ToLower(culture), otherString?.ToLower(culture));
         }
 
         private IConditionCoupler<char?, IChainableNullableCharCondition> Evaluate(Func<char, bool> condition, [CallerMemberName]string callerMemberName = "")

@@ -13,7 +13,6 @@
         /// <summary>
         /// Determines whether the source object is in the specified <paramref name="collection"/> using the specified <paramref name="comparer"/>
         /// or the default equality comparer for the source object if the specified <paramref name="comparer"/> is <c>null</c>.
-        /// The result will be <c>false</c> if the source object or the specified <paramref name="collection"/> is <c>null</c>.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="comparer">The comparer.</param>
@@ -21,6 +20,9 @@
         /// <c>true</c> if the source object is in the specified collection;
         /// otherwise, <c>false</c>.
         /// </returns>
+        /// <remarks>
+        /// The condition will evaluate to <c>false</c> if <paramref name="collection"/> is <c>null</c>.
+        /// </remarks>
         bool In([CanBeNull]IEnumerable<TSource> collection, IEqualityComparer<TSource> comparer = null);
     }
 }

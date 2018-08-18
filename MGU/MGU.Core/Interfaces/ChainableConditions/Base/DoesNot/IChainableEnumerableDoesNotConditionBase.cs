@@ -6,8 +6,7 @@
     /// <inheritdoc cref="IChainableEnumerableConditionBase{TSource,TObject}"/>
     /// <inheritdoc cref="IChainableDoesNotConditionBase{TSource,TChainableCondition}"/>
     /// <summary>
-    /// The base interface that defines chainable conditions for enumerable objects
-    /// where the result of the conditions will be inverted.
+    /// The base interface that defines chainable conditions for enumerable objects.
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TObject">The type of the object that source enumerable contains.</typeparam>

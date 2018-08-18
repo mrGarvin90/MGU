@@ -76,30 +76,21 @@
         protected override IChainableCharDoesNotCondition DoesNotCondition => this;
 
         /// <inheritdoc />
-        public IConditionCoupler<char, IChainableCharCondition> In(string str)
-        {
-            return In(str, false);
-        }
-
-        /// <inheritdoc />
         public IConditionCoupler<char, IChainableCharCondition> In(string str, bool ignoreCase, CultureInfo culture = null)
         {
             return Evaluate(s =>
             {
-                var sourceAsString = s.ToString();
-                (sourceAsString, str) = Transform(sourceAsString, str, ignoreCase, culture);
-                return str != null && str.Contains(sourceAsString);
+                if (str is null)
+                    return false;
+                var source = s.ToString();
+                if (ignoreCase)
+                {
+                    source = culture is null ? source.ToLower() : source.ToLower(culture);
+                    str = culture is null ? str.ToLower() : str.ToLower(culture);
+                }
+
+                return str.Contains(source);
             });
-        }
-
-        private static (string Source, string OtherString) Transform(string source, string otherString, bool ignoreCase, CultureInfo culture)
-        {
-            if (!ignoreCase)
-                return (source, otherString);
-
-            return culture is null
-                ? (source?.ToLower(), otherString?.ToLower())
-                : (source?.ToLower(culture), otherString?.ToLower(culture));
         }
     }
 }

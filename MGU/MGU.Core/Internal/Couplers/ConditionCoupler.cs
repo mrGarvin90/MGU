@@ -3,7 +3,6 @@
     using System;
     using System.Reflection;
     using System.Runtime.CompilerServices;
-    using System.Text;
     using Core.Extensions.Cast;
     using Core.Interfaces.ChainableConditions.Base;
     using Core.Interfaces.Couplers;
@@ -22,7 +21,6 @@
     internal abstract class ConditionCoupler<TSource, TChainableCondition> : IConditionCoupler<TSource, TChainableCondition>
         where TChainableCondition : IChainableConditionBase
     {
-        private readonly StringBuilder _traceBuilder;
         private readonly TSource _source;
         private LogicalOperator? _logicalOperator;
 
@@ -32,7 +30,6 @@
         /// <param name="source">The source object.</param>
         protected ConditionCoupler(TSource source)
         {
-            _traceBuilder = new StringBuilder().AppendLine(typeof(TChainableCondition).Name.Remove(0, 1)).AppendLine("If");
             _logicalOperator = null;
             _source = source;
             Result = false;
@@ -42,10 +39,24 @@
         public bool Result { get; protected set; }
 
         /// <inheritdoc />
-        public TChainableCondition And => SetOrder(LogicalOperator.And);
+        public virtual TChainableCondition And
+        {
+            get
+            {
+                _logicalOperator = LogicalOperator.And;
+                return Condition;
+            }
+        }
 
         /// <inheritdoc />
-        public virtual TChainableCondition Or => SetOrder(LogicalOperator.Or);
+        public virtual TChainableCondition Or
+        {
+            get
+            {
+                _logicalOperator = LogicalOperator.Or;
+                return Condition;
+            }
+        }
 
         /// <summary>
         /// Gets the condition.
@@ -53,76 +64,49 @@
         protected abstract TChainableCondition Condition { get; }
 
         /// <summary>
-        /// Evaluates the specified <paramref name="condition"/> and sets the <see cref="Result"/>.
+        /// Gets or sets a value indicating whether the result of the next condition should be inverted.
+        /// </summary>
+        protected bool InvertConditionResult { get; set; }
+
+        /// <summary>
+        /// Evaluates the specified condition.
         /// </summary>
         /// <param name="condition">The condition.</param>
-        /// <param name="invertConditionResult">Indicates whether the result of the condition should be inverted.</param>
-        /// <param name="callerMemberName">The name of the caller member.</param>
+        /// <param name="callerMemberName">Name of the caller member.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="ConditionEvaluationFailedException">
-        /// The specified <paramref name="condition"/> could not be evaluated.
+        /// <paramref name="condition"/> could not be evaluated.
+        /// Inner exception: Cannot specify.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
         /// A value of <see cref="LogicalOperator"/> is not implemented.
         /// </exception>
-        internal IConditionCoupler<TSource, TChainableCondition> Evaluate(Func<TSource, bool> condition, bool invertConditionResult, [CallerMemberName]string callerMemberName = "")
+        internal IConditionCoupler<TSource, TChainableCondition> Evaluate(Func<TSource, bool> condition, [CallerMemberName]string callerMemberName = "")
         {
-            _traceBuilder.Append(callerMemberName).Append(" --> ");
             try
             {
                 switch (_logicalOperator)
                 {
                     case null:
-                        Result = EvaluateCondition();
+                        Result = InvertConditionResult ? !condition(_source) : condition(_source);
                         break;
                     case LogicalOperator.And:
-                        Result = Result && EvaluateCondition();
+                        Result = Result && (InvertConditionResult ? !condition(_source) : condition(_source));
                         break;
                     case LogicalOperator.Or:
-                        if (Result)
-                            _traceBuilder.AppendLine("Not evaluated");
-                        else
-                            Result = EvaluateCondition();
+                        Result = Result || (InvertConditionResult ? !condition(_source) : condition(_source));
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(_logicalOperator), _logicalOperator, "Value is not implemented.");
                 }
+
+                InvertConditionResult = false;
+                return this;
             }
             catch (Exception exception)
             {
-                _traceBuilder.Append("threw an exception");
-                throw new ConditionEvaluationFailedException(typeof(TSource), _source, _traceBuilder.ToString(), exception);
+                throw new ConditionEvaluationFailedException(typeof(TChainableCondition), callerMemberName, typeof(TSource), _source, exception);
             }
-
-            return this;
-
-            bool EvaluateCondition()
-            {
-                var result = invertConditionResult ? !condition(_source) : condition(_source);
-                _traceBuilder.AppendLine(result.ToString());
-                return result;
-            }
-        }
-
-        /// <summary>
-        /// Appends the caller member name to the trace builder and returns the <paramref name="coupling"/>.
-        /// </summary>
-        /// <typeparam name="TCoupling">The type of the coupling.</typeparam>
-        /// <param name="coupling">The coupling.</param>
-        /// <param name="callerMemberName">Name of the caller member.</param>
-        /// <returns>The <paramref name="coupling"/>.</returns>
-        protected TCoupling Couple<TCoupling>(TCoupling coupling, [CallerMemberName]string callerMemberName = "")
-            where TCoupling : IChainableConditionBase
-        {
-            _traceBuilder.Append(callerMemberName).Append(" ");
-            return coupling;
-        }
-
-        private TChainableCondition SetOrder(LogicalOperator order)
-        {
-            _logicalOperator = order;
-            _traceBuilder.AppendLine(_logicalOperator.ToString());
-            return Condition;
         }
 
         #region IConditionResultOption

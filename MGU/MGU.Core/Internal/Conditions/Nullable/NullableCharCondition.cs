@@ -1,7 +1,6 @@
 ﻿namespace MGU.Core.Internal.Conditions.Nullable
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
     using Base;
     using Interfaces.Conditions.Nullable;
@@ -71,36 +70,19 @@
         protected override INullableCharNotCondition NotCondition => this;
 
         /// <inheritdoc />
-        public bool In(string str)
-            => In(str, false);
-
-        /// <inheritdoc />
         public bool In(string str, bool ignoreCase, CultureInfo culture = null)
         {
-            if (!Source.HasValue)
+            if (!Source.HasValue || str is null)
                 return Result(false);
-
             var source = Source.ToString();
-
-            if (!ignoreCase)
-                return Result(IsIn(str, source));
-
-            if (culture is null)
+            if (ignoreCase)
             {
-                source = source.ToLower();
-                str = str?.ToLower();
-            }
-            else
-            {
-                source = source.ToLower(culture);
-                str = str?.ToLower(culture);
+                source = culture is null ? source.ToLower() : source.ToLower(culture);
+                str = culture is null ? str.ToLower() : str.ToLower(culture);
             }
 
-            return Result(IsIn(str, source));
+            return Result(str.Contains(source));
         }
-
-        private static bool IsIn(string str, string source)
-            => str?.Contains(source) ?? false;
 
         private bool Evaluate(Func<char, bool> condition)
             => Result(Source.HasValue && condition(Source.Value));
