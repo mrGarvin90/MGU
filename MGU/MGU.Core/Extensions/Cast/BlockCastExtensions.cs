@@ -188,6 +188,26 @@
 
         #endregion
 
+        #region ICharNullableCondition
+
+        /// <summary>
+        /// Blocks the use of Cast on <inheritdoc cref="INullableCharCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this INullableCharCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <inheritdoc cref="ICharNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this INullableCharNotCondition source)
+        {
+        }
+
+        #endregion
+
         #region IBoolCondition
 
         /// <summary>

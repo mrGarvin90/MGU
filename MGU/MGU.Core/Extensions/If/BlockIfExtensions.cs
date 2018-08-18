@@ -188,6 +188,26 @@
 
         #endregion
 
+        #region ICharNullableCondition
+
+        /// <summary>
+        /// Blocks the use of If on <inheritdoc cref="INullableCharCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this INullableCharCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <inheritdoc cref="ICharNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this INullableCharNotCondition source)
+        {
+        }
+
+        #endregion
+
         #region IBoolCondition
 
         /// <summary>

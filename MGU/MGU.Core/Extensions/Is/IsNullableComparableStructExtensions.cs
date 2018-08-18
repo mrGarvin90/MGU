@@ -3,6 +3,7 @@
     using System;
     using Base;
     using Interfaces.Conditions.Nullable;
+    using Internal.Conditions.Nullable;
 
     /// <summary>
     /// Contains Is extension methods for nullable comparable structs.
@@ -83,10 +84,10 @@
         /// Gets conditions that can be chained for nullable <see cref="char"/>.
         /// </summary>
         /// <param name="source">The source char.</param>
-        /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
-        public static INullableComparableStructCondition<char> Is(this char? source)
+        /// <returns><see cref="INullableCharCondition"/></returns>
+        public static INullableCharCondition Is(this char? source)
         {
-            return source.IsNullableComparableStruct();
+            return new NullableCharCondition(source);
         }
     }
 }

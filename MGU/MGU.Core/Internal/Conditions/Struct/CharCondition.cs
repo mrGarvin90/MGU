@@ -70,9 +70,7 @@
 
         /// <inheritdoc />
         public bool In(string str)
-        {
-            return In(str, false);
-        }
+            => In(str, false);
 
         /// <inheritdoc />
         public bool In(string str, bool ignoreCase, CultureInfo culture = null)
@@ -97,8 +95,6 @@
         }
 
         private static bool IsIn(string str, string source)
-        {
-            return str?.Contains(source) ?? false;
-        }
+            => str?.Contains(source) ?? false;
     }
 }
