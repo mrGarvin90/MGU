@@ -14,8 +14,6 @@
         /// <param name="source">The source object.</param>
         /// <returns>A <see cref="ICastOption"/>.</returns>
         public static ICastOption Cast(this object source)
-        {
-            return new CastOption(source);
-        }
+            => new CastOption(source);
     }
 }

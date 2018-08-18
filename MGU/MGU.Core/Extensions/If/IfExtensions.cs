@@ -17,9 +17,7 @@
         /// <param name="source">The source object.</param>
         /// <returns><see cref="IChainableCondition{TSource}"/></returns>
         public static IChainableCondition<TSource> If<TSource>(this TSource source)
-        {
-            return new ChainableCondition<TSource>(source);
-        }
+            => new ChainableCondition<TSource>(source);
 
         /// <summary>
         /// Determines whether this instance is of type <typeparamref name="T"/> and

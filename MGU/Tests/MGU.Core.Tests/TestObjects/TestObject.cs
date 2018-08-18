@@ -21,18 +21,12 @@
         public int IntValue { get; set; }
 
         public static TestObject New()
-        {
-            return new TestObject();
-        }
+            => new TestObject();
 
         public static TestObject New(string stringValue, int intValue)
-        {
-            return new TestObject(stringValue, intValue);
-        }
+            => new TestObject(stringValue, intValue);
 
         public static TestObject Default()
-        {
-            return new TestObject(Guid, FortyTwo);
-        }
+            => new TestObject(Guid, FortyTwo);
     }
 }

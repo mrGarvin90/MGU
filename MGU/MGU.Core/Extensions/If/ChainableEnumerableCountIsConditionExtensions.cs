@@ -35,8 +35,6 @@
             int value)
             where TSource : IEnumerable<TObject>
             where TChainableEnumerableCondition : IChainableEnumerableConditionBase<TSource, TObject>
-        {
-            return ((ConditionCoupler<TSource, TChainableEnumerableCondition>)source).Evaluate(s => s.Count() != value);
-        }
+            => ((ConditionCoupler<TSource, TChainableEnumerableCondition>)source).Evaluate(s => s.Count() != value);
     }
 }

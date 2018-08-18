@@ -14,8 +14,6 @@
         /// <param name="source">The source bool.</param>
         /// <returns><see cref="IBoolCondition"/></returns>
         public static IBoolCondition Is(this bool source)
-        {
-            return new BoolCondition(source);
-        }
+            => new BoolCondition(source);
     }
 }

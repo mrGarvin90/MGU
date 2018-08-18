@@ -18,9 +18,7 @@
         /// <param name="source">The source array.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<TObject[], TObject> If<TObject>(this TObject[] source)
-        {
-            return source.IfEnumerable<TObject[], TObject>();
-        }
+            => source.IfEnumerable<TObject[], TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="string"/>.
@@ -28,9 +26,7 @@
         /// <param name="source">The source <see cref="string"/>.</param>
         /// <returns><see cref="IChainableStringCondition"/></returns>
         public static IChainableStringCondition If(this string source)
-        {
-            return new ChainableStringCondition(source);
-        }
+            => new ChainableStringCondition(source);
 
         #region System.Collections.Generic
 
@@ -42,9 +38,7 @@
         /// <param name="source">The source <see cref="Dictionary{TKey,TValue}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<Dictionary<TKey, TValue>, KeyValuePair<TKey, TValue>> If<TKey, TValue>(this Dictionary<TKey, TValue> source)
-        {
-            return source.IfEnumerable<Dictionary<TKey, TValue>, KeyValuePair<TKey, TValue>>();
-        }
+            => source.IfEnumerable<Dictionary<TKey, TValue>, KeyValuePair<TKey, TValue>>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="HashSet{TObject}"/>.
@@ -53,9 +47,7 @@
         /// <param name="source">The source <see cref="HashSet{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<HashSet<TObject>, TObject> If<TObject>(this HashSet<TObject> source)
-        {
-            return source.IfEnumerable<HashSet<TObject>, TObject>();
-        }
+            => source.IfEnumerable<HashSet<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="LinkedList{TObject}"/>.
@@ -64,9 +56,7 @@
         /// <param name="source">The source <see cref="LinkedList{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<LinkedList<TObject>, TObject> If<TObject>(this LinkedList<TObject> source)
-        {
-            return source.IfEnumerable<LinkedList<TObject>, TObject>();
-        }
+            => source.IfEnumerable<LinkedList<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="List{TObject}"/>.
@@ -75,9 +65,7 @@
         /// <param name="source">The source <see cref="List{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<List<TObject>, TObject> If<TObject>(this List<TObject> source)
-        {
-            return source.IfEnumerable<List<TObject>, TObject>();
-        }
+            => source.IfEnumerable<List<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="Queue{TObject}"/>.
@@ -86,9 +74,7 @@
         /// <param name="source">The source <see cref="Queue{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<Queue<TObject>, TObject> If<TObject>(this Queue<TObject> source)
-        {
-            return source.IfEnumerable<Queue<TObject>, TObject>();
-        }
+            => source.IfEnumerable<Queue<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="SortedDictionary{TKey,TValue}"/>.
@@ -98,9 +84,7 @@
         /// <param name="source">The source <see cref="SortedDictionary{TKey,TValue}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<SortedDictionary<TKey, TValue>, KeyValuePair<TKey, TValue>> If<TKey, TValue>(this SortedDictionary<TKey, TValue> source)
-        {
-            return source.IfEnumerable<SortedDictionary<TKey, TValue>, KeyValuePair<TKey, TValue>>();
-        }
+            => source.IfEnumerable<SortedDictionary<TKey, TValue>, KeyValuePair<TKey, TValue>>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="SortedList{TKey,TValue}"/>.
@@ -110,9 +94,7 @@
         /// <param name="source">The source <see cref="SortedList{TKey,TValue}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<SortedList<TKey, TValue>, KeyValuePair<TKey, TValue>> If<TKey, TValue>(this SortedList<TKey, TValue> source)
-        {
-            return source.IfEnumerable<SortedList<TKey, TValue>, KeyValuePair<TKey, TValue>>();
-        }
+            => source.IfEnumerable<SortedList<TKey, TValue>, KeyValuePair<TKey, TValue>>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="SortedSet{TObject}"/>.
@@ -121,9 +103,7 @@
         /// <param name="source">The source <see cref="SortedSet{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<SortedSet<TObject>, TObject> If<TObject>(this SortedSet<TObject> source)
-        {
-            return source.IfEnumerable<SortedSet<TObject>, TObject>();
-        }
+            => source.IfEnumerable<SortedSet<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="Stack{TObject}"/>.
@@ -132,9 +112,7 @@
         /// <param name="source">The source <see cref="Stack{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<Stack<TObject>, TObject> If<TObject>(this Stack<TObject> source)
-        {
-            return source.IfEnumerable<Stack<TObject>, TObject>();
-        }
+            => source.IfEnumerable<Stack<TObject>, TObject>();
 
         #endregion
 
@@ -147,9 +125,7 @@
         /// <param name="source">The source <see cref="Collection{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<Collection<TObject>, TObject> If<TObject>(this Collection<TObject> source)
-        {
-            return source.IfEnumerable<Collection<TObject>, TObject>();
-        }
+            => source.IfEnumerable<Collection<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="ReadOnlyCollection{TObject}"/>.
@@ -158,9 +134,7 @@
         /// <param name="source">The source <see cref="ReadOnlyCollection{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<ReadOnlyCollection<TObject>, TObject> If<TObject>(this ReadOnlyCollection<TObject> source)
-        {
-            return source.IfEnumerable<ReadOnlyCollection<TObject>, TObject>();
-        }
+            => source.IfEnumerable<ReadOnlyCollection<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="ObservableCollection{TObject}"/>.
@@ -169,9 +143,7 @@
         /// <param name="source">The source <see cref="ObservableCollection{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<ObservableCollection<TObject>, TObject> If<TObject>(this ObservableCollection<TObject> source)
-        {
-            return source.IfEnumerable<ObservableCollection<TObject>, TObject>();
-        }
+            => source.IfEnumerable<ObservableCollection<TObject>, TObject>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="ReadOnlyDictionary{TKey,TValue}"/>.
@@ -181,9 +153,7 @@
         /// <param name="source">The source <see cref="ReadOnlyDictionary{TKey,TValue}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<ReadOnlyDictionary<TKey, TValue>, KeyValuePair<TKey, TValue>> If<TKey, TValue>(this ReadOnlyDictionary<TKey, TValue> source)
-        {
-            return source.IfEnumerable<ReadOnlyDictionary<TKey, TValue>, KeyValuePair<TKey, TValue>>();
-        }
+            => source.IfEnumerable<ReadOnlyDictionary<TKey, TValue>, KeyValuePair<TKey, TValue>>();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="ReadOnlyObservableCollection{TObject}"/>.
@@ -192,9 +162,7 @@
         /// <param name="source">The source <see cref="ReadOnlyObservableCollection{TObject}"/>.</param>
         /// <returns><see cref="IChainableEnumerableCondition{TSource,TObject}"/></returns>
         public static IChainableEnumerableCondition<ReadOnlyObservableCollection<TObject>, TObject> If<TObject>(this ReadOnlyObservableCollection<TObject> source)
-        {
-            return source.IfEnumerable<ReadOnlyObservableCollection<TObject>, TObject>();
-        }
+            => source.IfEnumerable<ReadOnlyObservableCollection<TObject>, TObject>();
 
         #endregion
     }

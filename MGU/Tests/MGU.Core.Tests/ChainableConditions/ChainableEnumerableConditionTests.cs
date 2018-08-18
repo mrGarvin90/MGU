@@ -527,13 +527,9 @@
         }
 
         private static IChainableEnumerableCondition<TestObject[], TestObject> NullTestObjectsCondition()
-        {
-            return ((TestObject[])null).IfEnumerable<TestObject[], TestObject>();
-        }
+            => ((TestObject[])null).IfEnumerable<TestObject[], TestObject>();
 
         private static IChainableEnumerableCondition<TestObject[], TestObject> TestObjectsWithNullCondition()
-        {
-            return new[] { null, TestObject.New(), TestObject.New("str", 3), TestObject.Default() }.IfEnumerable<TestObject[], TestObject>();
-        }
+            => new[] { null, TestObject.New(), TestObject.New("str", 3), TestObject.Default() }.IfEnumerable<TestObject[], TestObject>();
     }
 }

@@ -97,8 +97,6 @@
         }
 
         private static IEnumerable<EqualityTestObject> GetEqualityObjectCollectionWithDefault(bool withDefault)
-        {
-            return new[] { EqualityTestObject.New(), EqualityTestObject.New("str", 5), withDefault ? EqualityTestObject.Default() : null };
-        }
+            => new[] { EqualityTestObject.New(), EqualityTestObject.New("str", 5), withDefault ? EqualityTestObject.Default() : null };
     }
 }

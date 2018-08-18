@@ -22,9 +22,7 @@
         /// <returns><see cref="IStructCondition{TSource}"/></returns>
         public static IStructCondition<TSource> IsStruct<TSource>(this TSource source)
             where TSource : struct
-        {
-            return new StructCondition<TSource>(source);
-        }
+            => new StructCondition<TSource>(source);
 
         /// <summary>
         /// Gets conditions for any object that implements <see cref="IEnumerable{T}"/>.
@@ -35,9 +33,7 @@
         /// <returns><see cref="IEnumerableCondition{TSource,TObject}"/></returns>
         public static IEnumerableCondition<TSource, TObject> IsEnumerable<TSource, TObject>(this TSource source)
             where TSource : IEnumerable<TObject>
-        {
-            return new EnumerableCondition<TSource, TObject>(source);
-        }
+            => new EnumerableCondition<TSource, TObject>(source);
 
         /// <summary>
         /// Gets conditions for any class that implements <see cref="IComparable{T}"/>.
@@ -47,9 +43,7 @@
         /// <returns><see cref="IComparableClassCondition{TSource}"/></returns>
         public static IComparableClassCondition<TSource> IsComparableClass<TSource>(this TSource source)
             where TSource : class, IComparable<TSource>
-        {
-            return new ComparableClassCondition<TSource>(source);
-        }
+            => new ComparableClassCondition<TSource>(source);
 
         /// <summary>
         /// Gets conditions for any struct that implements <see cref="IComparable{T}"/>.
@@ -59,9 +53,7 @@
         /// <returns><see cref="IComparableStructCondition{TSource}"/></returns>
         public static IComparableStructCondition<TSource> IsComparableStruct<TSource>(this TSource source)
             where TSource : struct, IComparable<TSource>
-        {
-            return new ComparableStructCondition<TSource>(source);
-        }
+            => new ComparableStructCondition<TSource>(source);
 
         /// <summary>
         /// Gets conditions for any nullable struct that implements <see cref="IComparable{T}"/>.
@@ -71,8 +63,6 @@
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<TSource> IsNullableComparableStruct<TSource>(this TSource? source)
             where TSource : struct, IComparable<TSource>
-        {
-            return new NullableComparableStructCondition<TSource>(source);
-        }
+            => new NullableComparableStructCondition<TSource>(source);
     }
 }

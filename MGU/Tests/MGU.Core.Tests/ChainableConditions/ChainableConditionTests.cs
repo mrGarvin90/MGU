@@ -223,58 +223,36 @@
         }
 
         private static IChainableCondition<object> SourceObjectCondition()
-        {
-            return SourceObject.If();
-        }
+            => SourceObject.If();
 
         private static IChainableCondition<object> NullSourceObjectCondition()
-        {
-            return ((object)null).If();
-        }
+            => ((object)null).If();
 
         private static IChainableCondition<TestObject> SourceTestObjectCondition()
-        {
-            return SourceTestObject.If();
-        }
+            => SourceTestObject.If();
 
         private static IChainableCondition<TestObject> NullSourceTestObjectCondition()
-        {
-            return ((TestObject)null).If();
-        }
+            => ((TestObject)null).If();
 
         private static IChainableCondition<object> SourceIntObjectCondition()
-        {
-            return SourceIntObject.If();
-        }
+            => SourceIntObject.If();
 
         private static IChainableCondition<EqualityTestObject> EqualityTestObjectInCollectionCondition()
-        {
-            return EqualityTestObject.Default().If();
-        }
+            => EqualityTestObject.Default().If();
 
         private static IChainableCondition<EqualityTestObject> EqualityTestObjectNotInCollectionCondition()
-        {
-            return EqualityTestObjectNotInCollection.If();
-        }
+            => EqualityTestObjectNotInCollection.If();
 
         private static IChainableCondition<EqualityTestObject> NullEqualityTestObjectInCollectionCondition()
-        {
-            return ((EqualityTestObject)null).If();
-        }
+            => ((EqualityTestObject)null).If();
 
         private static IChainableCondition<TestObject> TestObjectInCollectionCondition()
-        {
-            return TestObject.Default().If();
-        }
+            => TestObject.Default().If();
 
         private static IChainableCondition<TestObject> TestObjectNotInCollectionCondition()
-        {
-            return TestObjectNotInCollection.If();
-        }
+            => TestObjectNotInCollection.If();
 
         private static IChainableCondition<TestObject> NullTestObjectInCollectionCondition()
-        {
-            return ((TestObject)null).If();
-        }
+            => ((TestObject)null).If();
     }
 }

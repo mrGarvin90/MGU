@@ -19,9 +19,7 @@
         /// </returns>
         internal static bool EqualTo<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
-        {
-            return source == null ? other == null : source.CompareTo(other) == 0;
-        }
+            => source == null ? other == null : source.CompareTo(other) == 0;
 
         /// <summary>
         /// Determines whether the source comparable is equal to the specified other.
@@ -53,9 +51,7 @@
         /// </returns>
         internal static bool LessThan<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
-        {
-            return source?.CompareTo(other) < 0;
-        }
+            => source?.CompareTo(other) < 0;
 
         /// <summary>
         /// Determines whether the source comparable is less than the specified other.
@@ -69,9 +65,7 @@
         /// </returns>
         internal static bool LessThan<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
-        {
-            return source.HasValue && other.HasValue && source.Value.CompareTo(other.Value) < 0;
-        }
+            => source.HasValue && other.HasValue && source.Value.CompareTo(other.Value) < 0;
 
         /// <summary>
         /// Determines whether the source comparable is less than or equal to the specified other.
@@ -85,9 +79,7 @@
         /// </returns>
         internal static bool LessThanOrEqualTo<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
-        {
-            return LessThan(source, other) || EqualTo(source, other);
-        }
+            => LessThan(source, other) || EqualTo(source, other);
 
         /// <summary>
         /// Determines whether the source comparable is less than or equal to the specified other.
@@ -119,9 +111,7 @@
         /// </returns>
         internal static bool GreaterThan<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
-        {
-            return source?.CompareTo(other) > 0;
-        }
+            => source?.CompareTo(other) > 0;
 
         /// <summary>
         /// Determines whether the source comparable is greater than the specified other.
@@ -135,9 +125,7 @@
         /// </returns>
         internal static bool GreaterThan<TSource>(this TSource? source, TSource? other)
             where TSource : struct, IComparable<TSource>
-        {
-            return source.HasValue && other.HasValue && source.Value.CompareTo(other.Value) > 0;
-        }
+            => source.HasValue && other.HasValue && source.Value.CompareTo(other.Value) > 0;
 
         /// <summary>
         /// Determines whether the source comparable is greater than or equal to the specified other.
@@ -151,9 +139,7 @@
         /// </returns>
         internal static bool GreaterThanOrEqualTo<TSource>(this TSource source, TSource other)
             where TSource : IComparable<TSource>
-        {
-            return GreaterThan(source, other) || EqualTo(source, other);
-        }
+            => GreaterThan(source, other) || EqualTo(source, other);
 
         /// <summary>
         /// Determines whether the source comparable is greater than or equal to the specified other.

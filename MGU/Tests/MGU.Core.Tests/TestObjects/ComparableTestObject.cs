@@ -12,9 +12,7 @@
         public int IntValue { get; set; }
 
         public static ComparableTestObject New(int intValue)
-        {
-            return new ComparableTestObject(intValue);
-        }
+            => new ComparableTestObject(intValue);
 
         public int CompareTo(ComparableTestObject other)
         {

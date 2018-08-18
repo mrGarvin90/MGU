@@ -95,33 +95,21 @@
         }
 
         private static ICondition<EqualityTestObject> EqualityTestObjectInCollectionCondition()
-        {
-            return EqualityTestObject.Default().Is();
-        }
+            => EqualityTestObject.Default().Is();
 
         private static ICondition<EqualityTestObject> EqualityTestObjectNotInCollectionCondition()
-        {
-            return EqualityTestObjectNotInCollection.Is();
-        }
+            => EqualityTestObjectNotInCollection.Is();
 
         private static ICondition<EqualityTestObject> NullEqualityTestObjectInCollectionCondition()
-        {
-            return ((EqualityTestObject)null).Is();
-        }
+            => ((EqualityTestObject)null).Is();
 
         private static ICondition<TestObject> TestObjectInCollectionCondition()
-        {
-            return TestObject.Default().Is();
-        }
+            => TestObject.Default().Is();
 
         private static ICondition<TestObject> TestObjectNotInCollectionCondition()
-        {
-            return TestObjectNotInCollection.Is();
-        }
+            => TestObjectNotInCollection.Is();
 
         private static ICondition<TestObject> NullTestObjectInCollectionCondition()
-        {
-            return ((TestObject)null).Is();
-        }
+            => ((TestObject)null).Is();
     }
 }

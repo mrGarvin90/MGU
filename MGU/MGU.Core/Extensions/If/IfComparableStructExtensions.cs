@@ -16,9 +16,7 @@
         /// <param name="source">The source <see cref="short"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<short> If(this short source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="ushort"/>.
@@ -26,9 +24,7 @@
         /// <param name="source">The source <see cref="ushort"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<ushort> If(this ushort source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="int"/>.
@@ -36,9 +32,7 @@
         /// <param name="source">The source <see cref="int"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<int> If(this int source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="uint"/>.
@@ -46,9 +40,7 @@
         /// <param name="source">The source <see cref="uint"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<uint> If(this uint source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="long"/>.
@@ -56,9 +48,7 @@
         /// <param name="source">The source <see cref="long"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<long> If(this long source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="ulong"/>.
@@ -66,9 +56,7 @@
         /// <param name="source">The source <see cref="ulong"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<ulong> If(this ulong source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="DateTime"/>.
@@ -76,9 +64,7 @@
         /// <param name="source">The source <see cref="DateTime"/>.</param>
         /// <returns><see cref="IChainableComparableStructCondition{TSource}"/></returns>
         public static IChainableComparableStructCondition<DateTime> If(this DateTime source)
-        {
-            return source.IfComparableStruct();
-        }
+            => source.IfComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for <see cref="char"/>.
@@ -86,8 +72,6 @@
         /// <param name="source">The source <see cref="char"/>.</param>
         /// <returns><see cref="IChainableCharCondition"/></returns>
         public static IChainableCharCondition If(this char source)
-        {
-            return new ChainableCharCondition(source);
-        }
+            => new ChainableCharCondition(source);
     }
 }

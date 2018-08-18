@@ -19,9 +19,7 @@
         /// otherwise, <c>false</c>.
         /// </returns>
         public static bool Is<TSource>(this TSource source, TSource other)
-        {
-            return ReferenceEquals(source, other) || (source?.Equals(other) ?? other == null);
-        }
+            => ReferenceEquals(source, other) || (source?.Equals(other) ?? other == null);
 
         /// <summary>
         /// Gets conditions for all types.
@@ -30,8 +28,6 @@
         /// <param name="source">The source object.</param>
         /// <returns><see cref="ICondition{TSource}"/></returns>
         public static ICondition<TSource> Is<TSource>(this TSource source)
-        {
-            return new Condition<TSource>(source);
-        }
+            => new Condition<TSource>(source);
     }
 }

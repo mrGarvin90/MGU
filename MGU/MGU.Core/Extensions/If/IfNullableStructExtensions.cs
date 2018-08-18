@@ -14,8 +14,6 @@
         /// <param name="source">The source <see cref="bool"/>.</param>
         /// <returns><see cref="IChainableNullableBoolCondition"/></returns>
         public static IChainableNullableBoolCondition If(this bool? source)
-        {
-            return new ChainableNullableBoolCondition(source);
-        }
+            => new ChainableNullableBoolCondition(source);
     }
 }

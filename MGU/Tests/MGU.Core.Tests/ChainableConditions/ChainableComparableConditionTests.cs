@@ -281,18 +281,12 @@
         }
 
         private static IChainableComparableClassCondition<ComparableTestObject> ComparableClassCondition(bool nullSource = false)
-        {
-            return (nullSource ? null : ComparableTestObjectSource).IfComparableClass();
-        }
+            => (nullSource ? null : ComparableTestObjectSource).IfComparableClass();
 
         private static IChainableComparableStructCondition<int> ComparableStructCondition()
-        {
-            return IntSource.IfComparableStruct();
-        }
+            => IntSource.IfComparableStruct();
 
         private static IChainableNullableComparableStructCondition<int> ComparableNullableStructCondition(bool nullSource = false)
-        {
-            return (nullSource ? null : NullableIntSource).IfNullableComparableStruct();
-        }
+            => (nullSource ? null : NullableIntSource).IfNullableComparableStruct();
     }
 }

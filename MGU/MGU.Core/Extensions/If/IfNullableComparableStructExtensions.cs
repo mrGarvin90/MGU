@@ -16,9 +16,7 @@
         /// <param name="source">The nullable source <see cref="short"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<short> If(this short? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="ushort"/>.
@@ -26,9 +24,7 @@
         /// <param name="source">The nullable source <see cref="ushort"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<ushort> If(this ushort? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="int"/>.
@@ -36,9 +32,7 @@
         /// <param name="source">The nullable source <see cref="int"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<int> If(this int? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="uint"/>.
@@ -46,9 +40,7 @@
         /// <param name="source">The nullable source <see cref="uint"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<uint> If(this uint? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="long"/>.
@@ -56,9 +48,7 @@
         /// <param name="source">The nullable source <see cref="long"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<long> If(this long? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="ulong"/>.
@@ -66,9 +56,7 @@
         /// <param name="source">The nullable source <see cref="ulong"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<ulong> If(this ulong? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="DateTime"/>.
@@ -76,9 +64,7 @@
         /// <param name="source">The nullable source <see cref="DateTime"/>.</param>
         /// <returns><see cref="IChainableNullableComparableStructCondition{TSource}"/></returns>
         public static IChainableNullableComparableStructCondition<DateTime> If(this DateTime? source)
-        {
-            return source.IfNullableComparableStruct();
-        }
+            => source.IfNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="char"/>.
@@ -86,8 +72,6 @@
         /// <param name="source">The nullable source <see cref="char"/>.</param>
         /// <returns><see cref="IChainableNullableCharCondition"/></returns>
         public static IChainableNullableCharCondition If(this char? source)
-        {
-            return new ChainableNullableCharCondition(source);
-        }
+            => new ChainableNullableCharCondition(source);
     }
 }

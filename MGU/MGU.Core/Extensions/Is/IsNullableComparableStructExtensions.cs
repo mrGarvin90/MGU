@@ -16,9 +16,7 @@
         /// <param name="source">The source short.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<short> Is(this short? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="ushort"/>.
@@ -26,9 +24,7 @@
         /// <param name="source">The source ushort.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<ushort> Is(this ushort? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="int"/>.
@@ -36,9 +32,7 @@
         /// <param name="source">The source int.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<int> Is(this int? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="uint"/>.
@@ -46,9 +40,7 @@
         /// <param name="source">The source uint.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<uint> Is(this uint? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="long"/>.
@@ -56,9 +48,7 @@
         /// <param name="source">The source long.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<long> Is(this long? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="ulong"/>.
@@ -66,9 +56,7 @@
         /// <param name="source">The source ulong.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<ulong> Is(this ulong? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="DateTime"/>.
@@ -76,9 +64,7 @@
         /// <param name="source">The source DateTime.</param>
         /// <returns><see cref="INullableComparableStructCondition{TSource}"/></returns>
         public static INullableComparableStructCondition<DateTime> Is(this DateTime? source)
-        {
-            return source.IsNullableComparableStruct();
-        }
+            => source.IsNullableComparableStruct();
 
         /// <summary>
         /// Gets conditions that can be chained for nullable <see cref="char"/>.
@@ -86,8 +72,6 @@
         /// <param name="source">The source char.</param>
         /// <returns><see cref="INullableCharCondition"/></returns>
         public static INullableCharCondition Is(this char? source)
-        {
-            return new NullableCharCondition(source);
-        }
+            => new NullableCharCondition(source);
     }
 }

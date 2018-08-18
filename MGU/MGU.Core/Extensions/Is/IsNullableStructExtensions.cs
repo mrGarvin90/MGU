@@ -14,8 +14,6 @@
         /// <param name="source">The nullable source <see cref="bool"/>.</param>
         /// <returns><see cref="INullableBoolCondition"/></returns>
         public static INullableBoolCondition Is(this bool? source)
-        {
-            return new NullableBoolCondition(source);
-        }
+            => new NullableBoolCondition(source);
     }
 }
