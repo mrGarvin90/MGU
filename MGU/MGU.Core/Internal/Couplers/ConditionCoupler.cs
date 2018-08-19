@@ -1,6 +1,7 @@
 ﻿namespace MGU.Core.Internal.Couplers
 {
     using System;
+    using System.Linq;
     using System.Reflection;
     using System.Runtime.CompilerServices;
     using Core.Extensions.Cast;
@@ -120,20 +121,25 @@
         {
             if (!Result)
                 return _source;
-
+            if (action is null)
+                throw new ArgumentNullException(nameof(action));
+            if (actions?.Contains(null) ?? false)
+                throw new ArgumentException("Cannot contain null.", nameof(actions));
             action();
-            if (actions?.Length > 0)
-            {
-                foreach (var a in actions)
-                    a();
-            }
-
+            for (var index = 0; index < actions?.Length; index++)
+                actions[index]();
             return _source;
         }
 
         /// <inheritdoc />
         TSource IConditionResultOption<TSource>.Get(Func<TSource> func)
-            => Result ? func() : _source;
+        {
+            if (!Result)
+                return _source;
+            if (func is null)
+                throw new ArgumentNullException(nameof(func));
+            return func();
+        }
 
         /// <inheritdoc />
         TSource IConditionResultOption<TSource>.Set(ref TSource other)

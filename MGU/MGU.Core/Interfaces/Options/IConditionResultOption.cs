@@ -28,8 +28,11 @@
         /// <param name="action">The first action.</param>
         /// <param name="actions">The other actions.</param>
         /// <returns>The source object.</returns>
-        /// <exception cref="NullReferenceException">
-        /// <paramref name="action"/> or any <see cref="Action"/> in <paramref name="actions"/> is <c>null</c>.
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="action"/> is <c>null</c>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="actions"/> contains <c>null</c>.
         /// </exception>
         TSource Invoke([NotNull]Action action, [CanBeNull]params Action[] actions);
 

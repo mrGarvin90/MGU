@@ -131,6 +131,18 @@
         }
 
         [Fact]
+        public void Get_Should_Throw_ArgumentNullException_When_Func_Is_Null_And_Condition_Is_True()
+        {
+            Assert.Throws<ArgumentNullException>(() => 5.If().Fulfills(s => true).Get(null));
+        }
+
+        [Fact]
+        public void Get_Should_Not_Throw_ArgumentNullException_When_Func_Is_Null_And_Condition_Is_False()
+        {
+            Assert.Equal(5, 5.If().Fulfills(s => false).Get(null));
+        }
+
+        [Fact]
         public void Invoke_Should_Invoke_Action_And_Return_Same_Value_When_Condition_Is_True()
         {
             var invoked = false;
@@ -198,7 +210,7 @@
         }
 
         [Fact]
-        public void Invoke_Should_Not_Invoke_Action_But_Not_Actions_If_Null_And_Return_Same_Value_When_Condition_Is_False()
+        public void Invoke_Should_Not_Invoke_Action_And_Not_Actions_If_Null_And_Return_Same_Value_When_Condition_Is_False()
         {
             var invoked = false;
             var actual = 5.If().Fulfills(s => false).Invoke(Action, null);
@@ -206,6 +218,45 @@
             Assert.False(invoked);
 
             void Action() => invoked = true;
+        }
+
+        [Fact]
+        public void Invoke_Should_Throw_ArgumentNullException_When_Action_Is_Null()
+        {
+            Assert.Throws<ArgumentNullException>(() => 5.If().Fulfills(s => true).Invoke(null));
+        }
+
+        [Fact]
+        public void Invoke_Should_Not_Throw_ArgumentNullException_When_Action_Is_Null_And_Condition_Is_False()
+        {
+            Assert.Equal(5, 5.If().Fulfills(s => false).Invoke(null));
+        }
+
+        [Fact]
+        public void Invoke_Should_Throw_ArgumentException_When_Actions_Contain_Null()
+        {
+            Assert.Throws<ArgumentException>(() => 5.If().Fulfills(s => true).Invoke(Action1, Action2, null));
+
+            void Action1()
+            {
+            }
+
+            void Action2()
+            {
+            }
+        }
+
+        [Fact]
+        public void Invoke_Should_Not_Throw_ArgumentException_When_Actions_Contain_Null_And_Condition_Is_False()
+        {
+            var invoked1 = false;
+            var invoked2 = false;
+            Assert.Equal(5, 5.If().Fulfills(s => false).Invoke(Action1, Action2, null));
+            Assert.False(invoked1);
+            Assert.False(invoked2);
+
+            void Action1() => invoked1 = true;
+            void Action2() => invoked2 = true;
         }
 
         [Fact]
