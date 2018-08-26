@@ -248,6 +248,46 @@
 
         #endregion
 
+        #region IGuidCondition
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IGuidNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IGuidNullableCondition
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="INullableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this INullableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this INullableGuidNotCondition source)
+        {
+        }
+
+        #endregion
+
         #endregion
 
         #region Chainable Conditions
@@ -557,6 +597,62 @@
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableBoolDoesNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IChainableGuidCondition
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IChainableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IChainableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IChainableGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IChainableGuidNotCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IChainableGuidDoesNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IChainableGuidDoesNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IChainableNullableGuidCondition
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IChainableNullableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IChainableNullableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IChainableNullableGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IChainableNullableGuidNotCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="IChainableNullableGuidDoesNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void If(this IChainableNullableGuidDoesNotCondition source)
         {
         }
 

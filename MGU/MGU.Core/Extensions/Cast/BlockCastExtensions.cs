@@ -248,6 +248,46 @@
 
         #endregion
 
+        #region IGuidCondition
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IGuidNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IGuidNullableCondition
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="INullableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this INullableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this INullableGuidNotCondition source)
+        {
+        }
+
+        #endregion
+
         #endregion
 
         #region Chainable Conditions
@@ -557,6 +597,62 @@
         /// </summary>
         /// <param name="source">The source.</param>
         public static void Cast(this IChainableNullableBoolDoesNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IChainableGuidCondition
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IChainableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IChainableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IChainableGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IChainableGuidNotCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IChainableGuidDoesNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IChainableGuidDoesNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IChainableNullableGuidCondition
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IChainableNullableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IChainableNullableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IChainableNullableGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IChainableNullableGuidNotCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Cast on <see cref="IChainableNullableGuidDoesNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Cast(this IChainableNullableGuidDoesNotCondition source)
         {
         }
 

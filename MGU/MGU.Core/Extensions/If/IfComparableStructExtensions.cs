@@ -73,5 +73,13 @@
         /// <returns><see cref="IChainableCharCondition"/></returns>
         public static IChainableCharCondition If(this char source)
             => new ChainableCharCondition(source);
+
+        /// <summary>
+        /// Gets conditions that can be chained for <see cref="Guid"/>.
+        /// </summary>
+        /// <param name="source">The source <see cref="Guid"/>.</param>
+        /// <returns><see cref="IChainableGuidCondition"/></returns>
+        public static IChainableGuidCondition If(this Guid source)
+            => new ChainableGuidCondition(source);
     }
 }

@@ -73,5 +73,13 @@
         /// <returns><see cref="IChainableNullableCharCondition"/></returns>
         public static IChainableNullableCharCondition If(this char? source)
             => new ChainableNullableCharCondition(source);
+
+        /// <summary>
+        /// Gets conditions that can be chained for nullable <see cref="Guid"/>.
+        /// </summary>
+        /// <param name="source">The nullable source <see cref="Guid"/>.</param>
+        /// <returns><see cref="IChainableNullableGuidCondition"/></returns>
+        public static IChainableNullableGuidCondition If(this Guid? source)
+            => new ChainableNullableGuidCondition(source);
     }
 }

@@ -73,5 +73,13 @@
         /// <returns><see cref="INullableCharCondition"/></returns>
         public static INullableCharCondition Is(this char? source)
             => new NullableCharCondition(source);
+
+        /// <summary>
+        /// Gets conditions that can be chained for nullable <see cref="Guid"/>.
+        /// </summary>
+        /// <param name="source">The source Guid.</param>
+        /// <returns><see cref="INullableGuidCondition"/></returns>
+        public static INullableGuidCondition Is(this Guid? source)
+            => new NullableGuidCondition(source);
     }
 }

@@ -248,6 +248,46 @@
 
         #endregion
 
+        #region IGuidCondition
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IGuidNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IGuidNullableCondition
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="INullableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this INullableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this INullableGuidNotCondition source)
+        {
+        }
+
+        #endregion
+
         #endregion
 
         #region Chainable Conditions
@@ -557,6 +597,62 @@
         /// </summary>
         /// <param name="source">The source.</param>
         public static void Is(this IChainableNullableBoolDoesNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IChainableGuidCondition
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IChainableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IChainableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IChainableGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IChainableGuidNotCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IChainableGuidDoesNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IChainableGuidDoesNotCondition source)
+        {
+        }
+
+        #endregion
+
+        #region IChainableNullableGuidCondition
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IChainableNullableGuidCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IChainableNullableGuidCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IChainableNullableGuidNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IChainableNullableGuidNotCondition source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of Is on <see cref="IChainableNullableGuidDoesNotCondition"/>.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public static void Is(this IChainableNullableGuidDoesNotCondition source)
         {
         }
 

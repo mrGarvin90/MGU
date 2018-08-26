@@ -73,5 +73,13 @@
         /// <returns><see cref="ICharCondition"/></returns>
         public static ICharCondition Is(this char source)
             => new CharCondition(source);
+
+        /// <summary>
+        /// Gets conditions for <see cref="Guid"/>.
+        /// </summary>
+        /// <param name="source">The source Guid.</param>
+        /// <returns><see cref="IGuidCondition"/></returns>
+        public static IGuidCondition Is(this Guid source)
+            => new GuidCondition(source);
     }
 }
