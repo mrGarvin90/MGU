@@ -13,16 +13,19 @@
     using Helpers;
     using Options;
 
-    /// <inheritdoc />
+    /// <inheritdoc cref="ConditionResultOption{TSource}" />
+    /// <inheritdoc cref="IConditionCoupler{TSource,TChainableCondition}" />
     /// <summary>
     /// The <see cref="ConditionCoupler{TSource,TChainableCondition}"/> class.
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
-    internal abstract class ConditionCoupler<TSource, TChainableCondition> : IConditionCoupler<TSource, TChainableCondition>
-        where TChainableCondition : IChainableConditionBase
+    internal abstract class ConditionCoupler<TSource, TChainableCondition>
+        : ConditionResultOption<TSource>,
+          IConditionCoupler<TSource, TChainableCondition>,
+          IConditionEvaluator
+        where TChainableCondition : IChainableConditionBase<TSource>
     {
-        private readonly TSource _source;
         private LogicalOperator? _logicalOperator;
 
         /// <summary>
@@ -30,14 +33,10 @@
         /// </summary>
         /// <param name="source">The source object.</param>
         protected ConditionCoupler(TSource source)
+            : base(source, false)
         {
             _logicalOperator = null;
-            _source = source;
-            Result = false;
         }
-
-        /// <inheritdoc />
-        public bool Result { get; protected set; }
 
         /// <inheritdoc />
         public virtual TChainableCondition And
@@ -89,13 +88,13 @@
                 switch (_logicalOperator)
                 {
                     case null:
-                        Result = InvertConditionResult ? !condition(_source) : condition(_source);
+                        Result = InvertConditionResult ? !condition(Source) : condition(Source);
                         break;
                     case LogicalOperator.And:
-                        Result = Result && (InvertConditionResult ? !condition(_source) : condition(_source));
+                        Result = Result && (InvertConditionResult ? !condition(Source) : condition(Source));
                         break;
                     case LogicalOperator.Or:
-                        Result = Result || (InvertConditionResult ? !condition(_source) : condition(_source));
+                        Result = Result || (InvertConditionResult ? !condition(Source) : condition(Source));
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(_logicalOperator), _logicalOperator, "Value is not implemented.");
@@ -106,105 +105,29 @@
             }
             catch (Exception exception)
             {
-                throw new ConditionEvaluationFailedException(typeof(TChainableCondition), callerMemberName, typeof(TSource), _source, exception);
+                throw new ConditionEvaluationFailedException(typeof(TChainableCondition), callerMemberName, typeof(TSource), Source, exception);
             }
         }
 
-        #region IConditionResultOption
+        #region IConditionEvaluator
 
-#pragma warning disable SA1201 // Elements must appear in the correct order
-        /// <inheritdoc />
-        ICastOption IConditionResultOption<TSource>.Cast => new CastOption(Result, _source);
+#pragma warning disable SA1202 // Elements must be ordered by access
 
         /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Invoke(Action action, params Action[] actions)
+        bool IConditionEvaluator.Evaluate(bool condition)
         {
-            if (!Result)
-                return _source;
-            if (action is null)
-                throw new ArgumentNullException(nameof(action));
-            if (actions?.Contains(null) ?? false)
-                throw new ArgumentException("Cannot contain null.", nameof(actions));
-            action();
-            for (var index = 0; index < actions?.Length; index++)
-                actions[index]();
-            return _source;
-        }
-
-        /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Get(Func<TSource> func)
-        {
-            if (!Result)
-                return _source;
-            if (func is null)
-                throw new ArgumentNullException(nameof(func));
-            return func();
-        }
-
-        /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Set(ref TSource other)
-        {
-            if (Result)
-                other = _source;
-            return _source;
-        }
-
-        /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Then(TSource value)
-            => Result ? value : _source;
-
-        /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Throw<TException>(params object[] exceptionParameters)
-        {
-            if (!Result)
-                return _source;
-            TException exception;
-            try
+            switch (_logicalOperator)
             {
-                exception = Activator.CreateInstance(typeof(TException), exceptionParameters).Cast().To<TException>();
-            }
-            catch (Exception innerException)
-            {
-                throw new CouldNotCreateInstanceException(typeof(TException), exceptionParameters, innerException);
-            }
-
-            throw exception;
-        }
-
-        /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.ThrowOrDefault<TException>(DefaultMessage defaultMessage, params object[] exceptionParameters)
-        {
-            try
-            {
-                return ((IConditionResultOption<TSource>)this).Throw<TException>(exceptionParameters);
-            }
-            catch (CouldNotCreateInstanceException)
-            {
-                var exception = new TException();
-                if (string.IsNullOrEmpty(defaultMessage.ToString()))
-                    throw exception;
-
-                var exceptionMessageField = typeof(TException).GetField("_message", BindingFlags.Instance | BindingFlags.NonPublic)
-                                            ?? throw exception;
-                var exceptionMessage = exceptionMessageField.GetValue(exception).Cast().ToOrDefault<string>();
-                exceptionMessageField.SetValue(
-                    exception,
-                    string.IsNullOrEmpty(exceptionMessage) ? defaultMessage.ToString() : $"{exceptionMessage}{Environment.NewLine}{defaultMessage}");
-                throw exception;
+                case null:
+                    return InvertConditionResult ? !condition : condition;
+                case LogicalOperator.And:
+                    return Result && (InvertConditionResult ? !condition : condition);
+                case LogicalOperator.Or:
+                    return Result || (InvertConditionResult ? !condition : condition);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(_logicalOperator), _logicalOperator, "Value is not implemented.");
             }
         }
-
-        /// <inheritdoc />
-        TSource IConditionResultOption<TSource>.Throw<TException>(TException exception)
-        {
-            if (Result)
-                throw exception ?? throw new ExceptionIsNullException(typeof(TException));
-            return _source;
-        }
-
-        /// <inheritdoc />
-        IThrowOption<TSource> IConditionResultOption<TSource>.Throw()
-            => new ThrowOption<TSource>(Result, _source);
 
         #endregion
     }

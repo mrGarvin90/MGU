@@ -30,10 +30,10 @@
             Exception innerException)
             : base(CreateMessage(conditionType, conditionName, sourceType, sourceObjectValue), innerException)
         {
-            SourceObjectType = sourceType.FullName;
-            SourceObjectValue = sourceObjectValue;
             ConditionType = conditionType.Name.Remove(0, 1);
             ConditionName = conditionName;
+            SourceObjectType = sourceType.FullName;
+            SourceObjectValue = sourceObjectValue;
         }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
@@ -90,7 +90,7 @@
                 .Append("Condition type: ").AppendLine(conditionType.Name.Remove(0, 1))
                 .Append("Condition name: ").AppendLine(conditionName)
                 .Append("Source type: ").AppendLine(sourceType.FullName)
-                .Append("Source value: ").AppendValue(sourceValue).AppendLine()
+                .Append("Source value: ").AppendValue(sourceValue)
                 .ToString();
         }
     }

@@ -12,9 +12,9 @@
 
         private static TestObject TestObjectNotInCollection { get; } = TestObject.New("str", 7);
 
-        private static IEnumerable<EqualityTestObject> EqualityTestObjectCollection => new[] {EqualityTestObject.New(), EqualityTestObject.New("str", 3), EqualityTestObject.Default(), null};
+        private static IEnumerable<EqualityTestObject> EqualityTestObjectCollection => new[] { EqualityTestObject.New(), EqualityTestObject.New("str", 3), EqualityTestObject.Default(), null };
 
-        private static IEnumerable<TestObject> TestObjectCollection => new[] {TestObject.New(), TestObject.New("str", 3), TestObject.Default(), null};
+        private static IEnumerable<TestObject> TestObjectCollection => new[] { TestObject.New(), TestObject.New("str", 3), TestObject.Default(), null };
 
         private static TestObjectEqualityComparer TestObjectEqualityComparer => new TestObjectEqualityComparer();
 

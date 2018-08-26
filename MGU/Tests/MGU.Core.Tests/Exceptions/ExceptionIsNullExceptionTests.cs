@@ -1,28 +1,44 @@
 ﻿namespace MGU.Core.Tests.Exceptions
 {
-    using System.IO;
-    using System.Runtime.Serialization.Formatters.Binary;
+    using System;
     using Core.Exceptions;
-    using Core.Extensions.If;
+    using Helpers;
     using TestObjects;
     using Xunit;
 
-    public class ExceptionIsNullExceptionTests
+    public class ExceptionIsNullExceptionTests : ExceptionTestBase<ExceptionIsNullException>
     {
+        private readonly Type _exceptionType = typeof(TestException);
+
+        public ExceptionIsNullExceptionTests()
+            : base(new[] { typeof(Type) })
+        {
+        }
+
         [Fact]
         public void Should_Be_Able_To_Serialize_And_Deserialize_Exception()
         {
-            var obj = new object();
-            var originalException = Assert.Throws<ExceptionIsNullException>(() => obj.If().Fulfills(s => true).Throw((TestException)null));
-            var buffer = new byte[4096];
-            var memoryStream = new MemoryStream(buffer);
-            var memoryStream2 = new MemoryStream(buffer);
-            var formatter = new BinaryFormatter();
+            var exception = CreateException(_exceptionType);
+            AssertProperties(exception);
 
-            formatter.Serialize(memoryStream, originalException);
-            var deserializedException = (ExceptionIsNullException)formatter.Deserialize(memoryStream2);
-
-            Assert.Equal(originalException.Message, deserializedException.Message);
+            exception = SerializeAndDeserialize(exception);
+            AssertProperties(exception);
         }
+
+        [Fact]
+        public void Exception_Message_Should_Be_Formatted_Correctly()
+        {
+            var exception = CreateException(_exceptionType);
+            Assert.Equal(CreateExpectedMessage(), exception.Message);
+        }
+
+        private void AssertProperties(ExceptionIsNullException exception)
+        {
+            Assert.Equal(CreateExpectedMessage(), exception.Message);
+            Assert.Null(exception.InnerException);
+        }
+
+        private string CreateExpectedMessage()
+            => $"Exception cannot be null.{Environment.NewLine}Type: {_exceptionType.FullName}";
     }
 }

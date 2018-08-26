@@ -5,6 +5,8 @@
     using Core.Exceptions;
     using Core.Extensions.If;
     using Interfaces.ChainableConditions.Nullable;
+    using Interfaces.Options;
+    using MGU.Core.Tests.Helpers;
     using TestObjects;
     using Xunit;
 
@@ -93,27 +95,82 @@
         }
 
         [Fact]
-        public void Result_Should_Be_True_When_Source_Is_Int()
+        public void Result_Should_Be_True_When_Source_Is_Type()
         {
-            Assert.True(SourceIntObjectCondition().Type<int>().Result);
+            Assert.True(GetTypeOption<object, int>(5).Result);
+            Assert.True(GetTypeOption<int?, int?>(null).Result);
         }
 
         [Fact]
-        public void Result_Should_Be_False_When_Source_Is_Not_Int()
+        public void Result_Should_Be_False_When_Source_Is_Not_Type()
         {
-            Assert.False(SourceObjectCondition().Type<int>().Result);
+            Assert.False(GetTypeOption<object, int>("Text").Result);
         }
 
         [Fact]
-        public void Result_Should_Be_True_When_Source_Is_Not_Int()
+        public void Result_Should_Be_True_When_Source_Is_Not_Type()
         {
-            Assert.True(SourceObjectCondition().Not.Type<int>().Result);
+            Assert.True(GetNotTypeOption<object, int>("Text").Result);
         }
 
         [Fact]
-        public void Result_Should_Be_False_When_Source_Is_Int()
+        public void Result_Should_Be_False_When_Source_Is_Type()
         {
-            Assert.False(SourceIntObjectCondition().Not.Type<int>().Result);
+            Assert.False(GetNotTypeOption<object, int>(5).Result);
+            Assert.False(GetNotTypeOption<int?, int?>(null).Result);
+        }
+
+        [Fact]
+        public void Type_Should_Should_Return_Correct_Result_When_Chained_And_Source_Is_Type()
+        {
+            Assert.True(GetTypeOption<object, int>(true, LogicalOperator.And, 5).Result);
+            Assert.True(GetTypeOption<object, int>(true, LogicalOperator.Or, 5).Result);
+
+            Assert.True(GetTypeOption<int?, int?>(true, LogicalOperator.And, null).Result);
+            Assert.True(GetTypeOption<int?, int?>(true, LogicalOperator.Or, null).Result);
+
+            Assert.True(GetTypeOption<object, int>(false, LogicalOperator.Or, 5).Result);
+            Assert.True(GetTypeOption<int?, int?>(false, LogicalOperator.Or, null).Result);
+
+            Assert.False(GetTypeOption<object, int>(false, LogicalOperator.And, 5).Result);
+            Assert.False(GetTypeOption<int?, int?>(false, LogicalOperator.And, null).Result);
+        }
+
+        [Fact]
+        public void Type_Should_Should_Return_Correct_Result_When_Chained_And_Source_Is_Not_Type()
+        {
+            Assert.True(GetTypeOption<object, int>(true, LogicalOperator.Or, "Text").Result);
+
+            Assert.False(GetTypeOption<object, int>(true, LogicalOperator.And, "Text").Result);
+            Assert.False(GetTypeOption<object, int>(false, LogicalOperator.And, "Text").Result);
+            Assert.False(GetTypeOption<object, int>(false, LogicalOperator.Or, "Text").Result);
+        }
+
+        [Fact]
+        public void Not_Type_Should_Should_Return_Correct_Result_When_Chained_And_Source_Is_Type()
+        {
+            Assert.False(GetNotTypeOption<object, int>(true, LogicalOperator.And, 5).Result);
+
+            Assert.True(GetNotTypeOption<object, int>(true, LogicalOperator.Or, 5).Result);
+
+            Assert.False(GetNotTypeOption<int?, int?>(true, LogicalOperator.And, null).Result);
+            Assert.True(GetNotTypeOption<int?, int?>(true, LogicalOperator.Or, null).Result);
+
+            Assert.False(GetNotTypeOption<object, int>(false, LogicalOperator.Or, 5).Result);
+            Assert.False(GetNotTypeOption<int?, int?>(false, LogicalOperator.Or, null).Result);
+
+            Assert.False(GetNotTypeOption<object, int>(false, LogicalOperator.And, 5).Result);
+            Assert.False(GetNotTypeOption<int?, int?>(false, LogicalOperator.And, null).Result);
+        }
+
+        [Fact]
+        public void Not_Type_Should_Should_Return_Correct_Result_When_Chained_And_Source_Is_Not_Type()
+        {
+            Assert.True(GetNotTypeOption<object, int>(true, LogicalOperator.Or, "Text").Result);
+
+            Assert.True(GetNotTypeOption<object, int>(true, LogicalOperator.And, "Text").Result);
+            Assert.False(GetNotTypeOption<object, int>(false, LogicalOperator.And, "Text").Result);
+            Assert.True(GetNotTypeOption<object, int>(false, LogicalOperator.Or, "Text").Result);
         }
 
         [Fact]
@@ -222,6 +279,38 @@
             Assert.NotNull(exception.InnerException);
         }
 
+        private static ITypeConditionResultOption<TTarget> GetTypeOption<TSource, TTarget>(TSource source)
+            => source.If().Type<TTarget>();
+
+        private static ITypeConditionResultOption<TTarget> GetTypeOption<TSource, TTarget>(bool previousConditionResult, LogicalOperator logicalOperator, TSource source)
+        {
+            switch (logicalOperator)
+            {
+                case LogicalOperator.And:
+                    return source.If().Fulfills(s => previousConditionResult).And.Type<TTarget>();
+                case LogicalOperator.Or:
+                    return source.If().Fulfills(s => previousConditionResult).Or.Type<TTarget>();
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(logicalOperator), logicalOperator, null);
+            }
+        }
+
+        private static INotTypeConditionResultOption<TSource> GetNotTypeOption<TSource, TTarget>(TSource source)
+            => source.If().Not.Type<TTarget>();
+
+        private static INotTypeConditionResultOption<TSource> GetNotTypeOption<TSource, TTarget>(bool previousConditionResult, LogicalOperator logicalOperator, TSource source)
+        {
+            switch (logicalOperator)
+            {
+                case LogicalOperator.And:
+                    return source.If().Fulfills(s => previousConditionResult).And.Not.Type<TTarget>();
+                case LogicalOperator.Or:
+                    return source.If().Fulfills(s => previousConditionResult).Or.Not.Type<TTarget>();
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(logicalOperator), logicalOperator, null);
+            }
+        }
+
         private static IChainableCondition<object> SourceObjectCondition()
             => SourceObject.If();
 
@@ -233,9 +322,6 @@
 
         private static IChainableCondition<TestObject> NullSourceTestObjectCondition()
             => ((TestObject)null).If();
-
-        private static IChainableCondition<object> SourceIntObjectCondition()
-            => SourceIntObject.If();
 
         private static IChainableCondition<EqualityTestObject> EqualityTestObjectInCollectionCondition()
             => EqualityTestObject.Default().If();

@@ -23,8 +23,26 @@
         /// <param name="parameters">The parameters used to create the instance.</param>
         /// <param name="innerException">The inner exception.</param>
         internal CouldNotCreateInstanceException([NotNull]Type instanceType, IEnumerable<object> parameters, Exception innerException)
-            : base(CreateMessage(instanceType, parameters.ToArray()), innerException)
+            : this(instanceType, CreateMessage(instanceType, parameters), innerException)
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CouldNotCreateInstanceException"/> class.
+        /// </summary>
+        /// <param name="instanceType">Type of the instance.</param>
+        /// <param name="parameterTypes">The types of the parameters used to create the instance.</param>
+        /// <param name="parameters">The parameters used to create the instance.</param>
+        /// <param name="innerException">The inner exception.</param>
+        internal CouldNotCreateInstanceException([NotNull]Type instanceType, IEnumerable<Type> parameterTypes, IEnumerable<object> parameters, Exception innerException)
+            : this(instanceType, CreateMessage(instanceType, parameterTypes, parameters), innerException)
+        {
+        }
+
+        private CouldNotCreateInstanceException(Type instanceType, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            InstanceType = instanceType.FullName;
         }
 
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
@@ -48,31 +66,30 @@
             base.GetObjectData(info, context);
         }
 
-        private static string CreateMessage(Type instanceType, object[] parameters)
+        private static string CreateMessage(Type instanceType, IEnumerable<object> parameters)
         {
-            var builder = new StringBuilder();
-            builder.Append("Could not create a new instance of ").Append(instanceType.FullName).Append(" with ");
-            if (parameters is null || parameters.Length == 0)
+            var builder = CreateNewMessageBuilder(instanceType).Append(" with ");
+            if (!parameters?.Any() ?? true)
                 return builder.Append("no parameters.").ToString();
-
-            builder.Append(parameters.Length == 1 ? "parameter " : "parameters ");
-            Append(0);
-            for (var index = 1; index < parameters.Length; index++)
-            {
-                builder.Append(", ");
-                Append(index);
-            }
-
-            return builder.ToString();
-
-            void Append(object parameter)
-            {
-                builder.AppendValue(parameter).Append(" ");
-                if (parameter is null)
-                    builder.Append("(<undefined>)");
-                else
-                    builder.Append("(").Append(parameter.GetType().FullName).Append(")");
-            }
+            builder.AppendLine("parameters:");
+            return builder.AppendValuesAndTypes(parameters, Environment.NewLine).ToString();
         }
+
+        private static string CreateMessage(Type instanceType, IEnumerable<Type> parameterTypes, IEnumerable<object> parameters)
+        {
+            var builder = CreateNewMessageBuilder(instanceType).AppendLine();
+            if (!parameterTypes?.Any() ?? true)
+                builder.AppendLine("No parameter types.");
+            else
+                builder.AppendLine("Parameter types:").AppendValues(parameterTypes.Select(pt => pt?.FullName), Environment.NewLine).AppendLine();
+            if (!parameters?.Any() ?? true)
+                builder.Append("No parameters.");
+            else
+                builder.AppendLine("Parameters:").AppendValuesAndTypes(parameters, Environment.NewLine);
+            return builder.ToString();
+        }
+
+        private static StringBuilder CreateNewMessageBuilder(Type instanceType)
+            => new StringBuilder("Could not create a new instance of ").Append(instanceType.FullName);
     }
 }

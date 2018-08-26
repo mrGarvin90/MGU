@@ -15,7 +15,7 @@
         : IChainableEnumerableConditionBase<TSource, TObject>,
           IChainableDoesNotConditionBase<TSource, TChainableEnumerableCondition>
         where TSource : IEnumerable<TObject>
-        where TChainableEnumerableCondition : IChainableConditionBase
+        where TChainableEnumerableCondition : IChainableConditionBase<TSource>
     {
         /// <summary>
         /// Determines whether the source enumerable does not contain the specified value by comparing it with the other elements using the specified <paramref name="comparer"/>

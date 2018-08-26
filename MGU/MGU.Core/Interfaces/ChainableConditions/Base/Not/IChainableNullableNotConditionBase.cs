@@ -9,8 +9,8 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
-    public interface IChainableNullableNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase
-        where TChainableCondition : IChainableConditionBase
+    public interface IChainableNullableNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase<TSource>
+        where TChainableCondition : IChainableConditionBase<TSource>
     {
         /// <summary>
         /// Determines whether the source object is <c>null</c>.

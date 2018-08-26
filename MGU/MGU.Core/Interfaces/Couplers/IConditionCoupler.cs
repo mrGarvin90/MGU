@@ -10,7 +10,7 @@
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
     public interface IConditionCoupler<TSource, out TChainableCondition> : IConditionResultOption<TSource>
-        where TChainableCondition : IChainableConditionBase
+        where TChainableCondition : IChainableConditionBase<TSource>
     {
         /// <summary>
         /// Gets the and condition.

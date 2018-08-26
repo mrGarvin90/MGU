@@ -10,8 +10,8 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
-    public interface IChainableDoesNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase
-        where TChainableCondition : IChainableConditionBase
+    public interface IChainableDoesNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase<TSource>
+        where TChainableCondition : IChainableConditionBase<TSource>
     {
         /// <summary>
         /// Determines whether the source object does not fulfill the specified condition.

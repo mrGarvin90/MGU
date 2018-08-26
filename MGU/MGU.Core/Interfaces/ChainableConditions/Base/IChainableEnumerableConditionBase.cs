@@ -14,7 +14,7 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source enumerable.</typeparam>
     /// <typeparam name="TObject">The type of the object that source enumerable contains.</typeparam>
-    public interface IChainableEnumerableConditionBase<TSource, TObject> : IChainableConditionBase
+    public interface IChainableEnumerableConditionBase<TSource, TObject> : IChainableConditionBase<TSource>
     {
     }
 

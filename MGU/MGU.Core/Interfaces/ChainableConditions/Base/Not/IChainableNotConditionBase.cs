@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using Couplers;
     using JetBrains.Annotations;
+    using Options;
 
     /// <inheritdoc />
     /// <summary>
@@ -11,8 +12,8 @@
     /// </summary>
     /// <typeparam name="TSource">The type of the source object.</typeparam>
     /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
-    public interface IChainableNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase
-        where TChainableCondition : IChainableConditionBase
+    public interface IChainableNotConditionBase<TSource, out TChainableCondition> : IChainableConditionBase<TSource>
+        where TChainableCondition : IChainableConditionBase<TSource>
     {
         /// <summary>
         /// Determines whether the source object is equal to the specified <paramref name="other"/>.
@@ -22,15 +23,15 @@
         IConditionCoupler<TSource, TChainableCondition> EqualTo(TSource other);
 
         /// <summary>
-        /// Determines whether the source object is the specified type.
+        /// Determines whether the source object is not the specified type.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <remarks>
-        /// If the source object is <c>null</c> the specific types of the source object and <typeparamref name="T"/>
-        /// will be compared, otherwise the <see langword="is"/> operator will be used.
+        /// If the source object is <c>null</c> the specific type of the source object and <typeparamref name="T"/>
+        /// will be compared, otherwise the <c>is</c> operator will be used.
         /// </remarks>
-        IConditionCoupler<TSource, TChainableCondition> Type<T>();
+        INotTypeConditionResultOption<TSource> Type<T>();
 
         /// <summary>
         /// Determines whether the source object is in the specified collection using the specified <paramref name="comparer"/>

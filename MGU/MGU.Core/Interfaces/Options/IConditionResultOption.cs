@@ -67,32 +67,87 @@
         TSource Then(TSource value);
 
         /// <summary>
-        /// Throws an <typeparamref name="TException"/> if the specified conditions are met.
         /// Creates an instance of <typeparamref name="TException"/> using the public
-        /// constructor that best matches the specified parameters.
+        /// constructor that best matches the specified parameters and throws that exception
+        /// if the specified conditions are met.
         /// </summary>
         /// <typeparam name="TException">The type of the exception.</typeparam>
         /// <param name="exceptionParameters">The exception parameters.</param>
         /// <exception cref="CouldNotCreateInstanceException">
         /// No public constructor was found that matches the specified parameters.
+        /// Inner exception: See <see cref="Activator.CreateInstance(Type, object[])"/>.
         /// </exception>
         /// <returns>The source object.</returns>
         TSource Throw<TException>(params object[] exceptionParameters)
             where TException : Exception;
 
         /// <summary>
-        /// Throws an <typeparamref name="TException"/> if the specified conditions are met.
         /// Creates an instance of <typeparamref name="TException"/> using the public
-        /// constructor that best matches the specified parameters or the default constructor
-        /// if no other constructor was found.
+        /// constructor that best matches the parameter types and throws that exception
+        /// if the specified conditions are met.
+        /// </summary>
+        /// <typeparam name="TException">The type of the exception.</typeparam>
+        /// <param name="parameterTypes">The parameter types.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The source object.</returns>
+        /// <remarks>
+        /// <paramref name="parameterTypes"/> can be <see langword="null"/> or empty if
+        /// <paramref name="parameters"/> is <see langword="null"/> or empty.
+        /// </remarks>
+        /// <exception cref="CouldNotCreateInstanceException">
+        /// <paramref name="parameterTypes"/> is not valid.
+        /// Inner exception: See <see cref="Type.GetConstructor(Type[])"/>.
+        /// </exception>
+        /// <exception cref="CouldNotCreateInstanceException">
+        /// No public constructor was found that matches the specified parameter types.
+        /// Inner exception: <see cref="ArgumentException"/>.
+        /// </exception>
+        /// <exception cref="CouldNotCreateInstanceException">
+        /// Could not invoke constructor.
+        /// Inner exception: See <see cref="System.Reflection.ConstructorInfo.Invoke(object[])"/>.
+        /// </exception>
+        TSource Throw<TException>(Type[] parameterTypes, object[] parameters)
+            where TException : Exception;
+
+        /// <summary>
+        /// Creates an instance of <typeparamref name="TException"/> using the public
+        /// constructor that best matches the specified parameters, or the default constructor
+        /// if no other constructor was found, and throws that exception
+        /// if the specified conditions are met.
         /// </summary>
         /// <typeparam name="TException">The type of the exception.</typeparam>
         /// <param name="defaultMessage">
-        /// The default message that will be appended to the message of default exception.
+        /// The default message that will replace the message on the default exception.
         /// </param>
         /// <param name="exceptionParameters">The exception parameters.</param>
         /// <returns>The source object.</returns>
-        TSource ThrowOrDefault<TException>(DefaultMessage defaultMessage, params object[] exceptionParameters)
+        /// <remarks>
+        /// If <paramref name="defaultMessage"/> is <c>null</c> the message on the default exception
+        /// will not be replaced.
+        /// </remarks>
+        TSource ThrowOrDefault<TException>([CanBeNull]DefaultMessage defaultMessage, params object[] exceptionParameters)
+            where TException : Exception, new();
+
+        /// <summary>
+        /// Creates an instance of <typeparamref name="TException"/> using the public
+        /// constructor that best matches the parameter types, or the default constructor
+        /// if no other constructor was found, and throws that exception
+        /// if the specified conditions are met.
+        /// </summary>
+        /// <typeparam name="TException">The type of the exception.</typeparam>
+        /// <param name="defaultMessage">
+        /// The default message that will replace the message on the default exception.
+        /// </param>
+        /// <param name="parameterTypes">The parameter types.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The source object.</returns>
+        /// <remarks>
+        /// If <paramref name="defaultMessage"/> is <c>null</c> the message on the default exception
+        /// will not be replaced.
+        /// <paramref name="parameterTypes"/> can be <see langword="null"/> or empty if
+        /// <paramref name="parameters"/> is <see langword="null"/> or empty.
+        /// </remarks>
+        TSource ThrowOrDefault<TException>([CanBeNull]DefaultMessage defaultMessage, Type[] parameterTypes, object[] parameters)
             where TException : Exception, new();
 
         /// <summary>

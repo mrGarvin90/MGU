@@ -22,7 +22,7 @@
     using Interfaces.Options;
 
     /// <summary>
-    /// Contains If extension methods to block accidental use of If on conditions, chainable conditions, condition couplers, condition actions and options.
+    /// Contains If extension methods to block accidental use of If on conditions, chainable conditions, couplers and options.
     /// </summary>
     public static class BlockIfExtensions
     {
@@ -31,7 +31,7 @@
         #region ICondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="ICondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="ICondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -40,7 +40,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="INotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="INotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -53,7 +53,7 @@
         #region IComparableStructCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IComparableStructCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IComparableStructCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -63,7 +63,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IComparableStructNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IComparableStructNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -77,7 +77,7 @@
         #region INullableComparableStructCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="INullableComparableStructCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="INullableComparableStructCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -87,7 +87,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="INullableComparableStructNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="INullableComparableStructNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -101,7 +101,7 @@
         #region IComparableClassCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IComparableClassCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IComparableClassCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -111,7 +111,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IComparableClassNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IComparableClassNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -125,7 +125,7 @@
         #region IEnumerableCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IEnumerableCondition{TSource,TObject}"/>.
+        /// Blocks the use of If on <see cref="IEnumerableCondition{TSource,TObject}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
@@ -136,7 +136,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IEnumerableNotCondition{TSource,TObject}"/>.
+        /// Blocks the use of If on <see cref="IEnumerableNotCondition{TSource,TObject}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
@@ -151,7 +151,7 @@
         #region IStringCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IStringCondition"/>.
+        /// Blocks the use of If on <see cref="IStringCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IStringCondition source)
@@ -159,7 +159,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IStringNotCondition"/>.
+        /// Blocks the use of If on <see cref="IStringNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IStringNotCondition source)
@@ -171,7 +171,7 @@
         #region ICharCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="ICharCondition"/>.
+        /// Blocks the use of If on <see cref="ICharCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this ICharCondition source)
@@ -179,7 +179,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="ICharNotCondition"/>.
+        /// Blocks the use of If on <see cref="ICharNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this ICharNotCondition source)
@@ -191,7 +191,7 @@
         #region ICharNullableCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="INullableCharCondition"/>.
+        /// Blocks the use of If on <see cref="INullableCharCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this INullableCharCondition source)
@@ -199,7 +199,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="ICharNotCondition"/>.
+        /// Blocks the use of If on <see cref="ICharNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this INullableCharNotCondition source)
@@ -211,7 +211,7 @@
         #region IBoolCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IBoolCondition"/>.
+        /// Blocks the use of If on <see cref="IBoolCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IBoolCondition source)
@@ -219,7 +219,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IBoolNotCondition"/>.
+        /// Blocks the use of If on <see cref="IBoolNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IBoolNotCondition source)
@@ -231,7 +231,7 @@
         #region INullableBoolCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="INullableBoolCondition"/>.
+        /// Blocks the use of If on <see cref="INullableBoolCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this INullableBoolCondition source)
@@ -239,7 +239,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="INullableBoolNotCondition"/>.
+        /// Blocks the use of If on <see cref="INullableBoolNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this INullableBoolNotCondition source)
@@ -255,7 +255,7 @@
         #region IChainableCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -264,7 +264,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -273,7 +273,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableDoesNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -286,7 +286,7 @@
         #region IChainableComparableStructCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableComparableStructCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableComparableStructCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -296,7 +296,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableComparableStructNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableComparableStructNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -306,7 +306,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableComparableStructDoesNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableComparableStructDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -320,7 +320,7 @@
         #region IChainableNullableComparableStructCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableComparableStructCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableComparableStructCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -330,7 +330,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableComparableStructNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableComparableStructNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -340,7 +340,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableComparableStructDoesNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableComparableStructDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -354,7 +354,7 @@
         #region IChainableComparableClassCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableComparableClassCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableComparableClassCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -364,7 +364,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableComparableClassNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableComparableClassNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -374,7 +374,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableComparableClassDoesNotCondition{TSource}"/>.
+        /// Blocks the use of If on <see cref="IChainableComparableClassDoesNotCondition{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the comparable.</typeparam>
         /// <param name="source">The source.</param>
@@ -388,7 +388,7 @@
         #region IChainableEnumerableCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableEnumerableCondition{TSource,TObject}"/>.
+        /// Blocks the use of If on <see cref="IChainableEnumerableCondition{TSource,TObject}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
@@ -399,7 +399,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableEnumerableNotCondition{TSource,TObject}"/>.
+        /// Blocks the use of If on <see cref="IChainableEnumerableNotCondition{TSource,TObject}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
@@ -410,7 +410,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableEnumerableDoesNotCondition{TSource,TObject}"/>.
+        /// Blocks the use of If on <see cref="IChainableEnumerableDoesNotCondition{TSource,TObject}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
@@ -425,7 +425,7 @@
         #region IChainableStringCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableStringCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableStringCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableStringCondition source)
@@ -433,7 +433,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableStringNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableStringNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableStringNotCondition source)
@@ -441,7 +441,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableStringDoesNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableStringDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableStringDoesNotCondition source)
@@ -453,7 +453,7 @@
         #region IChainableCharCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableCharCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableCharCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableCharCondition source)
@@ -461,7 +461,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableCharNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableCharNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableCharNotCondition source)
@@ -469,7 +469,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableCharDoesNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableCharDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableCharDoesNotCondition source)
@@ -481,7 +481,7 @@
         #region IChainableNullableCharCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableCharCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableCharCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableCharCondition source)
@@ -489,7 +489,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableCharNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableCharNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableCharNotCondition source)
@@ -497,7 +497,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableCharDoesNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableCharDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableCharDoesNotCondition source)
@@ -509,7 +509,7 @@
         #region IChainableBoolCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableBoolCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableBoolCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableBoolCondition source)
@@ -517,7 +517,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableBoolNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableBoolNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableBoolNotCondition source)
@@ -525,7 +525,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableBoolDoesNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableBoolDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableBoolDoesNotCondition source)
@@ -537,7 +537,7 @@
         #region IChainableNullableBoolCondition
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableBoolCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableBoolCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableBoolCondition source)
@@ -545,7 +545,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableBoolNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableBoolNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableBoolNotCondition source)
@@ -553,7 +553,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IChainableNullableBoolDoesNotCondition"/>.
+        /// Blocks the use of If on <see cref="IChainableNullableBoolDoesNotCondition"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this IChainableNullableBoolDoesNotCondition source)
@@ -564,16 +564,25 @@
 
         #endregion
 
-        #region IConditionCoupler
+        #region Couplers
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IConditionCoupler{TSource,TChainableCondition}"/>.
+        /// Blocks the use of If on <see cref="IConditionCoupler{TSource,TChainableCondition}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TChainableCondition">The type of the chainable condition.</typeparam>
         /// <param name="source">The source.</param>
         public static void If<TSource, TChainableCondition>(this IConditionCoupler<TSource, TChainableCondition> source)
-            where TChainableCondition : IChainableConditionBase
+            where TChainableCondition : IChainableConditionBase<TSource>
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="INotTypeConditionResultOptionCoupler{TSource}"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <param name="source">The source.</param>
+        public static void If<TSource>(this INotTypeConditionResultOptionCoupler<TSource> source)
         {
         }
 
@@ -582,7 +591,7 @@
         #region Options
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IConditionResultOption{TSource}"/>.
+        /// Blocks the use of If on <see cref="IConditionResultOption{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
@@ -591,7 +600,7 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="ICastOption"/>.
+        /// Blocks the use of If on <see cref="ICastOption"/>.
         /// </summary>
         /// <param name="source">The source.</param>
         public static void If(this ICastOption source)
@@ -599,11 +608,29 @@
         }
 
         /// <summary>
-        /// Blocks the use of If on <inheritdoc cref="IThrowOption{TSource}"/>.
+        /// Blocks the use of If on <see cref="IThrowOption{TSource}"/>.
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
         public static void If<TSource>(this IThrowOption<TSource> source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="ITypeConditionResultOption{TSource}"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <param name="source">The source.</param>
+        public static void If<TSource>(this ITypeConditionResultOption<TSource> source)
+        {
+        }
+
+        /// <summary>
+        /// Blocks the use of If on <see cref="INotTypeConditionResultOption{TSource}"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <param name="source">The source.</param>
+        public static void If<TSource>(this INotTypeConditionResultOption<TSource> source)
         {
         }
 

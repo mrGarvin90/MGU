@@ -10,7 +10,7 @@
     /// The <see cref="IChainableComparableConditionBase{TSource}"/> interface.
     /// </summary>
     /// <typeparam name="TSource">The type of the comparable.</typeparam>
-    public interface IChainableComparableConditionBase<TSource> : IChainableConditionBase
+    public interface IChainableComparableConditionBase<TSource> : IChainableConditionBase<TSource>
     {
     }
 

@@ -3,12 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Core.Extensions.Is;
     using Core.Interfaces.ChainableConditions.Base;
     using Core.Interfaces.ChainableConditions.Base.Not;
     using Core.Interfaces.Couplers;
     using Couplers;
+    using Helpers;
     using Interfaces.ChainableConditions.Base.DoesNot;
+    using Interfaces.Options;
+    using Options;
 
     /// <inheritdoc cref="ConditionCoupler{TSource,TChainableCondition}" />
     /// <inheritdoc cref="IChainableConditionBase{TSource,TChainableCondition,TChainableNotCondition,TChainableDoesNotCondition}" />
@@ -84,11 +86,15 @@
             => Evaluate(s => ReferenceEquals(s, other) || (s?.Equals(other) ?? other == null));
 
         /// <inheritdoc />
-        public virtual IConditionCoupler<TSource, TChainableCondition> Type<T>()
-            => Evaluate(s => s == null ? typeof(T) == typeof(TSource) : s is T);
-
-        /// <inheritdoc />
         public virtual IConditionCoupler<TSource, TChainableCondition> In(IEnumerable<TSource> collection, IEqualityComparer<TSource> comparer = null)
             => Evaluate(s => collection?.Contains(s, comparer) ?? false);
+
+        /// <inheritdoc />
+        ITypeConditionResultOption<T> IChainableConditionBase<TSource, TChainableCondition, TChainableNotCondition, TChainableDoesNotCondition>.Type<T>()
+            => new TypeConditionResultOption<TSource, T>(Source, ((IConditionEvaluator)this).Evaluate(Source == null ? typeof(T) == typeof(TSource) : Source is T));
+
+        /// <inheritdoc />
+        INotTypeConditionResultOption<TSource> IChainableNotConditionBase<TSource, TChainableCondition>.Type<T>()
+            => new NotTypeConditionResultOption<TSource>(Source, ((IConditionEvaluator)this).Evaluate(Source == null ? typeof(T) == typeof(TSource) : Source is T));
     }
 }

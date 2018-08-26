@@ -19,7 +19,7 @@
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <typeparam name="TObject">The type of the object.</typeparam>
         /// <typeparam name="TChainableEnumerableCondition">The type of the chainable enumerable condition.</typeparam>
-        /// <param name="source">The source condition.</param>
+        /// <param name="chainableEnumerableCountIsCondition">The source condition.</param>
         /// <param name="value">The value.</param>
         /// <returns><see cref="IConditionCoupler{TSource,TChainableCondition}"/></returns>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
@@ -27,14 +27,14 @@
         /// Inner exception: <see cref="System.ArgumentNullException"/>.
         /// </exception>
         /// <exception cref="Exceptions.ConditionEvaluationFailedException">
-        /// The number of elements in the source enumerable is larger than <see cref="F:System.Int32.MaxValue"/>.
+        /// The number of elements in the source enumerable is larger than <see cref="int.MaxValue"/>.
         /// Inner exception: <see cref="System.OverflowException"/>.
         /// </exception>
         public static IConditionCoupler<TSource, TChainableEnumerableCondition> Not<TSource, TObject, TChainableEnumerableCondition>(
-            [NotNull]this IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition> source,
+            [NotNull]this IChainableEnumerableCountIsCondition<TSource, TObject, TChainableEnumerableCondition> chainableEnumerableCountIsCondition,
             int value)
             where TSource : IEnumerable<TObject>
             where TChainableEnumerableCondition : IChainableEnumerableConditionBase<TSource, TObject>
-            => ((ConditionCoupler<TSource, TChainableEnumerableCondition>)source).Evaluate(s => s.Count() != value);
+            => ((ConditionCoupler<TSource, TChainableEnumerableCondition>)chainableEnumerableCountIsCondition).Evaluate(s => s.Count() != value);
     }
 }

@@ -10,7 +10,7 @@
     /// <typeparam name="TSource">The type of the source.</typeparam>
     /// <typeparam name="TObject">The type of the object.</typeparam>
     /// <typeparam name="TChainableEnumerableCondition">The type of the chainable enumerable condition.</typeparam>
-    public interface IChainableEnumerableCountCondition<TSource, out TObject, out TChainableEnumerableCondition> : IChainableConditionBase
+    public interface IChainableEnumerableCountCondition<TSource, out TObject, out TChainableEnumerableCondition> : IChainableConditionBase<TSource>
         where TSource : IEnumerable<TObject>
         where TChainableEnumerableCondition : IChainableEnumerableConditionBase<TSource, TObject>
     {

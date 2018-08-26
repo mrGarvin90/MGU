@@ -10,7 +10,7 @@
 
     public class ChainableStringConditionTests
     {
-        private IEnumerable<string> StringCollection { get; } = new[] {"This", " ", "is", " ", "a", " ", "Test", "123456"};
+        private IEnumerable<string> StringCollection { get; } = new[] { "This", " ", "is", " ", "a", " ", "Test", "123456" };
 
         #region WhiteSpace
 

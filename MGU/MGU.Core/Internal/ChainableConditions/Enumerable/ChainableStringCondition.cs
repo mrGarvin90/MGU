@@ -36,10 +36,10 @@
         }
 
         /// <inheritdoc />
-        public IChainableEnumerableCountCondition<string, char, IChainableStringCondition> Length => SetDoNotCheckIsNullOrWhiteSpace(this);
+        public IChainableEnumerableCountCondition<string, char, IChainableStringCondition> Length => Return(this);
 
         /// <inheritdoc />
-        IConditionCoupler<string, IChainableStringCondition> IChainableStringNotCondition.Empty => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(s => s.Length == 0));
+        IConditionCoupler<string, IChainableStringCondition> IChainableStringNotCondition.Empty => Return(Evaluate(s => s.Length == 0));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> WhiteSpace
@@ -48,7 +48,7 @@
             {
                 if (InvertConditionResult || !_nullWasCalled || !_orWasCalled)
                 {
-                    return SetDoNotCheckIsNullOrWhiteSpace(
+                    return Return(
                         Evaluate(s =>
                         {
                             for (var index = 0; index < s.Length; index++)
@@ -63,7 +63,7 @@
 
                 InvertConditionResult = _nullResultWasInverted;
                 Result = false;
-                return SetDoNotCheckIsNullOrWhiteSpace(Evaluate(string.IsNullOrWhiteSpace));
+                return Return(Evaluate(string.IsNullOrWhiteSpace));
             }
         }
 
@@ -71,19 +71,19 @@
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartsWith(char character, bool ignoreCase = false, CultureInfo culture = null)
-            => StartsWith(character.ToString(), ignoreCase, culture);
+            => Return(Evaluate(source => Check((s, v) => s.StartsWith(v), source, character.ToString(), ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartsWith(string value, bool ignoreCase = false, CultureInfo culture = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(source => Check((s, v) => s.StartsWith(v), source, value, ignoreCase, culture)));
+            => Return(Evaluate(source => Check((s, v) => s.StartsWith(v), source, value, ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartWith(char character, bool ignoreCase = false, CultureInfo culture = null)
-            => StartWith(character.ToString(), ignoreCase, culture);
+            => Return(Evaluate(source => Check((s, v) => s.StartsWith(v), source, character.ToString(), ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> StartWith(string value, bool ignoreCase = false, CultureInfo culture = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(source => Check((s, v) => s.StartsWith(v), source, value, ignoreCase, culture)));
+            => Return(Evaluate(source => Check((s, v) => s.StartsWith(v), source, value, ignoreCase, culture)));
 
         #endregion
 
@@ -91,19 +91,19 @@
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> EndsWith(char character, bool ignoreCase = false, CultureInfo culture = null)
-            => EndsWith(character.ToString(), ignoreCase, culture);
+            => Return(Evaluate(source => Check((s, v) => s.EndsWith(v), source, character.ToString(), ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> EndsWith(string value, bool ignoreCase = false, CultureInfo culture = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(source => Check((s, v) => s.EndsWith(v), source, value, ignoreCase, culture)));
+            => Return(Evaluate(source => Check((s, v) => s.EndsWith(v), source, value, ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> EndWith(char character, bool ignoreCase = false, CultureInfo culture = null)
-            => EndWith(character.ToString(), ignoreCase, culture);
+            => Return(Evaluate(source => Check((s, v) => s.EndsWith(v), source, character.ToString(), ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> EndWith(string value, bool ignoreCase = false, CultureInfo culture = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(source => Check((s, v) => s.EndsWith(v), source, value, ignoreCase, culture)));
+            => Return(Evaluate(source => Check((s, v) => s.EndsWith(v), source, value, ignoreCase, culture)));
 
         #endregion
 
@@ -111,26 +111,25 @@
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> Contains(char character, bool ignoreCase = false, CultureInfo culture = null)
-            => Contains(character.ToString(), ignoreCase, culture);
+            => Return(Evaluate(source => Check((s, v) => s.Contains(v), source, character.ToString(), ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> Contains(string value, bool ignoreCase = false, CultureInfo culture = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(source => Check((s, v) => s.Contains(v), source, value, ignoreCase, culture)));
+            => Return(Evaluate(source => Check((s, v) => s.Contains(v), source, value, ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> Contain(char character, bool ignoreCase = false, CultureInfo culture = null)
-            => Contain(character.ToString(), ignoreCase, culture);
+            => Return(Evaluate(source => Check((s, v) => s.Contains(v), source, character.ToString(), ignoreCase, culture)));
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> Contain(string value, bool ignoreCase = false, CultureInfo culture = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(source => Check((s, v) => s.Contains(v), source, value, ignoreCase, culture)));
+            => Return(Evaluate(source => Check((s, v) => s.Contains(v), source, value, ignoreCase, culture)));
 
         #endregion
 
         /// <inheritdoc />
         public IConditionCoupler<string, IChainableStringCondition> In(string other, bool ignoreCase = false, CultureInfo culture = null)
-        {
-            return SetDoNotCheckIsNullOrWhiteSpace(
+            => Return(
                 Evaluate(s =>
                 {
                     if (s is null || other is null)
@@ -143,7 +142,6 @@
 
                     return other.Contains(s);
                 }));
-        }
 
         private static bool Check(Func<string, string, bool> func, string str, string value, bool ignoreCase, CultureInfo culture)
         {
@@ -158,7 +156,7 @@
             return func(str, value);
         }
 
-        private T SetDoNotCheckIsNullOrWhiteSpace<T>(T returnValue)
+        private T Return<T>(T returnValue)
         {
             _nullWasCalled = _nullResultWasInverted = _orWasCalled = false;
             return returnValue;
@@ -170,7 +168,7 @@
 #pragma warning disable SA1202 // Elements must be ordered by access
 
         /// <inheritdoc />
-        public override IChainableStringCondition And => SetDoNotCheckIsNullOrWhiteSpace(base.And);
+        public override IChainableStringCondition And => Return(base.And);
 
         /// <inheritdoc />
         public override IChainableStringCondition Or
@@ -203,51 +201,47 @@
         }
 
         /// <inheritdoc />
-        public override IChainableEnumerableCountCondition<string, char, IChainableStringCondition> Count => SetDoNotCheckIsNullOrWhiteSpace(this);
+        public override IChainableEnumerableCountCondition<string, char, IChainableStringCondition> Count => Return(this);
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> Fulfills(Func<string, bool> condition)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(condition));
+            => Return(Evaluate(condition));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> Fulfill(Func<string, bool> condition)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(condition));
+            => Return(Evaluate(condition));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> EqualTo(string other)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(s => s == other));
-
-        /// <inheritdoc />
-        public override IConditionCoupler<string, IChainableStringCondition> Type<T>()
-            => SetDoNotCheckIsNullOrWhiteSpace(base.Type<T>());
+            => Return(Evaluate(s => s == other));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> In(IEnumerable<string> collection, IEqualityComparer<string> comparer = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(s => collection?.Contains(s) ?? false));
+            => Return(Evaluate(s => collection?.Contains(s) ?? false));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> All(Func<char, bool> predicate)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(s => s.All(predicate)));
+            => Return(Evaluate(s => s.All(predicate)));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> Any(Func<char, bool> predicate)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(s => s.Any(predicate)));
+            => Return(Evaluate(s => s.Any(predicate)));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> None(Func<char, bool> predicate)
-            => SetDoNotCheckIsNullOrWhiteSpace(Evaluate(s => !s.Any(predicate)));
+            => Return(Evaluate(s => !s.Any(predicate)));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> SequentiallyEqualTo(IEnumerable<char> other, IEqualityComparer<char> comparer = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(base.SequentiallyEqualTo(other, comparer));
+            => Return(base.SequentiallyEqualTo(other, comparer));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> Contains(char value, IEqualityComparer<char> comparer = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(base.Contains(value, comparer));
+            => Return(base.Contains(value, comparer));
 
         /// <inheritdoc />
         public override IConditionCoupler<string, IChainableStringCondition> Contain(char value, IEqualityComparer<char> comparer = null)
-            => SetDoNotCheckIsNullOrWhiteSpace(base.Contain(value, comparer));
+            => Return(base.Contain(value, comparer));
 
         #endregion
     }
