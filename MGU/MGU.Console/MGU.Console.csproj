@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Authors>Martin Lindstedt</Authors>
+    <Product>mrGarvin's Utilities Console</Product>
+    <Description>Extension for creating a basic UI for a console app with a main menu and sub menus.</Description>
+    <Copyright>Copyright © 2018 Martin Lindstedt</Copyright>
+    <PackageLicenseUrl>https://github.com/mrGarvin90/MGU/blob/master/LICENSE.TXT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mrGarvin90/MGU</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>console, extensions, utilities</PackageTags>
+    <NeutralLanguage>English</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
